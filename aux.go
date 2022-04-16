@@ -43,14 +43,6 @@ func parsePayloads(filename string) {
 	AttrPayloads = data2
 }
 
-func buildAlert(input Input, payload string) string {
-	str := input.URL + "?"
-	for _, key := range input.Keys {
-		str += key + "=" + payload + "&"
-	}
-	return str
-}
-
 func buildPayload(input Input) string {
 	str := input.URL + "?"
 	for i, key := range input.Keys {
