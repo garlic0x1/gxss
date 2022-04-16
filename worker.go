@@ -4,12 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"net/url"
 	"strings"
-	"time"
-
-	"github.com/PuerkitoBio/goquery"
-	"github.com/chromedp/chromedp"
 )
 
 func worker(input Input, ctx context.Context) {
@@ -20,62 +15,93 @@ func worker(input Input, ctx context.Context) {
 	for _, context := range contexts {
 		switch {
 		case context.Type == "html":
-			// see if we can use angle brackets
-			_, ok := testBrackets(context, ctx)
-			if !ok {
-				log.Println("Cannot reflect brackets")
-				return
-			}
-			// search for payloads
-			for tag, _ := range Payloads {
-				// find a valid tag
-				if tryTag(tag, context, ctx) {
-					for handler, pocs := range Payloads[tag] {
-						// find a valid handler
-						if tryHandler(handler, tag, context, ctx) {
-							for _, poc := range pocs["payloads"] {
-								// build payload
-								u, err := url.Parse(context.URL)
-								if err != nil {
-									log.Fatal(err)
-								}
-								q := u.Query()
-								q.Add(context.Key, poc)
-								u.RawQuery = q.Encode()
-								message := u.String()
-
-								// verify payload
-								if verifyScript(message, ctx) {
-									Results <- (Result{Type: "confirmed", Message: message})
-									if Stop {
-										return
-									}
-								}
-							}
-						}
-					}
-				}
-			}
+			breakHtml(context, ctx)
 
 		case context.Type == "href" || context.Type == "attr":
 			if context.Type == "href" {
-				// test javascript href
-				for _, payload := range AttrPayloads["href"] {
-					message := context.URL + "?" + context.Key + "=" + url.QueryEscape(payload)
-					// verify payload
-					if verifyScript(message, ctx) {
-						Results <- (Result{Type: "confirmed", Message: message})
-						if Stop {
-							return
-						}
-					}
-				}
+				breakLink(context, ctx)
 			}
 			// escape attribute
 			breakAttr(context, ctx)
 
 		case context.Type == "script":
-		case context.Type == "style":
+		}
+	}
+}
+
+func breakLink(context Context, ctx context.Context) {
+	// test javascript href
+	for _, payload := range AttrPayloads["href"] {
+		u := buildUrl(context, payload)
+		// verify payload
+		if verifyScript(u, ctx) {
+			Results <- (Result{Type: "confirmed", Message: u})
+			if Stop {
+				return
+			}
+		}
+	}
+}
+
+func breakHtml(context Context, ctx context.Context) {
+
+	// loop open brackets
+	for _, openBracket := range AttrPayloads["openBracket"] {
+		u := buildUrl(context, fmt.Sprintf(Canary3, openBracket))
+		doc := chromeQuery(u, ctx)
+		str, err := doc.Html()
+		if err != nil {
+			log.Println(err)
+		}
+		ok := strings.Contains(str, fmt.Sprintf(Canary3, "<")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<"))
+		if !ok {
+			continue
+		}
+
+		// loop close brackets
+		for _, closeBracket := range AttrPayloads["closeBracket"] {
+			u = buildUrl(context, fmt.Sprintf(Canary3, openBracket+closeBracket))
+			doc = chromeQuery(u, ctx)
+			str, err = doc.Html()
+			if err != nil {
+				log.Println(err)
+			}
+			ok = strings.Contains(str, fmt.Sprintf(Canary3, "<>")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<>"))
+			if !ok {
+				continue
+			}
+
+			// loop tags
+			for tag, _ := range Payloads {
+				u = buildUrl(context, openBracket+tag+" "+Canary2+"=x"+closeBracket)
+				doc = chromeQuery(u, ctx)
+				nreflections := doc.Find(fmt.Sprintf("%s[%s]", tag, Canary2)).Length()
+				if nreflections == 0 {
+					continue
+				}
+
+				// loop handlers
+				for handler, payloads := range Payloads[tag] {
+					u = buildUrl(context, openBracket+tag+" "+handler+"="+Canary2+closeBracket)
+					doc = chromeQuery(u, ctx)
+					nreflections = doc.Find(fmt.Sprintf("%s[%s=%s]", tag, handler, Canary2)).Length()
+					if nreflections == 0 {
+						continue
+					}
+
+					// loop payloads
+					for _, payload := range payloads["payloads"] {
+						u = buildUrl(context, payload)
+						// verify payload
+						if verifyScript(u, ctx) {
+							Results <- (Result{Type: "confirmed", Message: u})
+							if Stop {
+								return
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -115,69 +141,5 @@ func breakAttr(context Context, ctx context.Context) {
 				}
 			}
 		}
-	}
-}
-
-func testBrackets(context Context, ctx context.Context) (string, bool) {
-	str := url.QueryEscape(fmt.Sprintf(Canary3, "<>"))
-	u := fmt.Sprintf("%s?%s=%s", context.URL, context.Key, str)
-	var document string
-
-	// perform chrome request
-	err := chromedp.Run(ctx,
-		chromedp.Navigate(u),
-		chromedp.Sleep(time.Duration(Wait)),
-		chromedp.OuterHTML(`html`, &document),
-	)
-	if err != nil {
-		log.Println(u, err)
-	}
-
-	// analyze response
-	doc, err := goquery.NewDocumentFromReader(strings.NewReader(document))
-	if err != nil {
-		log.Println(err)
-	}
-
-	if strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<>")) {
-		return "<>", true
-	}
-	if strings.Contains(document, str) {
-		return "<>", true
-	}
-	return "", false
-}
-
-func tryHandler(handler string, tag string, context Context, ctx context.Context) bool {
-	str := fmt.Sprintf("<%s %s=%s>", tag, handler, Canary2)
-	u := fmt.Sprintf("%s?%s=%s", context.URL, context.Key, str)
-
-	doc := chromeQuery(u, ctx)
-
-	nreflections := doc.Find(fmt.Sprintf("%s[%s=%s]", tag, handler, Canary2)).Length()
-	if nreflections > 0 {
-		return true
-	}
-	return false
-}
-
-func tryTag(tag string, context Context, ctx context.Context) bool {
-	c1 := make(chan bool, 1)
-
-	go func() {
-		str := fmt.Sprintf("<%s %s=1>", tag, Canary2)
-		u := fmt.Sprintf("%s?%s=%s", context.URL, context.Key, str)
-
-		doc := chromeQuery(u, ctx)
-		nreflections := doc.Find(fmt.Sprintf("%s[%s]", tag, Canary2)).Length()
-
-		c1 <- (nreflections > 0)
-	}()
-
-	select {
-	case result := <-c1:
-		return result
-	case <-time.After(time.Duration(5) * time.Second):
-		return false
 	}
 }
