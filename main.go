@@ -25,22 +25,25 @@ type Input struct {
 }
 
 type Context struct {
-	Type string
-	URL  string
-	Key  string
+	Type  string
+	URL   string
+	Key   string
+	Build string
 }
 
 var (
-	Canary    = "zzx%dqyj"
-	Canary2   = "zzxqyj"
-	Canary3   = "zzx%sqyj"
-	Queue     = make(chan Input)
-	Results   = make(chan Result)
-	Alert     = make(chan bool, 1)
-	Stop      bool
-	Wait      int
-	Payloads  map[string]map[string]map[string][]string
-	ChromeCtx context.Context
+	Canary       = "zzx%dqyj"
+	Canary2      = "zzxqyj"
+	Canary3      = "zzx%sqyj"
+	Queue        = make(chan Input)
+	Results      = make(chan Result)
+	Alert        = make(chan bool, 1)
+	Stop         bool
+	ShowType     bool
+	Wait         int
+	Payloads     map[string]map[string]map[string][]string
+	AttrPayloads map[string][]string
+	ChromeCtx    context.Context
 )
 
 func reader() {
@@ -57,9 +60,9 @@ func reader() {
 	close(Queue)
 }
 
-func writer(showType *bool) {
+func writer() {
 	for res := range Results {
-		if *showType {
+		if ShowType {
 			fmt.Println("["+res.Type+"]", res.Message)
 		} else {
 			fmt.Println(res.Message)
@@ -72,6 +75,7 @@ func spawnWorkers(n int) {
 	for i := 0; i < n; i++ {
 		wg.Add(1)
 		go func() {
+			defer wg.Done()
 			tab, cancel := chromedp.NewContext(ChromeCtx)
 			defer cancel()
 
@@ -79,20 +83,19 @@ func spawnWorkers(n int) {
 			chromedp.ListenTarget(tab, func(ev interface{}) {
 				if _, ok := ev.(*page.EventJavascriptDialogOpening); ok {
 					go func() {
+						Alert <- true
 						if err := chromedp.Run(tab,
 							page.HandleJavaScriptDialog(false),
 						); err != nil {
 							panic(err)
 						}
 					}()
-					Alert <- true
 				}
 			})
 
 			for input := range Queue {
 				worker(input, tab)
 			}
-			wg.Done()
 		}()
 	}
 	wg.Wait()
@@ -110,6 +113,7 @@ func main() {
 	flag.Parse()
 	Stop = *stop
 	Wait = *swait
+	ShowType = *showType
 	parsePayloads(*payloads)
 
 	// check for stdin
@@ -127,7 +131,8 @@ func main() {
 	ChromeCtx = ctx
 	defer cancel()
 
+	// these each finish the next when done, finishing the program
 	go reader()
 	go spawnWorkers(*threads)
-	writer(showType)
+	writer()
 }

