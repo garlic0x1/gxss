@@ -1,5 +1,6 @@
 # gxss
 Generate and test XSS payloads given injection points  
+DOM is evaluated by chromium, and payloads that pop `alert` or `prompt` are confirmed  
   
 Example Input:
 ```
