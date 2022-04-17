@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"context"
-	"encoding/json"
 	"flag"
 	"fmt"
 	"log"
@@ -12,6 +11,7 @@ import (
 
 	"github.com/chromedp/cdproto/page"
 	"github.com/chromedp/chromedp"
+	"gopkg.in/yaml.v2"
 )
 
 type Result struct {
@@ -20,8 +20,8 @@ type Result struct {
 }
 
 type Input struct {
-	URL  string
-	Keys []string
+	URL  string   `yaml:"URL"`
+	Keys []string `yaml:"Keys"`
 }
 
 type Context struct {
@@ -53,9 +53,9 @@ func reader() {
 	s := bufio.NewScanner(os.Stdin)
 	for s.Scan() {
 		var input Input
-		err := json.Unmarshal([]byte(s.Text()), &input)
+		err := yaml.Unmarshal([]byte(s.Text()), &input)
 		if err != nil {
-			log.Println("Error parsing JSON", err)
+			log.Println("Error parsing JSON/YAML", err)
 			continue
 		}
 		Queue <- input
