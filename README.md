@@ -1,11 +1,11 @@
 # gxss
 Generate and test XSS payloads given injection points  
   
-Input format:
+Example Input:
 ```
 {"URL":"http://192.168.1.108:9999/home","Keys":["q"]}
 ```
-
+Example Output:
 ```
 $ echo http://192.168.1.108:9999/home | url-miner -w testwords -json | gxss -s
 [low] http://192.168.1.108:9999/home?q=<xss zzxqyj=x>
