@@ -53,4 +53,4 @@ Usage of gxss:
     	Number of threads to use. (default 8)
   -wait int
     	Seconds to wait on page after loading in chrome mode. (Use to wait for AJAX reqs)
-      ```
+```
