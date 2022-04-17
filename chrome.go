@@ -19,9 +19,10 @@ func chromeQuery(u string, ctx context.Context) *goquery.Document {
 		chromedp.Navigate(u),
 		chromedp.Sleep(time.Duration(Wait)),
 		chromedp.OuterHTML(`html`, &document),
+		chromedp.ResetViewport(),
 	)
-	if err != nil {
-		log.Println(u, err)
+	if err != nil && Debug {
+		log.Println("Error from chromeQuery()", u, err)
 	}
 
 	// analyze response
@@ -42,7 +43,12 @@ func identifyCtx(input Input, ctx context.Context) []Context {
 		for _, attr := range n.Attr {
 			for i, key := range input.Keys {
 				if strings.Contains(attr.Val, fmt.Sprintf(Canary, i)) {
-					contexts = append(contexts, Context{Type: "attr", URL: input.URL, Key: key})
+					contexts = append(contexts, Context{
+						Type:   "attr",
+						URL:    input.URL,
+						Prefix: "",
+						Key:    key,
+					})
 				}
 			}
 		}
@@ -50,7 +56,12 @@ func identifyCtx(input Input, ctx context.Context) []Context {
 
 	for i, key := range input.Keys {
 		if strings.Contains(doc.Text(), fmt.Sprintf(Canary, i)) {
-			contexts = append(contexts, Context{Type: "html", URL: input.URL, Key: key})
+			contexts = append(contexts, Context{
+				Type:   "html",
+				URL:    input.URL,
+				Prefix: "",
+				Key:    key,
+			})
 		}
 	}
 

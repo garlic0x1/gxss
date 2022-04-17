@@ -25,10 +25,11 @@ type Input struct {
 }
 
 type Context struct {
-	Type  string
-	URL   string
-	Key   string
-	Build string
+	Type   string
+	URL    string
+	Prefix string
+	Key    string
+	Build  string
 }
 
 var (
@@ -37,6 +38,7 @@ var (
 	Canary3      = "zzx%sqyj"
 	Queue        = make(chan Input)
 	Results      = make(chan Result)
+	Debug        bool
 	Stop         bool
 	ShowType     bool
 	Wait         int
@@ -74,12 +76,12 @@ func spawnWorkers(n int) {
 	for i := 0; i < n; i++ {
 		wg.Add(1)
 
-		// generator
 		go func() {
 			defer wg.Done()
 			tab, cancel := chromedp.NewContext(ChromeCtx)
 			defer cancel()
 
+			// handler that runs when alert pops
 			chromedp.ListenTarget(tab, func(ev interface{}) {
 				if _, ok := ev.(*page.EventJavascriptDialogOpening); ok {
 					go func() {
@@ -91,6 +93,9 @@ func spawnWorkers(n int) {
 							log.Println(err)
 						}
 						Results <- Result{Type: "confirmed", Message: u}
+						if Stop {
+							cancel()
+						}
 					}()
 				}
 			})
@@ -101,19 +106,20 @@ func spawnWorkers(n int) {
 		}()
 	}
 	wg.Wait()
-	log.Println("Done generating payloads.")
 	close(Results)
 }
 
 func main() {
 	threads := flag.Int("t", 8, "Number of threads to use.")
 	showType := flag.Bool("s", false, "Show result type.")
+	showErrors := flag.Bool("debug", false, "Display errors.")
 	stop := flag.Bool("stop", false, "Stop on first confirmed xss.")
 	payloads := flag.String("p", "./payloads.yaml", "YAML file of escape patterns and xss payloads.")
 	proxy := flag.String(("proxy"), "", "Proxy URL. Example: -proxy http://127.0.0.1:8080")
 	swait := flag.Int("wait", 0, "Seconds to wait on page after loading in chrome mode. (Use to wait for AJAX reqs)")
 	debugChrome := flag.Bool("debug-chrome", false, "Don't use headless. (slow but fun to watch)")
 	flag.Parse()
+	Debug = *showErrors
 	Stop = *stop
 	Wait = *swait
 	ShowType = *showType

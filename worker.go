@@ -140,8 +140,8 @@ func breakHtml(context Context, ctx context.Context) {
 func breakAttr(context Context, ctx context.Context) {
 
 	// loop escapes
-	for _, escape := range AttrPayloads["escapeAttr"] {
-		u := buildUrl(context, escape+Canary2+"="+escape)
+	for _, quote := range AttrPayloads["quotes"] {
+		u := buildUrl(context, quote+Canary2+"="+quote)
 		doc := chromeQuery(u, ctx)
 		nreflections := doc.Find(fmt.Sprintf("*[%s]", Canary2)).Length()
 		if nreflections == 0 {
@@ -150,7 +150,7 @@ func breakAttr(context Context, ctx context.Context) {
 
 		// loop handlers
 		for _, handler := range AttrPayloads["handlers"] {
-			u := buildUrl(context, escape+handler+"="+escape+Canary2)
+			u := buildUrl(context, quote+handler+"="+quote+Canary2)
 			doc := chromeQuery(u, ctx)
 			nreflections = doc.Find(fmt.Sprintf("*[%s='%s']", handler, Canary2)).Length()
 			if nreflections == 0 {
@@ -159,7 +159,7 @@ func breakAttr(context Context, ctx context.Context) {
 
 			// loop actions
 			for _, action := range AttrPayloads["actions"] {
-				u := buildUrl(context, escape+handler+"="+escape+action)
+				u := buildUrl(context, quote+handler+"="+quote+action)
 				doc := chromeQuery(u, ctx)
 				nreflections = doc.Find(fmt.Sprintf("*[%s='%s']", handler, action)).Length()
 				if nreflections == 0 {
@@ -167,6 +167,16 @@ func breakAttr(context Context, ctx context.Context) {
 				}
 
 				//Results <- Result{Type:    "high", Message: u,}
+			}
+		}
+
+		// break into html and then try that
+		for _, bracket := range AttrPayloads["closeBracket"] {
+			u := buildUrl(context, quote+bracket+Canary2)
+			doc := chromeQuery(u, ctx)
+			if strings.Contains(doc.Text(), Canary2) {
+				context.Prefix = quote + bracket
+				breakHtml(context, ctx)
 			}
 		}
 	}

@@ -21,7 +21,7 @@ func buildUrl(context Context, payload string) string {
 	if err != nil {
 		log.Println(err)
 	}
-	parsed.RawQuery = decoded
+	parsed.RawQuery = context.Prefix + decoded
 	return parsed.String()
 }
 
