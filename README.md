@@ -2,7 +2,7 @@
 Generate and test XSS payloads given injection points  
 DOM is evaluated by chromium, and payloads that pop `alert`, `prompt`, or `confirm` are confirmed  
   
-Example Input:
+Example Input (JSON or YAML structs separated by newline):
 ```
 {"URL":"http://192.168.1.108:9999/home","Keys":["q"]}
 ```
