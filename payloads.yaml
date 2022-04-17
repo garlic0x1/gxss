@@ -1,5 +1,11 @@
 ---
 # Payload map for HTML Context
+"body":
+  "onmessage":
+  "onpageshow":
+  "onresize":
+"xss":
+  "onfocus":
 "svg":
   "onload":
     payloads:
@@ -54,17 +60,14 @@
       - "src"
 "input":
   "autofocus":
-    payloads:
-      - "<input autofocus=\"\" onfocus=alert()>"
+    #payloads:
+      #      - "<input autofocus=\"\" onfocus=alert()>"
 "head":
   "onfocus":
     reqires:
       - "tabindex"
       - "style"
 "html":
-"body":
-  "onmessage":
-  "onpageshow":
 "frameset":
   "onpageshow":
   "onpaste":

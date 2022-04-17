@@ -14,11 +14,6 @@ import (
 	"github.com/chromedp/chromedp"
 )
 
-type ConfType struct {
-	URL    string
-	Worker int
-}
-
 type Result struct {
 	Type    string
 	Message string
@@ -42,8 +37,6 @@ var (
 	Canary3      = "zzx%sqyj"
 	Queue        = make(chan Input)
 	Results      = make(chan Result)
-	Confirm      = make(chan ConfType)
-	Kill         []chan bool
 	Stop         bool
 	ShowType     bool
 	Wait         int
@@ -76,54 +69,13 @@ func writer() {
 	}
 }
 
-func spawnConfirmers(n int) {
-	var wg sync.WaitGroup
-	for i := 0; i < n; i++ {
-		wg.Add(1)
-
-		// confirmer
-		go func() {
-			defer wg.Done()
-			tab, cancel := chromedp.NewContext(ChromeCtx)
-
-			alert := make(chan bool, 1)
-			// attach handler to javascript:alert() for xss confirmation
-			chromedp.ListenTarget(tab, func(ev interface{}) {
-				if _, ok := ev.(*page.EventJavascriptDialogOpening); ok {
-					alert <- true
-					go func() {
-						if err := chromedp.Run(tab,
-							page.HandleJavaScriptDialog(true),
-						); err != nil {
-							log.Println(err)
-						}
-					}()
-				}
-			})
-
-			for msg := range Confirm {
-				if verifyScript(msg.URL, tab, alert) && Stop {
-					Kill[msg.Worker] <- true
-				}
-			}
-			cancel()
-		}()
-	}
-	wg.Wait()
-	log.Println("Done confirming payloads.")
-	close(Results)
-}
-
 func spawnWorkers(n int) {
 	var wg sync.WaitGroup
 	for i := 0; i < n; i++ {
 		wg.Add(1)
 
-		// set up kill channel
-		Kill = append(Kill, make(chan bool, 1))
-
 		// generator
-		go func(index int) {
+		go func() {
 			defer wg.Done()
 			tab, cancel := chromedp.NewContext(ChromeCtx)
 			defer cancel()
@@ -131,36 +83,26 @@ func spawnWorkers(n int) {
 			chromedp.ListenTarget(tab, func(ev interface{}) {
 				if _, ok := ev.(*page.EventJavascriptDialogOpening); ok {
 					go func() {
+						var u string
 						if err := chromedp.Run(tab,
-							page.HandleJavaScriptDialog(true),
+							page.HandleJavaScriptDialog(false),
+							chromedp.Location(&u),
 						); err != nil {
-							panic(err)
+							log.Println(err)
 						}
+						Results <- Result{Type: "confirmed", Message: u}
 					}()
 				}
 			})
 
 			for input := range Queue {
-				live := make(chan bool, 1)
-				go func() {
-					// send the worker ID so it knows who to kill
-					worker(input, tab, index)
-					live <- true
-				}()
-
-				select {
-				case _ = <-live:
-					continue
-				case _ = <-Kill[index]:
-					return
-				}
-
+				worker(input, tab)
 			}
-		}(i)
+		}()
 	}
 	wg.Wait()
 	log.Println("Done generating payloads.")
-	close(Confirm)
+	close(Results)
 }
 
 func main() {
@@ -195,6 +137,5 @@ func main() {
 	// these each finish the next when done, finishing the program
 	go reader()
 	go spawnWorkers(*threads)
-	go spawnConfirmers(*threads)
 	writer()
 }
