@@ -43,6 +43,7 @@ Usage of gxss:
     	Display errors.
   -debug-chrome
     	Don't use headless. (slow but fun to watch)
+  -i	Try to perform handler to trigger payload.
   -p string
     	YAML file of escape patterns and xss payloads. (default "./payloads.yaml")
   -proxy string
