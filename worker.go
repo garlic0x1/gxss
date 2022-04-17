@@ -181,6 +181,10 @@ func breakAttr(context Context, ctx context.Context, workerId int) {
 					continue
 				}
 
+				Confirm <- ConfType{
+					URL:    u,
+					Worker: workerId,
+				}
 				Results <- Result{
 					Type:    "high",
 					Message: u,
