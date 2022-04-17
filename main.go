@@ -61,12 +61,21 @@ func reader() {
 	close(Queue)
 }
 
-func writer() {
+func writer(sevLimit *int) {
+	severity := map[string]int{
+		"low":       4,
+		"medium":    3,
+		"high":      2,
+		"confirmed": 1,
+	}
+
 	for res := range Results {
-		if ShowType {
-			fmt.Println("["+res.Type+"]", res.Message)
-		} else {
-			fmt.Println(res.Message)
+		if severity[res.Type] <= *sevLimit {
+			if ShowType {
+				fmt.Println("["+res.Type+"]", res.Message)
+			} else {
+				fmt.Println(res.Message)
+			}
 		}
 	}
 }
@@ -111,6 +120,7 @@ func spawnWorkers(n int) {
 
 func main() {
 	threads := flag.Int("t", 8, "Number of threads to use.")
+	sevLimit := flag.Int("sev", 4, "Filter by severity. 1 is a confirmed alert, 2-4 are high-low.")
 	showType := flag.Bool("s", false, "Show result type.")
 	showErrors := flag.Bool("debug", false, "Display errors.")
 	stop := flag.Bool("stop", false, "Stop on first confirmed xss.")
@@ -143,5 +153,5 @@ func main() {
 	// these each finish the next when done, finishing the program
 	go reader()
 	go spawnWorkers(*threads)
-	writer()
+	writer(sevLimit)
 }

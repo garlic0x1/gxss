@@ -74,6 +74,8 @@ func breakHtml(context Context, ctx context.Context) {
 					continue
 				}
 
+				Results <- Result{Type: "low", Message: u}
+
 				// loop handlers
 				for handler, data := range Payloads[tag] {
 					u = buildUrl(context, openBracket+tag+" "+handler+"="+Canary2+closeBracket)
@@ -82,6 +84,8 @@ func breakHtml(context Context, ctx context.Context) {
 					if nreflections == 0 {
 						continue
 					}
+
+					Results <- Result{Type: "medium", Message: u}
 
 					// loop payloads
 					for _, payload := range data["payloads"] {
@@ -112,7 +116,7 @@ func breakHtml(context Context, ctx context.Context) {
 								continue
 							}
 
-							//Results <- (Result{Type: "high", Message: u})
+							Results <- (Result{Type: "high", Message: u})
 						}
 					}
 
@@ -129,7 +133,7 @@ func breakHtml(context Context, ctx context.Context) {
 							continue
 						}
 
-						//Results <- (Result{Type: "medium", Message: u})
+						Results <- (Result{Type: "high", Message: u})
 					}
 				}
 			}
