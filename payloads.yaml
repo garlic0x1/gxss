@@ -23,18 +23,6 @@
   "onerror":
     requires:
       - "src"
-"img2":
-  "onloadstart":
-    requires:
-      - "src"
-      - "srcset"
-  "onload":
-    requires:
-      - "src"
-      - "srcset"
-  "onerror":
-    requires:
-      - "src"
 "image":
   "onloadstart":
     requires:
@@ -44,17 +32,6 @@
     requires:
       - "src"
       - "srcset"
-  "onerror":
-    requires:
-      - "src"
-"image2":
-  "onloadstart":
-    requires:
-      - "src"
-      - "srcset"
-  "onload":
-    requires:
-      - "src"
   "onerror":
     requires:
       - "src"
