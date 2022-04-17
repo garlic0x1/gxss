@@ -25,11 +25,12 @@ type Input struct {
 }
 
 type Context struct {
-	Type   string
-	URL    string
-	Prefix string
-	Key    string
-	Build  string
+	Type     string
+	URL      string
+	Prefix   string
+	Key      string
+	Build    string
+	Selector string
 }
 
 var (

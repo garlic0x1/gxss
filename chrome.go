@@ -45,7 +45,7 @@ func confirmAlert(u string, tab context.Context, handler string, selector string
 
 	if Interact {
 		// pop alerts that require interaction
-		cmd := fmt.Sprintf("document.querySelector(\"%s\").%s()", selector, handler)
+		cmd := fmt.Sprintf("try { document.querySelector(\"%s\").%s() } catch {}", selector, handler)
 		err = chromedp.Run(tab,
 			chromedp.Evaluate(cmd, nil),
 		)
@@ -66,10 +66,11 @@ func identifyCtx(input Input, tab context.Context) []Context {
 			for i, key := range input.Keys {
 				if strings.Contains(attr.Val, fmt.Sprintf(Canary, i)) {
 					contexts = append(contexts, Context{
-						Type:   "attr",
-						URL:    input.URL,
-						Prefix: "",
-						Key:    key,
+						Type:     "attr",
+						URL:      input.URL,
+						Prefix:   "",
+						Key:      key,
+						Selector: fmt.Sprintf("%s[%s]", goquery.NodeName(node), attr.Key),
 					})
 				}
 			}

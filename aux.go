@@ -29,13 +29,8 @@ func buildUrl(context Context, payload string) string {
 		log.Fatal(err)
 	}
 	q := parsed.Query()
-	q.Add(context.Key, payload)
+	q.Add(context.Key, context.Prefix+payload)
 	parsed.RawQuery = q.Encode()
-	decoded, err := url.QueryUnescape(q.Encode())
-	if err != nil {
-		log.Println(err)
-	}
-	parsed.RawQuery = context.Prefix + decoded
 	return parsed.String()
 }
 
