@@ -29,3 +29,26 @@ $ echo http://192.168.1.108:9999/home | url-miner -w testwords -json | gxss -s
 [high] http://192.168.1.108:9999/home?q=<svg onload=prompt``>
 ...
 ```
+
+# Help
+```
+$ gxss -h
+Usage of gxss:
+  -debug
+    	Display errors.
+  -debug-chrome
+    	Don't use headless. (slow but fun to watch)
+  -p string
+    	YAML file of escape patterns and xss payloads. (default "./payloads.yaml")
+  -proxy string
+    	Proxy URL. Example: -proxy http://127.0.0.1:8080
+  -s	Show result type.
+  -sev int
+    	Filter by severity. 1 is a confirmed alert, 2-4 are high-low. (default 4)
+  -stop
+    	Stop on first confirmed xss.
+  -t int
+    	Number of threads to use. (default 8)
+  -wait int
+    	Seconds to wait on page after loading in chrome mode. (Use to wait for AJAX reqs)
+      ```
