@@ -33,7 +33,8 @@ func breakLink(context Context, tab context.Context) {
 	// test javascript href
 	for _, payload := range AttrPayloads["href"] {
 		u := buildUrl(context, payload)
-		comfirmAlert(u, tab)
+		//confirmAlert(u, tab)
+		_ = chromeQuery(u, tab)
 	}
 }
 
@@ -91,7 +92,9 @@ func breakHtml(context Context, tab context.Context) {
 					for _, payload := range data["payloads"] {
 						u = buildUrl(context, payload)
 						// verify payload
-						comfirmAlert(u, tab)
+						// need to get a selector and handler
+						//confirmAlert(u, tab)
+						chromeQuery(u, tab)
 					}
 
 					// loop requireds
@@ -110,6 +113,7 @@ func breakHtml(context Context, tab context.Context) {
 						for _, action := range AttrPayloads["actions"] {
 							u = buildUrl(context, openBracket+tag+" "+handler+"="+action+" "+required+"="+closeBracket)
 							doc = chromeQuery(u, tab)
+							confirmAlert(u, tab, handler, fmt.Sprintf("%s[%s='%s']", tag, handler, action))
 
 							nreflections = doc.Find(fmt.Sprintf("%s[%s='%s']", tag, handler, action)).Length()
 							if nreflections == 0 {
@@ -127,6 +131,7 @@ func breakHtml(context Context, tab context.Context) {
 					for _, action := range AttrPayloads["actions"] {
 						u = buildUrl(context, openBracket+tag+" "+handler+"="+action+closeBracket)
 						doc = chromeQuery(u, tab)
+						confirmAlert(u, tab, handler, fmt.Sprintf("%s[%s='%s']", tag, handler, action))
 
 						nreflections = doc.Find(fmt.Sprintf("%s[%s='%s']", tag, handler, action)).Length()
 						if nreflections == 0 {

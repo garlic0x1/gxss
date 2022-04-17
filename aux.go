@@ -5,9 +5,23 @@ import (
 	"log"
 	"net/url"
 	"os"
+	"sync"
 
 	"gopkg.in/yaml.v2"
 )
+
+var sm sync.Map
+
+func isUniqueOutput(res Result) bool {
+	str := res.Type + res.Message
+
+	_, present := sm.Load(str)
+	if present {
+		return false
+	}
+	sm.Store(str, true)
+	return true
+}
 
 func buildUrl(context Context, payload string) string {
 	parsed, err := url.Parse(context.URL)

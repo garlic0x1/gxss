@@ -11,11 +11,11 @@ import (
 	"github.com/chromedp/chromedp"
 )
 
-func chromeQuery(u string, ctx context.Context) *goquery.Document {
+func chromeQuery(u string, tab context.Context) *goquery.Document {
 	var document string
 
 	// perform chrome request
-	err := chromedp.Run(ctx,
+	err := chromedp.Run(tab,
 		chromedp.Navigate(u),
 		chromedp.Sleep(time.Duration(Wait)),
 		chromedp.OuterHTML(`html`, &document),
@@ -32,23 +32,34 @@ func chromeQuery(u string, ctx context.Context) *goquery.Document {
 	return doc
 }
 
-func comfirmAlert(u string, ctx context.Context) {
+func confirmAlert(u string, tab context.Context, handler string, selector string) {
 	// perform chrome request
-	err := chromedp.Run(ctx,
+	err := chromedp.Run(tab,
 		chromedp.Navigate(u),
 		chromedp.Sleep(time.Duration(Wait)),
-		chromedp.ResetViewport(),
+		//chromedp.ResetViewport(),
 	)
 	if err != nil && Debug {
 		log.Println("Error from chromeQuery()", u, err)
 	}
+
+	if Interact {
+		// pop alerts that require interaction
+		cmd := fmt.Sprintf("document.querySelector(\"%s\").%s()", selector, handler)
+		err = chromedp.Run(tab,
+			chromedp.Evaluate(cmd, nil),
+		)
+		if err != nil && Debug {
+			log.Println("Error executing handler", selector, handler, err)
+		}
+	}
 }
 
-func identifyCtx(input Input, ctx context.Context) []Context {
+func identifyCtx(input Input, tab context.Context) []Context {
 	var contexts []Context
 	u := buildPayload(input)
 
-	doc := chromeQuery(u, ctx)
+	doc := chromeQuery(u, tab)
 	doc.Find("*").Each(func(_ int, node *goquery.Selection) {
 		n := node.Get(0)
 		for _, attr := range n.Attr {

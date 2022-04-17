@@ -69,6 +69,10 @@
   - "onscroll"
 "actions":
   - "alert()"
+  - "confirm()"
+  - "confirm(x)"
+  - "confirm``"
+  - "confirm`1`"
   - "alert(x)"
   - "alert(1)"
   - "prompt()"

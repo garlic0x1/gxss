@@ -38,6 +38,7 @@ var (
 	Canary3      = "zzx%sqyj"
 	Queue        = make(chan Input)
 	Results      = make(chan Result)
+	Interact     bool
 	Debug        bool
 	Stop         bool
 	ShowType     bool
@@ -70,7 +71,7 @@ func writer(sevLimit *int) {
 	}
 
 	for res := range Results {
-		if severity[res.Type] <= *sevLimit {
+		if severity[res.Type] <= *sevLimit && isUniqueOutput(res) {
 			if ShowType {
 				fmt.Println("["+res.Type+"]", res.Message)
 			} else {
@@ -122,6 +123,7 @@ func main() {
 	threads := flag.Int("t", 8, "Number of threads to use.")
 	sevLimit := flag.Int("sev", 4, "Filter by severity. 1 is a confirmed alert, 2-4 are high-low.")
 	showType := flag.Bool("s", false, "Show result type.")
+	interact := flag.Bool("i", false, "Try to perform handler to trigger payload.")
 	showErrors := flag.Bool("debug", false, "Display errors.")
 	stop := flag.Bool("stop", false, "Stop on first confirmed xss.")
 	payloads := flag.String("p", "./payloads.yaml", "YAML file of escape patterns and xss payloads.")
@@ -130,6 +132,7 @@ func main() {
 	debugChrome := flag.Bool("debug-chrome", false, "Don't use headless. (slow but fun to watch)")
 	flag.Parse()
 	Debug = *showErrors
+	Interact = *interact
 	Stop = *stop
 	Wait = *swait
 	ShowType = *showType
