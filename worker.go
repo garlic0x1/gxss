@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func worker(input Input, ctx context.Context) {
+func worker(input Input, ctx context.Context, workerId int) {
 	// identify context
 	contexts := identifyCtx(input, ctx)
 
@@ -15,30 +15,33 @@ func worker(input Input, ctx context.Context) {
 	for _, context := range contexts {
 		switch {
 		case context.Type == "html":
-			breakHtml(context, ctx)
+			breakHtml(context, ctx, workerId)
 
 		case context.Type == "href" || context.Type == "attr":
 			if context.Type == "href" {
-				breakLink(context, ctx)
+				breakLink(context, ctx, workerId)
 			}
 			// escape attribute
-			breakAttr(context, ctx)
+			breakAttr(context, ctx, workerId)
 
 		case context.Type == "script":
 		}
 	}
 }
 
-func breakLink(context Context, ctx context.Context) {
+func breakLink(context Context, ctx context.Context, workerId int) {
 	// test javascript href
 	for _, payload := range AttrPayloads["href"] {
 		u := buildUrl(context, payload)
 		_ = u
-		Confirm <- u
+		Confirm <- ConfType{
+			URL:    u,
+			Worker: workerId,
+		}
 	}
 }
 
-func breakHtml(context Context, ctx context.Context) {
+func breakHtml(context Context, ctx context.Context, workerId int) {
 
 	// loop open brackets
 	for _, openBracket := range AttrPayloads["openBracket"] {
@@ -88,7 +91,10 @@ func breakHtml(context Context, ctx context.Context) {
 					for _, payload := range data["payloads"] {
 						u = buildUrl(context, payload)
 						// verify payload
-						Confirm <- u
+						Confirm <- ConfType{
+							URL:    u,
+							Worker: workerId,
+						}
 					}
 
 					// loop requireds
@@ -113,8 +119,11 @@ func breakHtml(context Context, ctx context.Context) {
 								continue
 							}
 
-							Confirm <- u
-							//Results <- (Result{Type: "medium", Message: u})
+							Confirm <- ConfType{
+								URL:    u,
+								Worker: workerId,
+							}
+							Results <- (Result{Type: "high", Message: u})
 						}
 					}
 
@@ -131,7 +140,10 @@ func breakHtml(context Context, ctx context.Context) {
 							continue
 						}
 
-						Confirm <- u
+						Confirm <- ConfType{
+							URL:    u,
+							Worker: workerId,
+						}
 						//Results <- (Result{Type: "medium", Message: u})
 					}
 				}
@@ -140,7 +152,7 @@ func breakHtml(context Context, ctx context.Context) {
 	}
 }
 
-func breakAttr(context Context, ctx context.Context) {
+func breakAttr(context Context, ctx context.Context, workerId int) {
 
 	// loop escapes
 	for _, escape := range AttrPayloads["escapeAttr"] {

@@ -14,6 +14,11 @@ import (
 	"github.com/chromedp/chromedp"
 )
 
+type ConfType struct {
+	URL    string
+	Worker int
+}
+
 type Result struct {
 	Type    string
 	Message string
@@ -37,7 +42,8 @@ var (
 	Canary3      = "zzx%sqyj"
 	Queue        = make(chan Input)
 	Results      = make(chan Result)
-	Confirm      = make(chan string)
+	Confirm      = make(chan ConfType)
+	Kill         []chan bool
 	Stop         bool
 	ShowType     bool
 	Wait         int
@@ -96,7 +102,9 @@ func spawnConfirmers(n int) {
 			})
 
 			for msg := range Confirm {
-				verifyScript(msg, tab, alert)
+				if verifyScript(msg.URL, tab, alert) && Stop {
+					Kill[msg.Worker] <- true
+				}
 			}
 			cancel()
 		}()
@@ -111,8 +119,11 @@ func spawnWorkers(n int) {
 	for i := 0; i < n; i++ {
 		wg.Add(1)
 
+		// set up kill channel
+		Kill = append(Kill, make(chan bool, 1))
+
 		// generator
-		go func() {
+		go func(index int) {
 			defer wg.Done()
 			tab, cancel := chromedp.NewContext(ChromeCtx)
 			defer cancel()
@@ -130,9 +141,22 @@ func spawnWorkers(n int) {
 			})
 
 			for input := range Queue {
-				worker(input, tab)
+				live := make(chan bool, 1)
+				go func() {
+					// send the worker ID so it knows who to kill
+					worker(input, tab, index)
+					live <- true
+				}()
+
+				select {
+				case _ = <-live:
+					continue
+				case _ = <-Kill[index]:
+					return
+				}
+
 			}
-		}()
+		}(i)
 	}
 	wg.Wait()
 	log.Println("Done generating payloads.")
