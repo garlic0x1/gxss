@@ -19,7 +19,6 @@ func chromeQuery(u string, ctx context.Context) *goquery.Document {
 		chromedp.Navigate(u),
 		chromedp.Sleep(time.Duration(Wait)),
 		chromedp.OuterHTML(`html`, &document),
-		chromedp.ResetViewport(),
 	)
 	if err != nil && Debug {
 		log.Println("Error from chromeQuery()", u, err)
@@ -31,6 +30,18 @@ func chromeQuery(u string, ctx context.Context) *goquery.Document {
 		log.Println(err)
 	}
 	return doc
+}
+
+func comfirmAlert(u string, ctx context.Context) {
+	// perform chrome request
+	err := chromedp.Run(ctx,
+		chromedp.Navigate(u),
+		chromedp.Sleep(time.Duration(Wait)),
+		chromedp.ResetViewport(),
+	)
+	if err != nil && Debug {
+		log.Println("Error from chromeQuery()", u, err)
+	}
 }
 
 func identifyCtx(input Input, ctx context.Context) []Context {
