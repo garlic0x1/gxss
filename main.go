@@ -37,7 +37,7 @@ var (
 	Canary3      = "zzx%sqyj"
 	Queue        = make(chan Input)
 	Results      = make(chan Result)
-	Alert        = make(chan bool, 1)
+	Confirm      = make(chan string)
 	Stop         bool
 	ShowType     bool
 	Wait         int
@@ -70,22 +70,58 @@ func writer() {
 	}
 }
 
+func spawnConfirmers(n int) {
+	var wg sync.WaitGroup
+	for i := 0; i < n; i++ {
+		wg.Add(1)
+
+		// confirmer
+		go func() {
+			defer wg.Done()
+			tab, cancel := chromedp.NewContext(ChromeCtx)
+
+			alert := make(chan bool, 1)
+			// attach handler to javascript:alert() for xss confirmation
+			chromedp.ListenTarget(tab, func(ev interface{}) {
+				if _, ok := ev.(*page.EventJavascriptDialogOpening); ok {
+					alert <- true
+					go func() {
+						if err := chromedp.Run(tab,
+							page.HandleJavaScriptDialog(true),
+						); err != nil {
+							log.Println(err)
+						}
+					}()
+				}
+			})
+
+			for msg := range Confirm {
+				verifyScript(msg, tab, alert)
+			}
+			cancel()
+		}()
+	}
+	wg.Wait()
+	log.Println("Done confirming payloads.")
+	close(Results)
+}
+
 func spawnWorkers(n int) {
 	var wg sync.WaitGroup
 	for i := 0; i < n; i++ {
 		wg.Add(1)
+
+		// generator
 		go func() {
 			defer wg.Done()
 			tab, cancel := chromedp.NewContext(ChromeCtx)
 			defer cancel()
 
-			// attach handler to javascript:alert() for xss confirmation
 			chromedp.ListenTarget(tab, func(ev interface{}) {
 				if _, ok := ev.(*page.EventJavascriptDialogOpening); ok {
 					go func() {
-						Alert <- true
 						if err := chromedp.Run(tab,
-							page.HandleJavaScriptDialog(false),
+							page.HandleJavaScriptDialog(true),
 						); err != nil {
 							panic(err)
 						}
@@ -99,7 +135,8 @@ func spawnWorkers(n int) {
 		}()
 	}
 	wg.Wait()
-	close(Results)
+	log.Println("Done generating payloads.")
+	close(Confirm)
 }
 
 func main() {
@@ -134,5 +171,6 @@ func main() {
 	// these each finish the next when done, finishing the program
 	go reader()
 	go spawnWorkers(*threads)
+	go spawnConfirmers(*threads)
 	writer()
 }

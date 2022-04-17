@@ -17,6 +17,11 @@ func buildUrl(context Context, payload string) string {
 	q := parsed.Query()
 	q.Add(context.Key, payload)
 	parsed.RawQuery = q.Encode()
+	decoded, err := url.QueryUnescape(q.Encode())
+	if err != nil {
+		log.Println(err)
+	}
+	parsed.RawQuery = decoded
 	return parsed.String()
 }
 

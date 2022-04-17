@@ -32,22 +32,43 @@ func chromeQuery(u string, ctx context.Context) *goquery.Document {
 	return doc
 }
 
-func verifyScript(u string, ctx context.Context) bool {
-	//log.Println("verifying:", u)
+func verifyScript(u string, tab context.Context, alert chan bool) {
+	/*
+		AlertTab, cancel := chromedp.NewContext(ChromeCtx)
+		defer cancel()
+
+	*/
+
 	// perform chrome request
-	err := chromedp.Run(ctx,
-		chromedp.Navigate(u),
-		chromedp.Sleep(time.Duration(Wait)),
-	)
-	if err != nil {
-		log.Println(u, err)
-	}
+	doc := chromeQuery(u, tab)
+
+	doc.Find("*[mouseover]").Each(func(index int, item *goquery.Selection) {
+		script, _ := item.Attr("mouseover")
+		err := chromedp.Run(tab,
+			chromedp.Evaluate(script, nil),
+		)
+		if err != nil {
+			log.Println("Error evaluating script:", err)
+		}
+	})
+
+	doc.Find("*[onfocus]").Each(func(index int, item *goquery.Selection) {
+		script, _ := item.Attr("onfocus")
+		err := chromedp.Run(tab,
+			chromedp.Evaluate(script, nil),
+		)
+		if err != nil {
+			log.Println("Error evaluating script:", err)
+		}
+	})
 
 	select {
-	case ret := <-Alert:
-		return ret
+	case _ = <-alert:
+		Results <- Result{Type: "confirmed", Message: u}
+		return
+		//case <-time.After(time.Duration(1) * time.Second):
 	default:
-		return false
+		return
 	}
 }
 

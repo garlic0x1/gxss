@@ -33,13 +33,8 @@ func breakLink(context Context, ctx context.Context) {
 	// test javascript href
 	for _, payload := range AttrPayloads["href"] {
 		u := buildUrl(context, payload)
-		// verify payload
-		if verifyScript(u, ctx) {
-			Results <- (Result{Type: "confirmed", Message: u})
-			if Stop {
-				return
-			}
-		}
+		_ = u
+		Confirm <- u
 	}
 }
 
@@ -81,7 +76,7 @@ func breakHtml(context Context, ctx context.Context) {
 				}
 
 				// loop handlers
-				for handler, payloads := range Payloads[tag] {
+				for handler, data := range Payloads[tag] {
 					u = buildUrl(context, openBracket+tag+" "+handler+"="+Canary2+closeBracket)
 					doc = chromeQuery(u, ctx)
 					nreflections = doc.Find(fmt.Sprintf("%s[%s=%s]", tag, handler, Canary2)).Length()
@@ -90,15 +85,54 @@ func breakHtml(context Context, ctx context.Context) {
 					}
 
 					// loop payloads
-					for _, payload := range payloads["payloads"] {
+					for _, payload := range data["payloads"] {
 						u = buildUrl(context, payload)
 						// verify payload
-						if verifyScript(u, ctx) {
-							Results <- (Result{Type: "confirmed", Message: u})
-							if Stop {
-								return
-							}
+						Confirm <- u
+					}
+
+					// loop requireds
+					c := 0
+					for _, required := range data["requires"] {
+						c++
+
+						u = buildUrl(context, openBracket+tag+" "+handler+"="+Canary2+" "+required+"="+closeBracket)
+						doc = chromeQuery(u, ctx)
+
+						nreflections = doc.Find(fmt.Sprintf("%s[%s='%s'][%s]", tag, handler, Canary2, required)).Length()
+						if nreflections == 0 {
+							continue
 						}
+
+						for _, action := range AttrPayloads["actions"] {
+							u = buildUrl(context, openBracket+tag+" "+handler+"="+action+" "+required+"="+closeBracket)
+							doc = chromeQuery(u, ctx)
+
+							nreflections = doc.Find(fmt.Sprintf("%s[%s='%s']", tag, handler, action)).Length()
+							if nreflections == 0 {
+								continue
+							}
+
+							Confirm <- u
+							//Results <- (Result{Type: "medium", Message: u})
+						}
+					}
+
+					if c > 0 {
+						continue
+					}
+
+					for _, action := range AttrPayloads["actions"] {
+						u = buildUrl(context, openBracket+tag+" "+handler+"="+action+closeBracket)
+						doc = chromeQuery(u, ctx)
+
+						nreflections = doc.Find(fmt.Sprintf("%s[%s='%s']", tag, handler, action)).Length()
+						if nreflections == 0 {
+							continue
+						}
+
+						Confirm <- u
+						//Results <- (Result{Type: "medium", Message: u})
 					}
 				}
 			}
