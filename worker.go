@@ -66,7 +66,7 @@ func breakScript(context Context, tab context.Context) {
 				if err != nil {
 					log.Println(err)
 				}
-				ok = strings.Contains(str, fmt.Sprintf(Canary3, "/")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<>"))
+				ok = strings.Contains(str, fmt.Sprintf(Canary3, "/")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "/"))
 				if !ok {
 					continue
 				}
@@ -79,7 +79,7 @@ func breakScript(context Context, tab context.Context) {
 					if err != nil {
 						log.Println(err)
 					}
-					ok = strings.Contains(str, fmt.Sprintf(Canary3, openBracket+backslash+scriptTag+closeBracket)) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<>"))
+					ok = strings.Contains(str, fmt.Sprintf(Canary3, openBracket+backslash+scriptTag+closeBracket)) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, openBracket+backslash+scriptTag+closeBracket))
 					if ok {
 						// now we are in html context, so generate payload for that
 						context.Prefix = openBracket + backslash + scriptTag + closeBracket
