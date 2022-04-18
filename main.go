@@ -25,14 +25,18 @@ type Input struct {
 }
 
 type Context struct {
-	Type     string
-	URL      string
-	Prefix   string
-	Key      string
-	Build    string
-	Selector string
-	Tag      string
-	Attr     string
+	Type         string
+	URL          string
+	Prefix       string
+	Key          string
+	Build        string
+	Selector     string
+	Tag          string
+	Attr         string
+	Quote        string
+	OpenBracket  string
+	CloseBracket string
+	BackSlash    string
 }
 
 type Handler struct {
