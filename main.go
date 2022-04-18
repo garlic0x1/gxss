@@ -27,10 +27,9 @@ type Input struct {
 type Context struct {
 	Type         string
 	URL          string
-	Prefix       string
 	Key          string
-	Build        string
 	Selector     string
+	Prefix       string
 	Tag          string
 	Attr         string
 	Quote        string
@@ -41,7 +40,6 @@ type Context struct {
 
 type Handler struct {
 	Payloads    []string
-	Required    []string
 	Browsers    []string
 	Interaction bool
 }

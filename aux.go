@@ -23,17 +23,13 @@ func isUniqueOutput(res Result) bool {
 	return true
 }
 
-func buildUrl(context Context, usePrefix bool, payload string) string {
+func buildUrl(context Context, payload string) string {
 	parsed, err := url.Parse(context.URL)
 	if err != nil {
 		log.Fatal(err)
 	}
 	q := parsed.Query()
-	if usePrefix {
-		q.Add(context.Key, context.Prefix+payload)
-	} else {
-		q.Add(context.Key, payload)
-	}
+	q.Add(context.Key, context.Prefix+payload)
 	parsed.RawQuery = q.Encode()
 	return parsed.String()
 }
