@@ -110,7 +110,7 @@ func breakHtml(context Context, tab context.Context) {
 		if err != nil {
 			log.Println(err)
 		}
-		ok := strings.Contains(str, fmt.Sprintf(Canary3, "<")) // || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<"))
+		ok := strings.Contains(str, fmt.Sprintf(Canary3, "<")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<"))
 		if !ok {
 			continue
 		}
