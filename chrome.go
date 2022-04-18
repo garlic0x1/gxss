@@ -86,6 +86,8 @@ func identifyCtx(input Input, tab context.Context) []Context {
 						URL:      input.URL,
 						Prefix:   "",
 						Key:      key,
+						Tag:      goquery.NodeName(node),
+						Attr:     attr.Key,
 						Selector: fmt.Sprintf("%s[%s]", goquery.NodeName(node), attr.Key),
 					})
 				}

