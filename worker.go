@@ -25,6 +25,69 @@ func worker(input Input, tab context.Context) {
 			breakAttr(context, tab)
 
 		case context.Type == "script":
+			breakScript(context, tab)
+		}
+	}
+}
+
+func breakScript(context Context, tab context.Context) {
+	// first try to close script tag break into html context
+	// loop open brackets
+	for _, openBracket := range AttrPayloads["openBracket"] {
+		u := buildUrl(context, fmt.Sprintf(Canary3, openBracket))
+		doc := chromeQuery(u, tab)
+		str, err := doc.Html()
+		if err != nil {
+			log.Println(err)
+		}
+		ok := strings.Contains(str, fmt.Sprintf(Canary3, "<")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<"))
+		if !ok {
+			continue
+		}
+
+		// loop close brackets
+		for _, closeBracket := range AttrPayloads["closeBracket"] {
+			u = buildUrl(context, fmt.Sprintf(Canary3, openBracket+closeBracket))
+			doc = chromeQuery(u, tab)
+			str, err = doc.Html()
+			if err != nil {
+				log.Println(err)
+			}
+			ok = strings.Contains(str, fmt.Sprintf(Canary3, "<>")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<>"))
+			if !ok {
+				continue
+			}
+
+			// loop backslash
+			for _, backslash := range AttrPayloads["backslash"] {
+				u = buildUrl(context, fmt.Sprintf(Canary3, backslash))
+				doc = chromeQuery(u, tab)
+				str, err = doc.Html()
+				if err != nil {
+					log.Println(err)
+				}
+				ok = strings.Contains(str, fmt.Sprintf(Canary3, "/")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<>"))
+				if !ok {
+					continue
+				}
+
+				// loop backslash
+				for _, scriptTag := range AttrPayloads["script"] {
+					u = buildUrl(context, fmt.Sprintf(Canary3, openBracket+backslash+scriptTag+closeBracket))
+					doc = chromeQuery(u, tab)
+					str, err = doc.Html()
+					if err != nil {
+						log.Println(err)
+					}
+					ok = strings.Contains(str, fmt.Sprintf(Canary3, openBracket+backslash+scriptTag+closeBracket)) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<>"))
+					if ok {
+						// now we are in html context, so generate payload for that
+						context.Prefix = openBracket + backslash + scriptTag + closeBracket
+						breakHtml(context, tab)
+					}
+
+				}
+			}
 		}
 	}
 }
@@ -39,7 +102,6 @@ func breakLink(context Context, tab context.Context) {
 }
 
 func breakHtml(context Context, tab context.Context) {
-
 	// loop open brackets
 	for _, openBracket := range AttrPayloads["openBracket"] {
 		u := buildUrl(context, fmt.Sprintf(Canary3, openBracket))

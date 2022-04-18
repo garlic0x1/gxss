@@ -60,6 +60,22 @@ func identifyCtx(input Input, tab context.Context) []Context {
 	u := buildPayload(input)
 
 	doc := chromeQuery(u, tab)
+
+	doc.Find("script").Each(func(_ int, node *goquery.Selection) {
+		contents := node.Text()
+		for i, key := range input.Keys {
+			if strings.Contains(contents, fmt.Sprintf(Canary, i)) {
+				contexts = append(contexts, Context{
+					Type:     "script",
+					URL:      input.URL,
+					Prefix:   "",
+					Key:      key,
+					Selector: fmt.Sprintf("script"),
+				})
+			}
+		}
+	})
+
 	doc.Find("*").Each(func(_ int, node *goquery.Selection) {
 		n := node.Get(0)
 		for _, attr := range n.Attr {
