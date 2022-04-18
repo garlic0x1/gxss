@@ -26,7 +26,7 @@ func chromeQuery(u string, tab context.Context) *goquery.Document {
 
 	// analyze response
 	doc, err := goquery.NewDocumentFromReader(strings.NewReader(document))
-	if err != nil {
+	if err != nil && Debug {
 		log.Println(err)
 	}
 	return doc

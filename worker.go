@@ -9,7 +9,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-func worker(input Input, tab context.Context) {
+func worker(input Input, tab context.Context, kill chan bool) {
 	// identify context
 	contexts := identifyCtx(input, tab)
 
@@ -17,22 +17,22 @@ func worker(input Input, tab context.Context) {
 	for _, context := range contexts {
 		switch {
 		case context.Type == "html":
-			breakHtml(context, tab)
+			breakHtml(context, tab, kill)
 
 		case context.Type == "href" || context.Type == "attr":
 			if context.Type == "href" {
-				breakLink(context, tab)
+				breakLink(context, tab, kill)
 			}
 			// escape attribute
-			breakAttr(context, tab)
+			breakAttr(context, tab, kill)
 
 		case context.Type == "script":
-			breakScript(context, tab)
+			breakScript(context, tab, kill)
 		}
 	}
 }
 
-func breakScript(context Context, tab context.Context) {
+func breakScript(context Context, tab context.Context, kill chan bool) {
 	// first try to close script tag break into html context
 	// loop open brackets
 	for _, openBracket := range Payloads["openBracket"] {
@@ -85,7 +85,7 @@ func breakScript(context Context, tab context.Context) {
 					if ok {
 						// now we are in html context, so generate payload for that
 						context.Prefix = openBracket + backslash + scriptTag + closeBracket
-						breakHtml(context, tab)
+						breakHtml(context, tab, kill)
 					}
 
 				}
@@ -94,7 +94,7 @@ func breakScript(context Context, tab context.Context) {
 	}
 }
 
-func breakLink(context Context, tab context.Context) {
+func breakLink(context Context, tab context.Context, kill chan bool) {
 	// test javascript href
 	for _, payload := range Payloads["href"] {
 		u := buildUrl(context, payload)
@@ -103,7 +103,7 @@ func breakLink(context Context, tab context.Context) {
 	}
 }
 
-func findAttr(context Context, tab context.Context) {
+func findAttr(context Context, tab context.Context, kill chan bool) {
 	// loop handlers
 	tag := context.Tag
 	closeBracket := context.CloseBracket
@@ -128,7 +128,7 @@ func findAttr(context Context, tab context.Context) {
 			continue
 		}
 
-		Results <- Result{Type: "medium", Message: u}
+		Results <- Result{Type: "medium", Message: u, Kill: kill}
 
 		for _, payload := range data.Payloads {
 			u = buildUrl(context, payload)
@@ -146,12 +146,12 @@ func findAttr(context Context, tab context.Context) {
 				continue
 			}
 
-			Results <- (Result{Type: "high", Message: u})
+			Results <- (Result{Type: "high", Message: u, Kill: kill})
 		}
 	}
 }
 
-func breakHtml(context Context, tab context.Context) {
+func breakHtml(context Context, tab context.Context, kill chan bool) {
 	// loop open brackets
 	for _, openBracket := range Payloads["openBracket"] {
 		u := buildUrl(context, fmt.Sprintf(Canary3, openBracket))
@@ -187,19 +187,19 @@ func breakHtml(context Context, tab context.Context) {
 					continue
 				}
 
-				Results <- Result{Type: "low", Message: u}
+				Results <- Result{Type: "low", Message: u, Kill: kill}
 
 				//context.Prefix = openBracket + tag + " "
 				context.Tag = tag
 				context.OpenBracket = openBracket
 				context.CloseBracket = closeBracket
-				findAttr(context, tab)
+				findAttr(context, tab, kill)
 			}
 		}
 	}
 }
 
-func breakAttr(context Context, tab context.Context) {
+func breakAttr(context Context, tab context.Context, kill chan bool) {
 
 	// loop escapes
 	for _, quote := range Payloads["quotes"] {
@@ -210,7 +210,7 @@ func breakAttr(context Context, tab context.Context) {
 		if nreflections == 0 {
 			continue
 		}
-		Results <- Result{Type: "low", Message: u}
+		Results <- Result{Type: "low", Message: u, Kill: kill}
 
 		// loop handlers
 		for handler, _ := range TagMap[tag] {
@@ -221,7 +221,7 @@ func breakAttr(context Context, tab context.Context) {
 				continue
 			}
 
-			Results <- Result{Type: "medium", Message: u}
+			Results <- Result{Type: "medium", Message: u, Kill: kill}
 
 			// loop actions
 			for _, action := range Payloads["actions"] {
@@ -233,7 +233,7 @@ func breakAttr(context Context, tab context.Context) {
 				}
 				confirmAlert(u, tab, handler, fmt.Sprintf("%s[%s]", context.Selector, handler))
 
-				Results <- Result{Type: "high", Message: u}
+				Results <- Result{Type: "high", Message: u, Kill: kill}
 			}
 		}
 
@@ -249,7 +249,7 @@ func breakAttr(context Context, tab context.Context) {
 			}
 			if strings.Contains(htmlText, Canary2) {
 				context.Prefix = quote + bracket
-				breakHtml(context, tab)
+				breakHtml(context, tab, kill)
 			}
 		}
 	}

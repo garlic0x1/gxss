@@ -17,6 +17,7 @@ import (
 type Result struct {
 	Type    string
 	Message string
+	Kill    chan bool
 }
 
 type Input struct {
@@ -52,8 +53,8 @@ var (
 	Results   = make(chan Result)
 	Interact  bool
 	Debug     bool
-	Stop      bool
 	ShowType  bool
+	Stop      int
 	Wait      int
 	TagMap    map[string]map[string]Handler
 	Payloads  map[string][]string
@@ -83,6 +84,11 @@ func writer(sevLimit *int) {
 	}
 
 	for res := range Results {
+		if Stop > 0 && severity[res.Type] <= Stop {
+			go func() {
+				res.Kill <- true
+			}()
+		}
 		if severity[res.Type] <= *sevLimit && isUniqueOutput(res) {
 			if ShowType {
 				fmt.Println("["+res.Type+"]", res.Message)
@@ -103,6 +109,8 @@ func spawnWorkers(n int) {
 			tab, cancel := chromedp.NewContext(ChromeCtx)
 			defer cancel()
 
+			kill := make(chan bool, 1)
+
 			// handler that runs when alert pops
 			chromedp.ListenTarget(tab, func(ev interface{}) {
 				if _, ok := ev.(*page.EventJavascriptDialogOpening); ok {
@@ -111,19 +119,24 @@ func spawnWorkers(n int) {
 						if err := chromedp.Run(tab,
 							page.HandleJavaScriptDialog(false),
 							chromedp.Location(&u),
-						); err != nil {
+						); err != nil && Debug {
 							log.Println(err)
 						}
-						Results <- Result{Type: "confirmed", Message: u}
-						if Stop {
-							cancel()
-						}
+						Results <- Result{Type: "confirmed", Message: u, Kill: kill}
 					}()
 				}
 			})
 
 			for input := range Queue {
-				worker(input, tab)
+				live := make(chan bool, 1)
+				go func() {
+					worker(input, tab, kill)
+					live <- true
+				}()
+				select {
+				case _ = <-live:
+				case _ = <-kill:
+				}
 			}
 		}()
 	}
@@ -133,11 +146,11 @@ func spawnWorkers(n int) {
 
 func main() {
 	threads := flag.Int("t", 8, "Number of threads to use.")
-	sevLimit := flag.Int("sev", 4, "Filter by severity. 1 is a confirmed alert, 2-4 are high-low.")
+	sevLimit := flag.Int("sev", 4, "Filter by severity. (1 is a confirmed alert, 2-4 are high-low.)")
 	showType := flag.Bool("s", false, "Show result type.")
 	interact := flag.Bool("i", false, "Try to perform handler to trigger payload.")
 	showErrors := flag.Bool("debug", false, "Display errors.")
-	stop := flag.Bool("stop", false, "Stop on first confirmed xss.")
+	stop := flag.Int("stop", 0, "Stop on first xss of specified priority. (1 is a confirmed alert, 2-4 are high-low.)")
 	payloads := flag.String("p", "./payloads.yaml", "YAML file of escape patterns and xss payloads.")
 	proxy := flag.String(("proxy"), "", "Proxy URL. Example: -proxy http://127.0.0.1:8080")
 	swait := flag.Int("wait", 0, "Seconds to wait on page after loading in chrome mode. (Use to wait for AJAX reqs)")
