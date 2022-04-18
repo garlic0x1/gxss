@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"strings"
+
+	"github.com/PuerkitoBio/goquery"
 )
 
 func worker(input Input, tab context.Context) {
@@ -33,11 +35,11 @@ func worker(input Input, tab context.Context) {
 func breakScript(context Context, tab context.Context) {
 	// first try to close script tag break into html context
 	// loop open brackets
-	for _, openBracket := range AttrPayloads["openBracket"] {
-		u := buildUrl(context, fmt.Sprintf(Canary3, openBracket))
+	for _, openBracket := range Payloads["openBracket"] {
+		u := buildUrl(context, true, fmt.Sprintf(Canary3, openBracket))
 		doc := chromeQuery(u, tab)
 		str, err := doc.Html()
-		if err != nil {
+		if err != nil && Debug {
 			log.Println(err)
 		}
 		ok := strings.Contains(str, fmt.Sprintf(Canary3, "<")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<"))
@@ -46,11 +48,11 @@ func breakScript(context Context, tab context.Context) {
 		}
 
 		// loop close brackets
-		for _, closeBracket := range AttrPayloads["closeBracket"] {
-			u = buildUrl(context, fmt.Sprintf(Canary3, openBracket+closeBracket))
+		for _, closeBracket := range Payloads["closeBracket"] {
+			u = buildUrl(context, true, fmt.Sprintf(Canary3, openBracket+closeBracket))
 			doc = chromeQuery(u, tab)
 			str, err = doc.Html()
-			if err != nil {
+			if err != nil && Debug {
 				log.Println(err)
 			}
 			ok = strings.Contains(str, fmt.Sprintf(Canary3, "<>")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<>"))
@@ -59,11 +61,11 @@ func breakScript(context Context, tab context.Context) {
 			}
 
 			// loop backslash
-			for _, backslash := range AttrPayloads["backslash"] {
-				u = buildUrl(context, fmt.Sprintf(Canary3, backslash))
+			for _, backslash := range Payloads["backslash"] {
+				u = buildUrl(context, true, fmt.Sprintf(Canary3, backslash))
 				doc = chromeQuery(u, tab)
 				str, err = doc.Html()
-				if err != nil {
+				if err != nil && Debug {
 					log.Println(err)
 				}
 				ok = strings.Contains(str, fmt.Sprintf(Canary3, "/")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "/"))
@@ -71,12 +73,12 @@ func breakScript(context Context, tab context.Context) {
 					continue
 				}
 
-				// loop backslash
-				for _, scriptTag := range AttrPayloads["script"] {
-					u = buildUrl(context, fmt.Sprintf(Canary3, openBracket+backslash+scriptTag+closeBracket))
+				// loop close tags
+				for _, scriptTag := range Payloads["script"] {
+					u = buildUrl(context, true, fmt.Sprintf(Canary3, openBracket+backslash+scriptTag+closeBracket))
 					doc = chromeQuery(u, tab)
 					str, err = doc.Html()
-					if err != nil {
+					if err != nil && Debug {
 						log.Println(err)
 					}
 					ok = strings.Contains(str, fmt.Sprintf(Canary3, openBracket+backslash+scriptTag+closeBracket)) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, openBracket+backslash+scriptTag+closeBracket))
@@ -94,20 +96,69 @@ func breakScript(context Context, tab context.Context) {
 
 func breakLink(context Context, tab context.Context) {
 	// test javascript href
-	for _, payload := range AttrPayloads["href"] {
-		u := buildUrl(context, payload)
+	for _, payload := range Payloads["href"] {
+		u := buildUrl(context, true, payload)
 		//confirmAlert(u, tab)
-		_ = chromeQuery(u, tab)
+		confirmAlert(u, tab, context.Attr, context.Selector)
+	}
+}
+
+func findAttr(context Context, tab context.Context) {
+	// loop handlers
+	tag := context.Tag
+	closeBracket := context.CloseBracket
+	openBracket := context.OpenBracket
+	attrList := []string{}
+	attrData := []Handler{}
+	for handler, data := range TagMap[tag] {
+		attrList = append(attrList, handler)
+		attrData = append(attrData, data)
+	}
+	for handler, data := range TagMap["*"] {
+		attrList = append(attrList, handler)
+		attrData = append(attrData, data)
+	}
+	for i := 0; i < len(attrList); i++ {
+		handler := attrList[i]
+		data := attrData[i]
+		u := buildUrl(context, true, openBracket+tag+" "+handler+"="+Canary2+closeBracket)
+		doc := chromeQuery(u, tab)
+		nreflections := doc.Find(fmt.Sprintf("%s[%s=%s]", tag, handler, Canary2)).Length()
+		if nreflections == 0 {
+			continue
+		}
+
+		Results <- Result{Type: "medium", Message: u}
+
+		for _, payload := range data.Payloads {
+			u = buildUrl(context, true, payload)
+			log.Println("Prebuilt payload:", u)
+			// verify payload
+			confirmAlert(u, tab, handler, fmt.Sprintf("%s[%s]", tag, handler))
+		}
+
+		for _, action := range Payloads["actions"] {
+			u = buildUrl(context, true, openBracket+tag+" "+handler+"="+action+closeBracket)
+			doc = chromeQuery(u, tab)
+			confirmAlert(u, tab, handler, fmt.Sprintf("%s[%s='%s']", tag, handler, action))
+
+			nreflections = doc.Find(fmt.Sprintf("%s[%s='%s']", tag, handler, action)).Length()
+			if nreflections == 0 {
+				continue
+			}
+
+			Results <- (Result{Type: "high", Message: u})
+		}
 	}
 }
 
 func breakHtml(context Context, tab context.Context) {
 	// loop open brackets
-	for _, openBracket := range AttrPayloads["openBracket"] {
-		u := buildUrl(context, fmt.Sprintf(Canary3, openBracket))
+	for _, openBracket := range Payloads["openBracket"] {
+		u := buildUrl(context, true, fmt.Sprintf(Canary3, openBracket))
 		doc := chromeQuery(u, tab)
 		str, err := doc.Html()
-		if err != nil {
+		if err != nil && Debug {
 			log.Println(err)
 		}
 		ok := strings.Contains(str, fmt.Sprintf(Canary3, "<")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<"))
@@ -116,11 +167,11 @@ func breakHtml(context Context, tab context.Context) {
 		}
 
 		// loop close brackets
-		for _, closeBracket := range AttrPayloads["closeBracket"] {
-			u = buildUrl(context, fmt.Sprintf(Canary3, openBracket+closeBracket))
+		for _, closeBracket := range Payloads["closeBracket"] {
+			u = buildUrl(context, true, fmt.Sprintf(Canary3, openBracket+closeBracket))
 			doc = chromeQuery(u, tab)
 			str, err = doc.Html()
-			if err != nil {
+			if err != nil && Debug {
 				log.Println(err)
 			}
 			ok = strings.Contains(str, fmt.Sprintf(Canary3, "<>")) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<>"))
@@ -129,8 +180,8 @@ func breakHtml(context Context, tab context.Context) {
 			}
 
 			// loop tags
-			for tag, _ := range Payloads {
-				u = buildUrl(context, openBracket+tag+" "+Canary2+"=x"+closeBracket)
+			for tag, _ := range TagMap {
+				u = buildUrl(context, true, openBracket+tag+" "+Canary2+"=x"+closeBracket)
 				doc = chromeQuery(u, tab)
 				nreflections := doc.Find(fmt.Sprintf("%s[%s]", tag, Canary2)).Length()
 				if nreflections == 0 {
@@ -139,70 +190,11 @@ func breakHtml(context Context, tab context.Context) {
 
 				Results <- Result{Type: "low", Message: u}
 
-				// loop handlers
-				for handler, data := range Payloads[tag] {
-					u = buildUrl(context, openBracket+tag+" "+handler+"="+Canary2+closeBracket)
-					doc = chromeQuery(u, tab)
-					nreflections = doc.Find(fmt.Sprintf("%s[%s=%s]", tag, handler, Canary2)).Length()
-					if nreflections == 0 {
-						continue
-					}
-
-					Results <- Result{Type: "medium", Message: u}
-
-					// loop payloads
-					for _, payload := range data["payloads"] {
-						u = buildUrl(context, payload)
-						// verify payload
-						// need to get a selector and handler
-						//confirmAlert(u, tab)
-						chromeQuery(u, tab)
-					}
-
-					// loop requireds
-					c := 0
-					for _, required := range data["requires"] {
-						c++
-
-						u = buildUrl(context, openBracket+tag+" "+handler+"="+Canary2+" "+required+"="+closeBracket)
-						doc = chromeQuery(u, tab)
-
-						nreflections = doc.Find(fmt.Sprintf("%s[%s='%s'][%s]", tag, handler, Canary2, required)).Length()
-						if nreflections == 0 {
-							continue
-						}
-
-						for _, action := range AttrPayloads["actions"] {
-							u = buildUrl(context, openBracket+tag+" "+handler+"="+action+" "+required+"="+closeBracket)
-							doc = chromeQuery(u, tab)
-							confirmAlert(u, tab, handler, fmt.Sprintf("%s[%s='%s']", tag, handler, action))
-
-							nreflections = doc.Find(fmt.Sprintf("%s[%s='%s']", tag, handler, action)).Length()
-							if nreflections == 0 {
-								continue
-							}
-
-							Results <- (Result{Type: "high", Message: u})
-						}
-					}
-
-					if c > 0 {
-						continue
-					}
-
-					for _, action := range AttrPayloads["actions"] {
-						u = buildUrl(context, openBracket+tag+" "+handler+"="+action+closeBracket)
-						doc = chromeQuery(u, tab)
-						confirmAlert(u, tab, handler, fmt.Sprintf("%s[%s='%s']", tag, handler, action))
-
-						nreflections = doc.Find(fmt.Sprintf("%s[%s='%s']", tag, handler, action)).Length()
-						if nreflections == 0 {
-							continue
-						}
-
-						Results <- (Result{Type: "high", Message: u})
-					}
-				}
+				//context.Prefix = openBracket + tag + " "
+				context.Tag = tag
+				context.OpenBracket = openBracket
+				context.CloseBracket = closeBracket
+				findAttr(context, tab)
 			}
 		}
 	}
@@ -211,18 +203,19 @@ func breakHtml(context Context, tab context.Context) {
 func breakAttr(context Context, tab context.Context) {
 
 	// loop escapes
-	for _, quote := range AttrPayloads["quotes"] {
-		u := buildUrl(context, quote+Canary2+"="+quote)
+	for _, quote := range Payloads["quotes"] {
+		u := buildUrl(context, true, quote+Canary2+"="+quote)
 		doc := chromeQuery(u, tab)
 		nreflections := doc.Find(fmt.Sprintf("*[%s='']", Canary2)).Length()
+		tag := goquery.NodeName(doc.Find(fmt.Sprintf("*[%s='']", Canary2)))
 		if nreflections == 0 {
 			continue
 		}
 		Results <- Result{Type: "low", Message: u}
 
 		// loop handlers
-		for _, handler := range AttrPayloads["handlers"] {
-			u := buildUrl(context, quote+handler+"="+quote+Canary2)
+		for handler, _ := range TagMap[tag] {
+			u := buildUrl(context, true, quote+handler+"="+quote+Canary2)
 			doc := chromeQuery(u, tab)
 			nreflections = doc.Find(fmt.Sprintf("*[%s='%s']", handler, Canary2)).Length()
 			if nreflections == 0 {
@@ -232,8 +225,8 @@ func breakAttr(context Context, tab context.Context) {
 			Results <- Result{Type: "medium", Message: u}
 
 			// loop actions
-			for _, action := range AttrPayloads["actions"] {
-				u := buildUrl(context, quote+handler+"="+quote+action)
+			for _, action := range Payloads["actions"] {
+				u := buildUrl(context, true, quote+handler+"="+quote+action)
 				doc := chromeQuery(u, tab)
 				nreflections = doc.Find(fmt.Sprintf("*[%s='%s']", handler, action)).Length()
 				if nreflections == 0 {
@@ -246,8 +239,8 @@ func breakAttr(context Context, tab context.Context) {
 		}
 
 		// break into html and then try that
-		for _, bracket := range AttrPayloads["closeBracket"] {
-			u := buildUrl(context, quote+bracket+Canary2)
+		for _, bracket := range Payloads["closeBracket"] {
+			u := buildUrl(context, true, quote+bracket+Canary2)
 			doc := chromeQuery(u, tab)
 
 			item := doc.Find(context.Selector)

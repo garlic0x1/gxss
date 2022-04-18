@@ -25,28 +25,41 @@ type Input struct {
 }
 
 type Context struct {
-	Type     string
-	URL      string
-	Prefix   string
-	Key      string
-	Build    string
-	Selector string
+	Type         string
+	URL          string
+	Prefix       string
+	Key          string
+	Build        string
+	Selector     string
+	Tag          string
+	Attr         string
+	Quote        string
+	OpenBracket  string
+	CloseBracket string
+	BackSlash    string
+}
+
+type Handler struct {
+	Payloads    []string
+	Required    []string
+	Browsers    []string
+	Interaction bool
 }
 
 var (
-	Canary       = "zzx%dqyj"
-	Canary2      = "zzxqyj"
-	Canary3      = "zzx%sqyj"
-	Queue        = make(chan Input)
-	Results      = make(chan Result)
-	Interact     bool
-	Debug        bool
-	Stop         bool
-	ShowType     bool
-	Wait         int
-	Payloads     map[string]map[string]map[string][]string
-	AttrPayloads map[string][]string
-	ChromeCtx    context.Context
+	Canary    = "zzx%dqyj"
+	Canary2   = "zzxqyj"
+	Canary3   = "zzx%sqyj"
+	Queue     = make(chan Input)
+	Results   = make(chan Result)
+	Interact  bool
+	Debug     bool
+	Stop      bool
+	ShowType  bool
+	Wait      int
+	TagMap    map[string]map[string]Handler
+	Payloads  map[string][]string
+	ChromeCtx context.Context
 )
 
 func reader() {
@@ -137,7 +150,7 @@ func main() {
 	Stop = *stop
 	Wait = *swait
 	ShowType = *showType
-	parsePayloads(*payloads)
+	parsePayloads(*payloads, "tagmap.yaml")
 
 	// check for stdin
 	stat, _ := os.Stdin.Stat()
