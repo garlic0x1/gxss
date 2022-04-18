@@ -8,7 +8,7 @@ Example Input (JSON or YAML structs separated by newline):
 ```
 Example Output:
 ```
-$ echo http://192.168.1.108:9999/home | url-miner -w ../url-miner/testwords -json | ./gxss -s -i -debug
+$ echo http://192.168.1.108:9999/home | url-miner -w ../url-miner/testwords -json | gxss -s -i
 [low] http://192.168.1.108:9999/home?q=%27zzxqyj%3D%27
 [medium] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27zzxqyj
 [high] http://192.168.1.108:9999/home?q=%27onmouseover%3D%27alert%28%29
