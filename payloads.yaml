@@ -67,6 +67,13 @@
   - "onerror"
   - "onpageshow"
   - "onscroll"
+"script":
+  - "script"
+  - "SCRIPT"
+  - "ScRiPt"
+"backslash":
+  - "/"
+  - "\\/"
 "actions":
   - "alert()"
   - "confirm()"
