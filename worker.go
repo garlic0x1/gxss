@@ -15,7 +15,7 @@ func worker(input Input, tab context.Context) {
 	for _, context := range contexts {
 		switch {
 		case context.Type == "html":
-			//breakHtml(context, tab)
+			breakHtml(context, tab)
 
 		case context.Type == "href" || context.Type == "attr":
 			if context.Type == "href" {
@@ -79,7 +79,7 @@ func breakScript(context Context, tab context.Context) {
 					if err != nil {
 						log.Println(err)
 					}
-					ok = strings.Contains(str, fmt.Sprintf(Canary3, openBracket+backslash+scriptTag+closeBracket)) // || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<>"))
+					ok = strings.Contains(str, fmt.Sprintf(Canary3, openBracket+backslash+scriptTag+closeBracket)) || strings.Contains(doc.Text(), fmt.Sprintf(Canary3, "<>"))
 					if ok {
 						// now we are in html context, so generate payload for that
 						context.Prefix = openBracket + backslash + scriptTag + closeBracket
